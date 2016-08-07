@@ -1,0 +1,47 @@
+fscript command-line tool version history:
+
+Version 2.3, 2016-08-05
+ - Updated to work with Mac OS X 10.11
+
+Version 2.2, 2008-10-15
+ - Fixes to support compatibility with F-Script 2.0 alpha 6
+ - PCRE engine updated to version 7.8
+
+Version 2.0, 2008-01-15
+ - Updated to run on Mac OS X 10.5
+ - Now supports running in 64-bit mode
+ - Now requires F-Script 2.0
+ - The regular expression library has been integrated into the tool itself; the AGRegex framework is no longer required as a separate library. The AGRegex and AGRegexMatch classes have been renamed FSRegex and FSRegexMatch
+ - Improved the regular expression matching category on NSString
+ - PCRE engine updated to version 7.4
+ - "help version" and the -v flag now print the active machine architecture
+ - The "help" command now supports an additional option, "help frameworks", which will list the identifier and version of all loaded bundles and frameworks
+
+Version 1.5.1, 2007-08-27
+ - Fixed a bug in processing command-line options
+ 
+Version 1.5, 2007-08-16
+ - Added a help object with information on importing files, quitting the interpreter, and current versions
+ - Clarified messages for 'file not found' errors
+ - Added a -v flag that prints the current version of the command-line interpreter, the F-Script framework, and the regular expression library
+ - Added a -c flag to perform a syntax check without executing the file
+ - The interactive interpreter can now be quit by typing 'Control-D' as well as sys exit.
+ - AGRegex7 framework updated to PCRE 7.2
+ - Included several useful scripts in the Library/ directory (requires FSClass)
+ - Fixed formatting errors in [-NSString sprintf:] and [-FSFile printf:withValues:]
+ - Miscellaneous bug fixes
+
+Version 1.2, 2007-02-13
+ - Added +dictionaryWithPairs: and +dictionaryWithFlatPairs: to NSDictionary
+ - Fixed a bug in 'sys import:'
+ - On ANSI and color xterm terminals, the interactive "F-Script>" prompt now
+   prints in boldface
+
+Version 1.1, 2007-02-07
+ - Fixed a bug that would cause 'sys execShell:' to crash
+ - Added interactive interpreter
+
+Version 1.0, 2007-01-21
+ - Initial release
+ 
+Copyright Andrew Weinrich 2007

@@ -1,0 +1,118 @@
+.\"Modified from man(1) of FreeBSD, the NetBSD mdoc.template, and mdoc.samples.
+.\"See Also:
+.\"man mdoc.samples for a complete listing of options
+.\"man mdoc for the short list of editing options
+.\"/usr/share/misc/mdoc.template
+.Dd 2016-08-05               \" DATE 
+.Dt fscript 1      \" Program name and manual section number 
+.Os Darwin
+.Sh NAME                 \" Section Header - required - don't modify 
+.Nm fscript
+.\" The following lines are read in generating the apropos(man -k) database. Use only key
+.\" words here as the database is built based on the words here and in the .ND line. 
+.Nd F-Script command-line interface
+.\" Use .Nm macro to designate other names for the documented program.
+.Sh SYNOPSIS             \" Section Header - required - don't modify
+.Nm fscript
+.Op Fl vc              \" [-abcd]
+.\".Op Fl a Ar path         \" [-a path] 
+.Op Ar file              \" [file]
+.\".Op Ar                   \" [file ...]
+.\".Ar arg0                 \" Underlined argument - use .Ar anywhere to underline
+.\".Ao Ar scriptfile Ac                 \" Arguments
+.Sh DESCRIPTION          \" Section Header - required - don't modify
+.Nm fscript
+is a command-line interface to the F-Script interpreter. It will run the specified file of F-Script
+code. GUI applications are not supported, so only classes from the Foundation Kit should be
+used in the script. If you use the traditional `#!/usr/bin/fscript' shebang line at the top of your
+scripts,
+.Nm fscript 
+will ignore it, so you can use that notation to make script files directly executable.
+.Pp
+.Nm fscript
+also provides extra classes and methods for handling line-oriented files, using
+regular expressions, and interacting with the operating system that make it
+easier to write general-purpose scripts. A description of those enhancements
+is available in the online documentation, found below in the SEE ALSO section.
+.Pp
+If no script filename is provided, 
+.Nm fscript
+will present an interactive interpreter prompt. To quit the interpreter, type
+.Ar sys exit.
+or Control-D.
+.Sh OPTIONS
+.Pp
+.Nm
+2.0 can use the following options:
+.Bl -tag -width -indent  \" Differs from above in tag removed 
+.It Fl v                 \"-a flag as a list item
+Prints the version numbers of the 
+.Nm
+interpreter, the F-Script framework, and the PCRE library, as well as the current machine
+architecture
+.It Fl c
+Checks a file for syntax errors. As of version 2.3, will only indicate whether the
+file contains any errors or not; to find the specific location of an error, try to 
+execute the script as usual. Note: many problems that would cause compile-time errors
+in Objective-C, such as sending an unsupported message to an object, will be runtime
+errors in F-Script.
+.El                      \" Ends the list
+.Sh ENVIRONMENT      \" May not be needed
+.Bl -tag -width "FSCRIPT_LIB" \" ENV_VAR_1 is width of the string ENV_VAR_1
+.It Ev FSCRIPT_LIB
+(Optional) A colon-separated list of additional directories to use with the
+.Ar sys import:
+method.
+.El
+.\" .It Ev ENV_VAR_2
+.\" Description of ENV_VAR_2
+.\" .El                      
+.\".Sh FILES                \" File used or created by the topic of the man page
+.\".Bl -tag -width "/Users/joeuser/Library/really_long_file_name" -compact
+.\".It Pa /usr/share/file_name
+.\"FILE_1 description
+.\".It Pa /Users/joeuser/Library/really_long_file_name
+.\"FILE_2 description
+.\".El                      \" Ends the list
+.Sh DEPENDENCIES       \" May not be needed
+The
+.Nm fscript
+CLI tool requires the F-Script frameworks to be installed in
+.Ar /Library/Frameworks/FScript.framework                 \"-a flag as a list item
+Version 2.0 or later is required.
+.\".El                      \" Ends the list
+.\" .Bl -diag
+.\" .It Diagnostic Tag
+.\" Diagnostic informtion here.
+.\" .It Diagnostic Tag
+.\" Diagnostic informtion here.
+.\" .El
+.Sh CURRENT VERSION
+Current version of
+.Nm
+is 2.3, released 2016-08-10.
+.Sh SEE ALSO 
+.\" List links in ascending order by section, alphabetically within a section.
+.\" Please do not reference files that do not exist without filing a bug report
+.Nm F-Script
+homepage:
+.Ar http://www.fscript.org
+.Pp                      \" Inserts a space
+fscript command-line tool home:
+.Ar http://pages.cs.wisc.edu/~weinrich/projects/fscript/index.html
+.Pp
+.Nm FSClass
+is a framework that lets you create classes directly in F-Script, rather than
+having to use Objective-C. It is available at
+.Ar http://pages.cs.wisc.edu/~weinrich/projects/FSClass
+.\" .Xr b 1 ,
+.\" .Xr c 1 ,
+.\" .Xr a 2 ,
+.\" .Xr b 2 ,
+.\" .Xr a 3 ,
+.\" .Xr b 3 
+.Sh BUGS              \" Document known, unremedied bugs 
+None known.
+.Sh LEGAL 
+Copyright Andrew Weinrich 2007-2008. Released under the GNU General Public License version 2.
+.\" .Sh HISTORY           \" Document history if command behaves in a unique manner

@@ -1,0 +1,7 @@
+The scripts in this folder test the -NSString sprintf: method included in the fscript command-line interpreter. The numeric formatting tests are compared against output from Perl's printf function. Each numeric test file contains an array of values and an array of formats; each value-format combination is tested individually.
+
+To run all the tests, execute the "run_all.pl" script.
+
+These test scripts require the FSClass bundle to be installed.
+
+Note: as of fscript 1.2, a bug in Apple's NSTask class throws an exception if you run too many calls to +sys exec: (around 250) in one process. For this reason, the individual format tests are split into separate files. This is an open bug with Apple, and hopefully will be fixed in a future OS X release.

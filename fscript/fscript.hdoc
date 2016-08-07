@@ -1,0 +1,385 @@
+/*!
+@framework fscript Command-line Tool
+@abstract a command-line interface to the F-Script interpreter, including useful enhancements for Perl/Python - like processing of strings and files. Current Version 2.2, released 2008-10-16. <a href="http://pages.cs.wisc.edu/~weinrich/projects/fscript/fscript-bin.dmg">Download binary here</a>, <a href="http://pages.cs.wisc.edu/~weinrich/projects/fscript/fscript-source.dmg">Download source here</a>.
+
+<p>Sections: <a href="#usage">Using <span class="program">fscript</span></a> |
+  <a href="#classes">Classes and Categories</a> |
+  <a href="#enhancements">Other Enhancements</a> |
+  <a href="#dependencies">Dependencies</a> |
+  <a href="#other_languages">F-Script compared to Other Languages</a> |
+  <a href="#downloads">Downloads</a> |
+  <a href="#files">Installer Files</a> |
+  <a href="#bugs">Known Bugs</a> |
+  <a href="#legal">Legal</a> |
+  <a href="#classes_list">List of Additional Classes and Categories</a>
+</p>
+
+@discussion <span class="program">fscript</span> is a program that allows <a href="http://www.fscript.org">F-Script</a> scripts to be run from the command line, and to can also present an interpreter prompt in a shell, rather than requiring a GUI program. <span class="program">fscript</span> also provides some useful classes and methods that make the language more appropriate for general scripting tasks, such as line-oriented input/output, regular expressions, and a library importing system.
+
+In this documentation, <span class="program">fscript</span> is used to refer exclusively to the command-line program, while "F-Script Interpreter" refers to the internal <span class="class">FSInterpreter</span> object that actually does the real work of running the script. 
+
+<h3<a name="usage"/>Using <span class="program">fscript</span></h3>
+The <span class="program">fscript</span> program is installed in <span class="directory">/usr/bin</span>, so we may use it directly to run scripts:
+
+<code>$ fscript myscript.fs</code>
+
+However, other scripting languages like Perl and Python allow a "shebang" line at the beginning of the script file to tell the shell which interpreter program to use, so that the script can be executed directly. It would be nice to be able to do the same thing with F-Script scripts; however, <code>#!/usr/bin/fscript</code> is not a comment in F-Script, as it is in those other languages, and will cause a syntax error. As a work-around, when <span class="program">fscript</span> loads a file - either as the main script or as a library with <code>sys import:</code> - it looks for a shebang command on the first line of the script file. If the first line is exactly "#!/usr/bin/fscript", the <span class="program">fscript</span> strips this line before handing the script's contents to the F-Script interpreter.
+
+If no filename is provided, <span class="program">fscript</span> will open an interactive interpreter prompt. Type <code>sys exit</code> to quit.
+
+Currently, <span class="program">fscript</span> does not use any command-line switches to change behavior, although it may in the future.
+
+<span class="program">fscript</span> currently does only links to the Foundation Kit, so scripts that are run with it cannot use any classes from the Application Kit, and thus cannot put up graphical applications. This is a planned addition for the future.
+
+
+<h3><a name="classes">Classes and Categories</a></h3>
+The <span class="program">fscript</span> program has several built-in classes and categories that provide common scripting-language functionality, such as line-oriented file handles, regular expressions, and Perl-like looping constructs. These additions are listed at the <a name="#classes_list">end of this document</a>.
+
+<h3><a name="enhancements">Other Enhancements</a></h3>
+<span class="program">fscript</span> traps all syntax errors and other exceptions that are not handled by the script itself. Unlike the regular F-Script interpreter, <span class="program">fscript</span> reports both the line number and character number of the error's location, rather than just the offset into the script text.
+
+<span class="program">fscript</span> adds several important methods to the global <code>sys</code> object::
+
+<dl>
+  <dt>in</dt>
+    <dd>Returns an FSFile object representing standard input</dd>
+  <dt>out</dt>
+    <dd>Returns an FSFile object representing standard output</dd>
+  <dt>err</dt>
+    <dd>Returns an FSFile object representing standard error</dd>
+  <dt>args</dt>
+    <dd>Returns an array containing the command-line arguments, if any, that were supplied to the script. In the manner of Perl's <code>&#64;ARGV</code> array, the name of the script is not included as the first element.</dd>
+  <dt>scriptname</dt>
+    <dd>Returns a string containing the name of the main program, which will not be the name of the currently executing script if it was pulled in with <span class="method">import:</span></dd>
+  <dt>help</dt>
+    <dd>Returns an object that offers help on several features of the interpreter. Currently available help topics: <code>import</code>, <code>version</code>, <code>quit</code>, and <code>frameworks</code></dd>
+</dl>
+
+<p>In versions prior to 2.2, these were global variables. To reduce namespace pollution, they have been moved into the <code>sys</code> object.</p>
+
+<h3><a name="dependencies">Dependencies</a></h3>
+<span class="program">fscript</span> requires the <a href="http://www.fscript.org">F-Script framework</a> to be installed in <span class="directory">/Library/Frameworks</span>. As of version 2.0, the <span class="program">fscript</span> executable has the <a href="http://www.pcre.org">PCRE library</a> compiled in, so the old AGRegex package is no longer necessary. If you are replacing an older version of <span class="program">fscript</span>, you can remove this package.
+
+
+<h3><a name="other_languages">F-Script and other languages</a></h3>
+One of F-Script's advantages is that the excellent classes from the Cocoa platform are available. Below is the bash shell script used to generate the HeaderDoc for this project:
+
+<div class="longexample"><pre>@textblock
+#!/bin/bash
+
+# This file compiles headerdoc for all the headers in the project, then compiles
+# the top-level headerdoc
+# The script caches file modifications times in the header_mod_times file to 
+# avoid unnecessary reprocessing
+
+MOD_FILE=header_mod_times
+
+# rebuild all files if desired
+if [ "$1" = clean ]; then
+    rm -f "$MOD_FILE"
+fi
+
+# create a file to cache modification times
+if [ ! -f "$MOD_FILE" ]; then
+    touch "$MOD_FILE"
+fi
+
+OUTPUT_DIR=Documentation
+
+# We'll create a symlink to the project-specific HeaderDoc config file
+CONFIG_LOC=~/Library/Preferences/com.apple.headerdoc2HTML.config
+
+if [ -f "$CONFIG_LOG" ]; then
+    mv "$CONFIG_LOC" "$CONFIG_LOC.temp"
+fi
+
+ln -s "$PWD/Documentation/headerdocconfig" "$CONFIG_LOC" 
+
+HEADERS='ArrayUtil FSSystemUtility FSNSNumberMod FSFile StringSprintf StringRegex FSNSMutableDictionary FileTest BlockForeach'
+
+for HEADER in $HEADERS; do
+    FILE_MOD_TIME=`stat -f "%N %m" "$HEADER.h"`
+    FILE_MODIFIED=`grep "$FILE_MOD_TIME" "$MOD_FILE"`
+    
+    if [ -z "$FILE_MODIFIED" ]; then
+        echo headerdoc2html -H -o $OUTPUT_DIR/ "$HEADER.h"
+        headerdoc2html -H -o $OUTPUT_DIR/ "$HEADER.h"
+    fi
+done
+
+stat -f "%N %m" *.h > "$MOD_FILE"
+
+headerdoc2html -H -o $OUTPUT_DIR/ "fscript.hdoc"
+
+gatherheaderdoc "$OUTPUT_DIR"
+
+# get rid of the temp config file and put the old one back if any
+rm -f "$CONFIG_LOC"
+
+if [ -f "$CONFIG_LOG.temp" ]; then
+    mv "$CONFIG_LOC.temp" "$CONFIG_LOC"
+fi
+@/textblock</pre></div>
+
+Note how it caches modifying times by using <code>stat</code>, <code>grep</code>, I/O redirection, and other hacks.
+
+Here's an equivalent program in F-Script, using some of the additional methods and features from the command-line program:
+
+<div class="longexample"><pre>@textblock
+#!/bin/fscript
+"
+This file compiles headerdoc for all the headers in the project, then compiles
+the top-level package headerdoc.
+The script caches file modifications times in the file header_mod_times to 
+avoid unnecessary reprocessing
+"
+modFileName := 'header_mod_times'.
+
+"list of header names - use F-Script array messaging to append .h extension"
+headers := { 'ArrayUtil', 'FSSystemUtility', 'FSNSNumberMod', 'FSFile', 'StringSprintf', 'StringRegex',
+             'FSNSMutableDictionary', 'BlockForeach', 'FileTest' }
+           @ ++ '.h'.
+
+outputDir := 'Documentation'.
+
+configLoc := '~/Library/Preferences/com.apple.headerdoc2HTML.config' stringByExpandingTildeInPath.
+
+
+"if the mod times file exists and we were not told to run clean, use it"
+"otherwise, use a blank file"
+clean := (args count > 0) ifTrue:[ (args at:0) = 'clean'] ifFalse:[ false ].
+
+oldModTimes := ((filem test_f:modFileName) & (clean not)) ifTrue:[
+    NSDictionary dictionaryWithContentsOfFile:modFileName.
+]
+ifFalse:[
+    NSDictionary dictionaryWithObjects:(NSDate distantPast enlist:(headers count)) forKeys:headers.
+].
+newModTimes := NSMutableDictionary dictionary.
+
+
+"move existing config file out of the way and replace with a link to our file"
+tempConfigLoc := configLoc ++ '.temp'.
+(filem fileExistsAtPath:configLoc) ifTrue:[
+    filem movePath:configLoc toPath:tempConfigLoc handler:nil.
+].
+filem createSymbolicLinkAtPath:configLoc pathContent:'Documentation/headerconfig'.
+
+"For each header file, check to see if it has been changed since the last time we ran this
+script; if so, regenerate documentation files"
+updateModTimes := NO.
+[ :header |  |fileModTime|
+    fileModTime := filem test_m:header.
+    ((oldModTimes objectForKey:header) < fileModTime) ifTrue:[
+        "run headerdoc on the modified header file"
+        out println:('headerdoc2html -H -o ' ++ outputDir ++ '/ ' ++ header).
+        sys execNoOutput:'headerdoc2HTML' args:{'-H', '-o', outputDir++'/', header}.
+        updateModTimes := YES.
+    ].
+    newModTimes setObject:fileModTime forKey:header.
+]
+value: @ headers.
+
+"Save new modification times"
+saveModTimes ifTrue:[
+    newModTimes writeToFile:modFileName atomically:YES.
+].
+
+"generate program header"
+runh2h value:'fscript.hdoc'.
+
+"create document structure"
+sys execNoOutput:'gatherheaderdoc' args:{outputDir}.
+
+"move existing config file back"
+(filem test_f:tempConfigLoc) ifTrue:[
+    filem movePath:tempConfigLoc toPath:configLoc handler:nil.
+].
+@/textblock</pre></div>
+
+Not that much longer, and a lot more readable! It also uses actual data structures like dictionaries and arrays, and stores them in a property list, avoiding potential bugs and security problems from shell expansion and parsing.
+
+
+<h3><a name="downloads">Downloads</a></h3>
+<ul>
+  <li>Download the F-Script package (including framework, GUI interpreter, F-Script Anywhere, and other tools): <a href="http://www.fscript.org/download/download.htm">download</a></li>
+  <li><span class="program">fscript</span> command-line program installer: <a href="http://pages.cs.wisc.edu/~weinrich/projects/fscript/fscript-bin.dmg">download</a></li>
+  <li>Source code for <span class="program">fscript</span>: <a href="http://pages.cs.wisc.edu/~weinrich/projects/fscript/fscript-source.dmg">download</a></li>
+  <li>The <a href="http://pages.cs.wisc.edu/~weinrich/projects/FSClass/index.html">FSClass framework</a>, which lets you write classes directly in F-Script (useful with the <code>sys import:</code> method): <a href="http://pages.cs.wisc.edu/~weinrich/projects/FSClass/FSClass.dmg">download</a></li>
+</ul>
+
+
+<h3><a name="files">Installed Files</a></h3>
+The <span class="program">fscript</span> installer installs three files: the framework FSRegex7 (source and separate binary <a href="http://www.cs.wisc.edu/~weinrich/projects/FSRegex7.dmg">available here</a>) in <span class="directory">/Library/Frameworks</span>, the <span class="program">fscript</span> executable in <span class="directory">/usr/bin</span>, and a manpage in <span class="directory">/usr/share/man/man1</span>.
+
+
+<h3><a name="legal">Version History</a></h3>
+<dl>
+<dt>2016-08-10</dt><dd>Version 2.3<ul>
+<li>Updated to be compatible with F-Script 2.2</li>
+<li>Updated to be compatible with MacOS Yosemite</li>
+<li>PCRE updated to version 8.39</li>
+</ul></dd>
+
+  <dt>2008-01-10</dt><dd>Version 2.2<ul>
+     <li>Updated to be compatible with F-Script 2.0 alpha 6</li>
+     <li>PCRE updated to version 7.8</li>
+     <li>The global variables <code>in</code>, <code>out</code>, <code>err</code>, <code>scriptName</code>, and <code>args</code> have been turned into methods on the <code>sys</code> object</li>
+     <li>The global variable <code>filem</code> has been removed</li>
+   </ul></dd>
+  
+  <dt>2008-01-10</dt><dd>Version 2.0<ul>
+     <li>Updated to run on Mac OS X 10.5</li>
+     <li>Now supports running in 64-bit mode</li>
+     <li>Now requires F-Script 2.0</li>
+     <li>The regular expression library has been integrated into the tool itself; the AGRegex framework is no longer required as a separate library. The AGRegex and AGRegexMatch classes have been renamed FSRegex and FSRegexMatch</li>
+     <li>Improved the regular expression matching category on NSString</li>
+     <li>PCRE engine updated to version 7.4</li>
+     <li>"help version" and the -v flag now print the active machine architecture</li>
+     <li>The "help" command now supports an additional option, "help frameworks", which will list the identifier and version of all loaded bundles and frameworks</li>
+    </ul></dd>
+  <dt>2007-08-16</dt><dd>Version 1.6<ul>
+    <li>Fixed a bug that made command-line arguments inaccessible</li>
+    </ul></dd>
+  <dt>2007-08-16</dt><dd>Version 1.5<ul>
+    <li>Add a <code>help</code> object with information on importing files, quitting the interpreter, and versions of F-Script, the interpreter, and the PCRE library</li>
+    <li>Clarified messages for 'file not found' errors</li>
+    <li>Added '-v' (version) and '-c' (check syntax) command-line options</li>
+    <li>The interactive interpreter can now be quit by typing 'Control-D' as well as <code>sys exit.</code></li>
+    <li>FSRegex7 framework updated to PCRE 7.2</li>
+    <li>Included several useful scripts in the <span class="directory">Library</span> directory (requires FSClass)</li>
+    <li>Fixed formatting errors in <span class="method">-NSString sprintf:</span> and <span class="method">-FSFile printf:withValues:</span></li>
+    <li>Miscellaneous bug fixes</li>
+    </ul></dd>
+  <dt>2007-02-13</dt><dd>Version 1.2<ul>
+    <li>Added +dictionaryWithPairs: and +dictionaryWithFlatPairs: to NSDictionary</li>
+    <li>Fixed a bug in 'sys import:'</li>
+    <li>Added bold-faced prompts to compatible ANSI and color-xterm terminals</li>
+    </ul></dd>
+  <dt>2007-02-07</dt><dd>Version 1.1<ul>
+    <li>Fixed a bug that would cause 'sys execShell:' to crash</li>
+    <li>Added interactive interpreter</li>
+    </ul></dd>
+  <dt>2007-01-21</dt><dd>Version 1.0<ul>
+    <li>Initial release</li></ul></dd>
+  </dt>
+</dl>
+
+
+<h3><a name="bugs">Bugs</a></h3>
+None known.
+
+
+<h3><a name="legal">Legal</a></h3>
+The <span class="program">fscript</span> command-line program and libraries are made available under the <a href="http://www.gnu.org/copyleft/gpl.html">GNU General Public License version 2</a>:
+
+<h4>License for <span class="program">fscript</span></h4>
+<pre>
+fscript - command line interface and enhancements for F-Script
+Copyright (C) 2007 Andrew Weinrich
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License (file COPYING) for more details.
+</pre>
+
+
+<span class="program">fscript</span> incorporates some third-party code, the licenses for which are reproduced here:
+
+<h4>Licence for PCRE</h4>
+As of <span class="program">fscript</span> 2.0, the tool directly incorporates version 7.4 or later of the <a href="http://www.pcre.org">Perl-Compatible Regular Expression Library</a>. The source code to the library is included with the <a href="fscript-source.dmg">source disk image</a>.
+
+<pre>
+           Copyright (c) 1997-2007 University of Cambridge
+
+-----------------------------------------------------------------------------
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice,
+      this list of conditions and the following disclaimer.
+
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+
+    * Neither the name of the University of Cambridge nor the names of its
+      contributors may be used to endorse or promote products derived from
+      this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+-----------------------------------------------------------------------------
+</pre>
+
+<h4>License for AGRegex</h4>
+The Objective-C wrapper around the PCRE library for <code>fscript</code> was derived from the <a href="http://sourceforge.net/projects/agkit">AGKit framework</a>, particularly the AGRegex classes.
+<pre>
+   Copyright (c) 2002 Aram Greenman. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice,
+this list of conditions and the following disclaimer in the documentation and/or
+other materials provided with the distribution.
+3. The name of the author may not be used to endorse or promote products derived
+from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR "AS IS" AND ANY
+EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</pre>
+
+<h4>License for readln</h4>
+The code for the <span class="class">FSFile</span> <span class="method">readln</span> method was adapted from the class IOSocketLineReader of the <a href="http://halime.imdat.de/">Halime newsreader application</a>:
+
+<pre>
+//
+//  ISOSocketLineReader.m
+//  Halime
+//
+//  Created by iso on Mon May 21 2001.
+//  Copyright (c) 2001 Imdat Solak. All rights reserved.
+//
+Halime status 1.0rc2b
+
+This is the source code of Halime 1.0rc2b. The source code is delivered to
+you under the GPL - GNU General Public License (s. COPYING).
+
+You may NOT use it to create any product called "Halime" or which name 
+resembles "Halime" in any way.
+
+Otherwise, you are permitted to do with the code whatever you want.
+
+Imdat Solak
+November 4th, 2003
+-------------------------------------------------------------------------------
+</pre>
+
+
+*/

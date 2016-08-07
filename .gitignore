@@ -1,0 +1,9 @@
+fscript/build
+fscript/header_mod_times
+fscript/fscript_Prefix.pch
+fscript/Documentation
+fscript/DerivedData
+**/.deps/*
+**/project.xcworkspace/*
+*.o
+*.lo
