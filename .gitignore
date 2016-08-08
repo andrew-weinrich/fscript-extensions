@@ -1,8 +1,8 @@
-fscript/build
-fscript/header_mod_times
-fscript/fscript_Prefix.pch
-fscript/Documentation
-fscript/DerivedData
+fscript-CLI/build
+fscript-CLI/header_mod_times
+fscript-CLI/fscript_Prefix.pch
+fscript-CLI/Documentation
+fscript-CLI/DerivedData
 **/.deps/*
 **/project.xcworkspace/*
 *.o
