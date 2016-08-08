@@ -5,5 +5,6 @@ fscript-CLI/Documentation
 fscript-CLI/DerivedData
 **/.deps/*
 **/project.xcworkspace/*
+*.xcindexdb-wal
 *.o
 *.lo

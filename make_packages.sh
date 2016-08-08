@@ -64,6 +64,12 @@ echo packagemaker --doc "$INSTALLER_DIR/fscript.pmdoc" --out "$INSTALLER_IMAGE_D
 packagemaker --doc "$INSTALLER_DIR/fscript.pmdoc" --out "$INSTALLER_IMAGE_DIR/$PACKAGE_NAME.pkg" --id "com.andrewweinrich.fscript"
 
 
+pkgbuild --root "$INSTALLER_DIR" --
+
+
+
+
+
 # temporarily move build directories out of project dir
 echo Relocating build directories...
 mv $PROJECT_DIR/build ./build
