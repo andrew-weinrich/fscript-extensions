@@ -1,0 +1,79 @@
+     1                                  BITS 64
+     2                                  ; some preamble to make the assembler happy
+     3                                  section     .text                        ; start of the code indicator
+     4                                  global  _start                             ; make the main function externally visible
+     5                                    
+     6                                  section .data                             ; beginning of our data section
+     7                                  
+     8 00000000 48656C6C6F2C20576F-       msg  db    "Hello, World!",0xa    ; string with a carriage-return
+     9 00000009 726C64210A         
+    10                                  
+    11                                  _start:                      ; entry point for linker
+    12                                  
+    13                                  
+    14                                  
+    15                                  
+    16                                  ;;; Zero-argument trampoline
+    17                                  trampoline0: 
+    18 0000000E E800000000                  call next_line0 ; (5) actual function pointer start 
+    19                                  next_line0: 
+    20 00000013 415A                        pop r10 ; put address of current line into r10 
+    21 00000015 4981EA25000000              sub r10, 37 ; [header length (16) + offset to line ’pop ecx’ (5)] 
+    22 0000001C 4889FA                      mov rdx, rdi ; mov receiver 
+    23 0000001F 498B3A                      mov rdi, [r10] ; load impl block to stack argument 
+    24 00000022 498B7208                    mov rsi, [r10+8] ; load value: selector to stack argument 
+    25 00000026 4D8B5A10                    mov r11, [r10+16] ; load address of objc_msgSend and jump 
+    26 0000002A 49FFE3                      jmp r11
+    27                                  ;;; end Zero-argument trampoline
+    28                                  
+    29                                  
+    30                                  
+    31                                  ;;; One-argument trampoline
+    32                                  trampoline1: 
+    33 0000002D E800000000                  call next_line1 ; (5) actual function pointer start 
+    34                                  next_line1: 
+    35 00000032 415A                        pop r10 ; put address of current line into r10 
+    36 00000034 4981EA25000000              sub r10, 37 ; [header length (16) + offset to line ’pop ecx’ (5)] 
+    37 0000003B 4889D1                      mov rcx, rdx ; move parameter 1 
+    38 0000003E 4889FA                      mov rdx, rdi ; mov receiver 
+    39 00000041 498B3A                      mov rdi, [r10] ; load impl block to stack argument 
+    40 00000044 498B7208                    mov rsi, [r10+8] ; load value: selector to stack argument 
+    41 00000048 4D8B5A10                    mov r11, [r10+16] ; load address of objc_msgSend and jump 
+    42 0000004C 49FFE3                      jmp r11
+    43                                  ;;; end One-argument trampoline
+    44                                  
+    45                                  
+    46                                  
+    47                                  ;;; Two-argument trampoline
+    48                                  trampoline2: 
+    49 0000004F E800000000                  call next_line2 ; (5) actual function pointer start 
+    50                                  next_line2: 
+    51 00000054 415A                        pop r10 ; put address of current line into r10 
+    52 00000056 4981EA25000000              sub r10, 37 ; [header length (16) + offset to line ’pop ecx’ (5)] 
+    53 0000005D 4989C8                      mov r8, rcx ; move parameter 2 
+    54 00000060 4889D1                      mov rcx, rdx ; move parameter 1 
+    55 00000063 4889FA                      mov rdx, rdi ; mov receiver 
+    56 00000066 498B3A                      mov rdi, [r10] ; load impl block to stack argument 
+    57 00000069 498B7208                    mov rsi, [r10+8] ; load value: selector to stack argument 
+    58 0000006D 4D8B5A10                    mov r11, [r10+16] ; load address of objc_msgSend and jump 
+    59 00000071 49FFE3                      jmp r11
+    60                                  ;;; end Two-argument trampoline
+    61                                  
+    62                                  
+    63                                  ;;; Three-argument trampoline
+    64                                  trampoline3: 
+    65 00000074 E800000000                  call next_line3 ; (5) actual function pointer start 
+    66                                  next_line3: 
+    67 00000079 415A                        pop r10 ; put address of current line into r10 
+    68 0000007B 4981EA25000000              sub r10, 37 ; [header length (16) + offset to line ’pop ecx’ (5)] 
+    69 00000082 4D89C1                      mov r9, r8 ; move parameter 3 
+    70 00000085 4989C8                      mov r8, rcx ; move parameter 2 
+    71 00000088 4889D1                      mov rcx, rdx ; move parameter 1 
+    72 0000008B 4889FA                      mov rdx, rdi ; mov receiver 
+    73 0000008E 498B3A                      mov rdi, [r10] ; load impl block to stack argument 
+    74 00000091 498B7208                    mov rsi, [r10+8] ; load value: selector to stack argument 
+    75 00000095 4D8B5A10                    mov r11, [r10+16] ; load address of objc_msgSend and jump 
+    76 00000099 49FFE3                      jmp r11
+    77                                  ;;; end Three-argument trampoline
+    78                                  
+    79                                  

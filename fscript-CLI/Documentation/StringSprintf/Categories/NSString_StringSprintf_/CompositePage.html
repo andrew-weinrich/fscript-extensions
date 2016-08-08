@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>NSString(StringSprintf) </title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {font-weight:bold}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {font-style:italic}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<!-- start of header --><style>
+div.longexample {border-color:black; border-width:1px; border-style:solid; padding-top:3pt; padding-bottom:3pt; padding-left:8pt; background-color:#EEEEEE }
+
+td { vertical-align:top; padding-bottom:10pt; padding-left:10pt} 
+td.spacer {max-width:2pt; background-color:black}
+pre {padding-left:10pt}
+
+dl.list {border: 1pt solid black }
+dt {font-weight:bold; padding-left:8pt; padding-bottom:2pt}
+dd {margin-left:15pt; padding-bottom:5pt}
+
+span.method {font-weight:bold; font-family:Courier}
+span.parameter {font-style:italic; font-family:Courier}
+span.literal {font-family:Courier}
+span.directory {font-style:italic}
+span.program {font-family:Monaco,Lucida}
+
+br {padding-bottom:5pt}
+
+code { border-width:1px; border-color:gray; border-style:solid; background-color:#EEEEEE }
+</style>
+<!-- end of header --><a name="top"></a><a name="//apple_ref/doc/class/NSString(StringSprintf)" title="NSString(StringSprintf) "></a><hr>
+<table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h1><a name="NSString(StringSprintf)">NSString(StringSprintf) </a></h1>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract --> Implementation of <code>sprintf</code> for NSString
+<!-- end abstract --></p>
+<p><b>Extends&nbsp;Class:</b> <!-- a logicalPath="//apple_ref/occ/cl/NSString" -->NSString<!-- /a --><br><b>Declared In:</b> <a href="../../index.html" target="_top">StringSprintf.h</a><br></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion --> This category adds a single method, <span class="method">sprintf:</span>, that implements formatted strings in the manner of C's standard library function.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<br><h2>Methods</h2>
+<a name="HeaderDoc_methods"></a><dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/occ/instm/NSString(StringSprintf)/sprintf:" target="_top">-sprintf: </a></tt></dt>
+<dd></dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/occ/instm/NSString(StringSprintf)/sprintf:;  name=NSString(StringSprintf)::sprintf: --><a name="//apple_ref/doc/compositePage/occ/instm/NSString(StringSprintf)/sprintf:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="sprintf:">sprintf: </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/econst/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/clconst/NSString //apple_ref/occ/intf/NSString" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>) <!-- a logicalPath="//apple_ref/occ/instm/sprintf //apple_ref/occ/clm/sprintf //apple_ref/occ/intfcm/sprintf //apple_ref/occ/intfm/sprintf //apple_ref/occ/func/sprintf //apple_ref/occ/ftmplt/sprintf //apple_ref/occ/defn/sprintf //apple_ref/occ/macro/sprintf" --><span class="function">sprintf</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/NSArray //apple_ref/occ/tdef/NSArray //apple_ref/occ/tag/NSArray //apple_ref/occ/econst/NSArray //apple_ref/occ/struct/NSArray //apple_ref/occ/clconst/NSArray //apple_ref/occ/intf/NSArray" --><span class="type">NSArray</span><!-- /a --><span class="type">*</span>)<span class="var">values</span>;</pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Implements the standard C function <code>sprintf</code>, using the receiver as the format string, and the elements of <span class="parameter">values</span> as values to format. Returns a new string containing the output. <span class="method">sprintf:</span> will throw an exception if too many or not enough values are supplied in the values argument.
+<br><br>
+The standard flags - <span class="literal">-</span>, <span class="literal">+</span>, <span class="literal">(space)</span>, and <span class="literal">#</span> are supported, as are the width and precision modifiers (including using <span class="literal">*</span> to indicate that the width should be taken from the next value in the array).
+<br><br><span class="method">sprintf:</span> implements the following argument formats:
+<br><br></p>
+<dl class="list">
+<dt>s</dt>
+<dd>Interprets the value as a string, and sends it the message <span class="method">cStringUsingEncoding:</span><span class="literal">NSUTF8Encoding</span> to produce a character string. Note: unlike the standard C printf, width and precision modifiers for strings count the number of characters, not the number of bytes.</dd>
+<dt>@</dt>
+<dd>Similar to the use of <span class="literal">%@</span> in the NSString class method <span class="method">stringWithFormat:</span>. Sends the value a <span class="method">description</span> message and inserts that string into the output.</dd>
+<dt>e</dt>
+<dt>E</dt>
+<dd>Prints the result of <span class="method">doubleValue</span> in scientific notation. Uses the stdlib sprintf function.</dd>
+<dt>f</dt>
+<dd>Prints the result of <span class="method">doubleValue</span> as a floating-point number. Uses the stdlib sprintf function.</dd>
+<dt>i</dt>
+<dt>d</dt>
+<dd>Prints the result of sending <span class="method">intValue</span> to the receiver as a decimal integer.</dd>
+<dt>o</dt>
+<dd>Prints the result of sending <span class="method">intValue</span> to the receiver as an unsigned octal integer.</dd>
+<dt>x</dt>
+<dt>X</dt>
+<dd>Prints the result of sending <span class="method">intValue</span> to the receiver as an unsigned hexadecimal integer.</dd>
+<dt>c</dt>
+<dd>Interprets the value as an integer (using <span class="method">intValue</span>) that represents a Unicode codepoint, and prints the corresponding character. This method uses F-Script's <span class="method">-[NSNumber unicharToString]</span> method.</dd>
+<dt>p</dt>
+<dd>Prints the pointer address of the value as an unsigned hexadecimal integer.</dd>
+</dl>
+<p>
+The following standard formats are not supported:
+</p>
+<ul>
+<li>
+<span class="method">g</span> - shortest of exponential or floating</li>
+<li>
+<span class="method">u</span> - unsigned decimal integer</li>
+<li>
+<span class="method">n</span> - return number of written characters</li>
+</ul>
+<p>
+Additionally, the <span class="literal">h</span>, <span class="literal">l</span>, and <span class="literal">L</span> modifiers (used to indicate C's <code>short</code>, <code>long</code>, and <code>long double</code> data types) are not supported.<!-- end discussion --></p>
+<p></p>
+<p><!-- start of footer -->
+
+<!-- end of footer -->
+</p>
+<p>&copy; Andrew Weinrich Last Updated: Wednesday, October 15, 2008
+</p>
+</body>
+</html>

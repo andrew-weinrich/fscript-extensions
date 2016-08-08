@@ -1,0 +1,46 @@
+
+
+MyClass := FSClass newClass:'MyClass'.
+
+MyClass onMessageName:'doThingA:' do:[ :self :arg |
+    out println:('doThingA: ' ++ arg).
+].
+
+MyClass onMessage:#doThingB do:[ :self |
+    out println:'doThingB'.
+].
+
+
+MyClass onMessage:#doThingC:withThing: do:[ :self :arg1 :arg2 |
+    out println:('doThingC: ' ++ arg1 ++ ', ' ++ arg2).
+].
+
+MyClass onMessage:#doThingD:withThing:withThing: do:[ :self :arg1 :arg2 :arg3 |
+    out println:('doThingD: ' ++ arg1 ++ ', ' ++ arg2 ++ ', ' ++ arg3).
+].
+
+
+inst := MyClass alloc init.
+
+inst doThingA:'aaaa'.
+inst doThingB.
+inst doThingC:'ccccc' withThing:'CCCCC'.
+
+
+out println:(MyClass methodNames at:(MyClass methodNames sort)).
+out newln.
+
+out println:'Cocoa selector tests:'.
+inst performSelector:#doThingB.
+inst performSelector:#doThingA: withObject:'indirect A'.
+inst performSelector:#doThingC:withThing: withObject:'indirect C1' withObject:'indirect C2'.
+inst doThingD:'direct1' withThing:'direct2' withThing:'direct3'.
+
+
+"
+out println:'\nIndirect selector tests:'.
+inst perform:#doThingB.
+inst perform:#doThingA: with:'indirect A'.
+inst perform:#doThingC:withThing: with:'indirect C1' with:'indirect C2'.
+inst perform:#doThingD:withThing:withThing: with:'indirect D1' with:'indirect D2' with:'indirect D3'.
+'

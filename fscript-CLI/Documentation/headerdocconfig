@@ -1,0 +1,6 @@
+copyrightOwner => Andrew Weinrich
+funcNameStyle => font-weight:bold
+paramStyle => font-style:italic
+TOCTemplateFile => Documentation/toctemplate.html
+htmlHeaderFile => Documentation/headerdocStyles.css
+masterTOCName => index.html

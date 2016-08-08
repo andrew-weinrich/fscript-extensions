@@ -1,0 +1,88 @@
+Couldn't add property foo
+
+-----------------------
+
+[SuperClass doSuperStuff]
+
+[SuperClass doInheritedStuff]
+
+[SuperClass doOtherStuff:foo]
+
+-----------------------
+
+[SubClass doSubStuff]
+[SuperClass doSuperStuff]
+
+[SubClass doInheritedStuff]
+[SuperClass doInheritedStuff]
+
+[SuperClass doOtherStuff:bar]
+
+-----------------------
+
+[SubSubClass doSubSubStuff]
+[SubClass doSubStuff]
+[SuperClass doSuperStuff]
+
+[SubSubClass doInheritedStuff]
+[SubClass doInheritedStuff]
+[SuperClass doInheritedStuff]
+
+[SubSubClass doOtherStuff:baz]
+[SuperClass doOtherStuff:fubar]
+
+-----------------------
+
+[SuperClass foo]: foo
+[SuperClass bar]: bar
+[SuperClass baz]: baz
+
+[SubClass foo]: foo
+[SubClass bar]: bar
+[SubClass baz]: baz
+
+[SubSubClass foo]: subsubfoo
+[SubSubClass bar]: bar
+[SubSubClass baz]: baz
+
+-----------------------
+
+[SuperClass foo]: foo2
+[SuperClass bar]: bar2
+[SuperClass baz]: baz2
+
+[SubClass foo]: foo2
+[SubClass bar]: bar2
+[SubClass baz]: baz2
+
+[SubSubClass foo]: subsubfoo
+[SubSubClass bar]: bar2
+[SubSubClass baz]: baz2
+
+-----------------------
+
+[SuperClass foo]: foo3
+[SuperClass bar]: bar3
+[SuperClass baz]: baz3
+
+[SubClass foo]: foo3
+[SubClass bar]: bar3
+[SubClass baz]: baz3
+
+[SubSubClass foo]: subsubfoo
+[SubSubClass bar]: bar3
+[SubSubClass baz]: baz3
+
+-----------------------
+
+[SuperClass foo]: foo3
+[SuperClass bar]: bar4
+[SuperClass baz]: baz4
+
+[SubClass foo]: foo3
+[SubClass bar]: bar4
+[SubClass baz]: baz4
+
+[SubSubClass foo]: foo4
+[SubSubClass bar]: bar4
+[SubSubClass baz]: baz4

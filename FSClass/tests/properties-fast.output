@@ -1,0 +1,27 @@
+Cannot add property
+Cannot add property with default
+Cannot add properties from dictionary
+Cannot add properties with defaults from array
+foo: ()
+bar: ()
+baz: ()
+foo: (oof)
+bar: (boo)
+baz: (bye)
+foo: (1)
+bar: (2)
+baz: (3)
+baz: ()
+
+Cannot set default value for propery qwerqwre
+foo: (oof)
+baz: (zab)
+
+Cannot create default properties from non-dictionary
+five: (5)
+six: (6)
+seven: (7)
+
+Cannot add property 3
+Class was not created
+Must pass array for properties: Invalid collection passed for properties

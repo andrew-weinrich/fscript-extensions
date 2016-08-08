@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>FSRegex.h</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {font-weight:bold}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {font-style:italic}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<!-- start of header --><style>
+div.longexample {border-color:black; border-width:1px; border-style:solid; padding-top:3pt; padding-bottom:3pt; padding-left:8pt; background-color:#EEEEEE }
+
+td { vertical-align:top; padding-bottom:10pt; padding-left:10pt} 
+td.spacer {max-width:2pt; background-color:black}
+pre {padding-left:10pt}
+
+dl.list {border: 1pt solid black }
+dt {font-weight:bold; padding-left:8pt; padding-bottom:2pt}
+dd {margin-left:15pt; padding-bottom:5pt}
+
+span.method {font-weight:bold; font-family:Courier}
+span.parameter {font-style:italic; font-family:Courier}
+span.literal {font-family:Courier}
+span.directory {font-style:italic}
+span.program {font-family:Monaco,Lucida}
+
+br {padding-bottom:5pt}
+
+code { border-width:1px; border-color:gray; border-style:solid; background-color:#EEEEEE }
+</style>
+<!-- end of header --><a name="top"></a><a name="//apple_ref/doc/header/FSRegex.h" title="FSRegex.h"></a><hr>
+<table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h1><a name="FSRegex.h">FSRegex.h</a></h1>
+</td></tr></table>
+<hr>
+<p></p>
+<p></p>
+<hr>
+<br><h2>Classes</h2>
+<a name="HeaderDoc_classes"></a><dl>
+<dt><tt><a href="Classes/FSRegex_/index.html#//apple_ref/occ/cl/FSRegex" target="_top">FSRegex </a></tt></dt>
+<dd> A Perl-compatible regular expression class.
+</dd>
+<dt><tt><a href="Classes/FSRegexMatch_/index.html#//apple_ref/occ/cl/FSRegexMatch" target="_top">FSRegexMatch </a></tt></dt>
+<dd> A single occurence of a regular expression.
+</dd>
+</dl>
+<hr>
+<br><h2>Enumerations</h2>
+<hr>
+<!-- headerDoc=tag;  uid=//apple_ref/doc/compositePage/c/tag/Options;  name=Options --><a name="//apple_ref/doc/compositePage/c/tag/Options"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="Options">Options </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre><span class="keyword">enum</span> { 
+    <a logicalpath="//apple_ref/c/cl/FSRegexCaseInsensitive //apple_ref/c/tdef/FSRegexCaseInsensitive //apple_ref/c/tag/FSRegexCaseInsensitive //apple_ref/c/econst/FSRegexCaseInsensitive" target="_top" href="Enums/Enums.html#//apple_ref/c/econst/FSRegexCaseInsensitive"><span class="type">FSRegexCaseInsensitive</span></a> = <span class="number">1</span>, 
+    <a logicalpath="//apple_ref/c/cl/FSRegexDotAll //apple_ref/c/tdef/FSRegexDotAll //apple_ref/c/tag/FSRegexDotAll //apple_ref/c/econst/FSRegexDotAll" target="_top" href="Enums/Enums.html#//apple_ref/c/econst/FSRegexDotAll"><span class="type">FSRegexDotAll</span></a> = <span class="number">2</span>, 
+    <a logicalpath="//apple_ref/c/cl/FSRegexExtended //apple_ref/c/tdef/FSRegexExtended //apple_ref/c/tag/FSRegexExtended //apple_ref/c/econst/FSRegexExtended" target="_top" href="Enums/Enums.html#//apple_ref/c/econst/FSRegexExtended"><span class="type">FSRegexExtended</span></a> = <span class="number">4</span>, 
+    <a logicalpath="//apple_ref/c/cl/FSRegexLazy //apple_ref/c/tdef/FSRegexLazy //apple_ref/c/tag/FSRegexLazy //apple_ref/c/econst/FSRegexLazy" target="_top" href="Enums/Enums.html#//apple_ref/c/econst/FSRegexLazy"><span class="type">FSRegexLazy</span></a> = <span class="number">8</span>, 
+    <a logicalpath="//apple_ref/c/cl/FSRegexMultiline //apple_ref/c/tdef/FSRegexMultiline //apple_ref/c/tag/FSRegexMultiline //apple_ref/c/econst/FSRegexMultiline" target="_top" href="Enums/Enums.html#//apple_ref/c/econst/FSRegexMultiline"><span class="type">FSRegexMultiline</span></a> = <span class="number">16</span> 
+};  </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Constants</font></h5>
+<blockquote>
+<dl>
+<dt><code>FSRegexCaseInsensitive </code></dt>
+<dd>Matching is case insensitive. Equivalent to /i in Perl.</dd>
+<dt><code>FSRegexDotAll </code></dt>
+<dd>Dot metacharacter matches any character including newline. Equivalent to /s in Perl.</dd>
+<dt><code>FSRegexExtended </code></dt>
+<dd>Allow whitespace and comments in the pattern. Equivalent to /x in Perl.</dd>
+<dt><code>FSRegexLazy </code></dt>
+<dd>Makes greedy quantifiers lazy and lazy quantifiers greedy. No equivalent in Perl.</dd>
+<dt><code>FSRegexMultiline </code></dt>
+<dd>Caret and dollar anchors match at newline. Equivalent to /m in Perl.</dd>
+</dl>
+</blockquote>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Options defined for -initWithPattern:options:. Two or more options can be combined with the bitwise OR operator.<!-- end discussion --></p>
+<p></p>
+<p><!-- start of footer -->
+
+<!-- end of footer -->
+</p>
+<p>&copy; Andrew Weinrich Last Updated: Wednesday, October 15, 2008
+</p>
+</body>
+</html>

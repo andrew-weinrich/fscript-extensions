@@ -1,0 +1,25 @@
+Couldn't add property 9
+Couldn't add property with missing default
+Couldn't add properties from non-array
+Couldn't add properties from non-dictionary
+ant: (eater)
+three: (3)
+five: (5)
+six: (6)
+seven: (7)
+foo: ()
+bar: ()
+baz: ()
+Defaults are shared
+Defaults are shared
+ant: (aardvark)
+three: (13)
+five: (15)
+bar: (boo)
+baz: (bye)
+default for foo: ()
+default for ant: (eater)
+default for three: (3)
+foo: (oof)
+ant: ()
+three: (33)

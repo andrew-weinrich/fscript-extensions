@@ -1,0 +1,258 @@
+     1                                  ; some preamble to make the assembler happy
+     2                                  section     .text                        ; start of the code indicator
+     3                                  global  _start                             ; make the main function externally visible
+     4                                    
+     5                                  section .data                             ; beginning of our data section
+     6                                  
+     7 00000000 48656C6C6F2C20576F-       msg  db    "Hello, World!",0xa    ; string with a carriage-return
+     8 00000009 726C64210A         
+     9                                  
+    10                                  _start:                      ; entry point for linker
+    11                                  
+    12                                  
+    13                                  ;;; Property accessor
+    14                                  get_property:
+    15 0000000E E800000000                  call next_line  ; (5) actual function pointer start
+    16                                  next_line:
+    17 00000013 59                          pop ecx     ; put address of current line into ebx
+    18 00000014 81E915000000                sub ecx, 21 ; [header length (16) + offset to line 'pop ebx' (5)]
+    19 0000001A 8B11                        mov edx, [ecx] ; load offset of property to ecx
+    20 0000001C 03542404                    add edx, [esp+4] ; calculate actual address of property into ecx
+    21 00000020 8B02                        mov eax, [edx]
+    22 00000022 C3                          ret
+    23                                  ;;; end Property accessor
+    24                                  
+    25                                  
+    26                                  
+    27                                  
+    28                                  ;;; Zero-argument trampoline
+    29                                  trampoline0:
+    30 00000023 E800000000                  call next_line0  ; (5) actual function pointer start
+    31                                  next_line0:
+    32 00000028 59                          pop ecx     ; put address of current line into ecx
+    33 00000029 81E915000000                sub ecx, 21 ; [header length (16) + offset to line 'pop ecx' (5)]
+    34                                      
+    35                                      ;add esp, 16     ; stack pointer has to be aligned on a 4-byte boundary
+    36                                      
+    37 0000002F 8B542404                    mov edx, [esp+4]  ; move receiver back over selector
+    38 00000033 8954240C                    mov [esp+12], edx
+    39                                      
+    40 00000037 8B11                        mov edx, [ecx]      ; load impl block to first stack argument
+    41 00000039 89542404                    mov [esp+4], edx
+    42 0000003D 8B5104                      mov edx, [ecx+4]     ; load value: selector to second stack argument
+    43 00000040 89542408                    mov [esp+8], edx
+    44                                      
+    45 00000044 8B5108                      mov edx, [ecx+8]     ; load address of objc_msgSend and jump
+    46 00000047 FFE2                        jmp edx
+    47                                  ;;; end Zero-argument trampoline
+    48                                  
+    49                                  
+    50                                  ;;; One-argument trampoline
+    51                                  trampoline1:
+    52 00000049 E800000000                  call next_line1  ; (5) actual function pointer start
+    53                                  next_line1:
+    54 0000004E 59                          pop ecx     ; put address of current line into ecx
+    55 0000004F 81E915000000                sub ecx, 21 ; [header length (16) + offset to line 'pop ecx' (5)]
+    56                                      
+    57                                      ;add esp, 16     ; stack pointer has to be aligned on a 4-byte boundary
+    58                                      
+    59 00000055 8B54240C                    mov edx, [esp+12]  ; move first argument back
+    60 00000059 89542410                    mov [esp+16], edx
+    61                                  
+    62 0000005D 8B542404                    mov edx, [esp+4]  ; move receiver back over selector
+    63 00000061 8954240C                    mov [esp+12], edx
+    64                                      
+    65 00000065 8B11                        mov edx, [ecx]      ; load impl block to first stack argument
+    66 00000067 89542404                    mov [esp+4], edx
+    67 0000006B 8B5104                      mov edx, [ecx+4]     ; load value: selector to second stack argument
+    68 0000006E 89542408                    mov [esp+8], edx
+    69                                      
+    70 00000072 8B5108                      mov edx, [ecx+8]     ; load address of objc_msgSend and jump
+    71 00000075 FFE2                        jmp edx
+    72                                  ;;; end One-argument trampoline
+    73                                  
+    74                                  
+    75                                  
+    76                                  ;;; Two-argument trampoline
+    77                                  trampoline2:
+    78 00000077 E800000000                  call next_line2  ; (5) actual function pointer start
+    79                                  next_line2:
+    80 0000007C 59                          pop ecx     ; put address of current line into ecx
+    81 0000007D 81E915000000                sub ecx, 21 ; [header length (16) + offset to line 'pop ecx' (5)]
+    82                                      
+    83                                      ;add esp, 16     ; stack pointer has to be aligned on a 4-byte boundary
+    84                                      
+    85 00000083 8B542410                    mov edx, [esp+16]  ; move second argument back
+    86 00000087 89542414                    mov [esp+20], edx
+    87 0000008B 8B54240C                    mov edx, [esp+12]  ; move first argument back
+    88 0000008F 89542410                    mov [esp+16], edx
+    89                                  
+    90 00000093 8B542404                    mov edx, [esp+4]  ; move receiver back over selector
+    91 00000097 8954240C                    mov [esp+12], edx
+    92                                      
+    93 0000009B 8B11                        mov edx, [ecx]      ; load impl block to first stack argument
+    94 0000009D 89542404                    mov [esp+4], edx
+    95 000000A1 8B5104                      mov edx, [ecx+4]     ; load value: selector to second stack argument
+    96 000000A4 89542408                    mov [esp+8], edx
+    97                                      
+    98 000000A8 8B5108                      mov edx, [ecx+8]     ; load address of objc_msgSend and jump
+    99 000000AB FFE2                        jmp edx
+   100                                  ;;; end Two-argument trampoline
+   101                                  
+   102                                  
+   103                                  
+   104                                  
+   105                                  ;;; Three-argument trampoline
+   106                                  trampoline3:
+   107 000000AD E800000000                  call next_line3  ; (5) actual function pointer start
+   108                                  next_line3:
+   109 000000B2 59                          pop ecx     ; put address of current line into ecx
+   110 000000B3 81E915000000                sub ecx, 21 ; [header length (16) + offset to line 'pop ecx' (5)]
+   111                                      
+   112                                      ;add esp, 16     ; stack pointer has to be aligned on a 4-byte boundary
+   113                                      
+   114 000000B9 8B542414                    mov edx, [esp+20]  ; move third argument back
+   115 000000BD 89542418                    mov [esp+24], edx
+   116 000000C1 8B542410                    mov edx, [esp+16]  ; move second argument back
+   117 000000C5 89542414                    mov [esp+20], edx
+   118 000000C9 8B54240C                    mov edx, [esp+12]  ; move first argument back
+   119 000000CD 89542410                    mov [esp+16], edx
+   120                                  
+   121 000000D1 8B542404                    mov edx, [esp+4]  ; move receiver back over selector
+   122 000000D5 8954240C                    mov [esp+12], edx
+   123                                      
+   124 000000D9 8B11                        mov edx, [ecx]      ; load impl block to first stack argument
+   125 000000DB 89542404                    mov [esp+4], edx
+   126 000000DF 8B5104                      mov edx, [ecx+4]     ; load value: selector to second stack argument
+   127 000000E2 89542408                    mov [esp+8], edx
+   128                                      
+   129 000000E6 8B5108                      mov edx, [ecx+8]     ; load address of objc_msgSend and jump
+   130 000000E9 FFE2                        jmp edx
+   131                                  ;;; end Three-argument trampoline
+   132                                  
+   133                                  
+   134                                  ;;; Four-argument trampoline
+   135                                  trampoline4:
+   136 000000EB E800000000                  call next_line4  ; (5) actual function pointer start
+   137                                  next_line4:
+   138 000000F0 59                          pop ecx     ; put address of current line into ecx
+   139 000000F1 81E915000000                sub ecx, 21 ; [header length (16) + offset to line 'pop ecx' (5)]
+   140                                      
+   141                                      ;add esp, 16     ; stack pointer has to be aligned on a 4-byte boundary
+   142                                      
+   143 000000F7 8B542418                    mov edx, [esp+24]  ; move fourth argument back
+   144 000000FB 8954241C                    mov [esp+28], edx
+   145 000000FF 8B542414                    mov edx, [esp+20]  ; move third argument back
+   146 00000103 89542418                    mov [esp+24], edx
+   147 00000107 8B542410                    mov edx, [esp+16]  ; move second argument back
+   148 0000010B 89542414                    mov [esp+20], edx
+   149 0000010F 8B54240C                    mov edx, [esp+12]  ; move first argument back
+   150 00000113 89542410                    mov [esp+16], edx
+   151                                  
+   152 00000117 8B542404                    mov edx, [esp+4]  ; move receiver back over selector
+   153 0000011B 8954240C                    mov [esp+12], edx
+   154                                      
+   155 0000011F 8B11                        mov edx, [ecx]      ; load impl block to first stack argument
+   156 00000121 89542404                    mov [esp+4], edx
+   157 00000125 8B5104                      mov edx, [ecx+4]     ; load value: selector to second stack argument
+   158 00000128 89542408                    mov [esp+8], edx
+   159                                      
+   160 0000012C 8B5108                      mov edx, [ecx+8]     ; load address of objc_msgSend and jump
+   161 0000012F FFE2                        jmp edx
+   162                                  ;;; end Four-argument trampoline
+   163                                  
+   164                                  
+   165                                  ;;; Five-argument trampoline
+   166                                  trampoline5:
+   167 00000131 E800000000                  call next_line5  ; (5) actual function pointer start
+   168                                  next_line5:
+   169 00000136 59                          pop ecx     ; put address of current line into ecx
+   170 00000137 81E915000000                sub ecx, 21 ; [header length (16) + offset to line 'pop ecx' (5)]
+   171                                      
+   172                                      ;add esp, 16     ; stack pointer has to be aligned on a 4-byte boundary
+   173                                      
+   174 0000013D 8B54241C                    mov edx, [esp+28]  ; move fifth argument back
+   175 00000141 89542420                    mov [esp+32], edx
+   176 00000145 8B542418                    mov edx, [esp+24]  ; move fourth argument back
+   177 00000149 8954241C                    mov [esp+28], edx
+   178 0000014D 8B542414                    mov edx, [esp+20]  ; move third argument back
+   179 00000151 89542418                    mov [esp+24], edx
+   180 00000155 8B542410                    mov edx, [esp+16]  ; move second argument back
+   181 00000159 89542414                    mov [esp+20], edx
+   182 0000015D 8B54240C                    mov edx, [esp+12]  ; move first argument back
+   183 00000161 89542410                    mov [esp+16], edx
+   184                                  
+   185 00000165 8B542404                    mov edx, [esp+4]  ; move receiver back over selector
+   186 00000169 8954240C                    mov [esp+12], edx
+   187                                      
+   188 0000016D 8B11                        mov edx, [ecx]      ; load impl block to first stack argument
+   189 0000016F 89542404                    mov [esp+4], edx
+   190 00000173 8B5104                      mov edx, [ecx+4]     ; load value: selector to second stack argument
+   191 00000176 89542408                    mov [esp+8], edx
+   192                                      
+   193 0000017A 8B5108                      mov edx, [ecx+8]     ; load address of objc_msgSend and jump
+   194 0000017D FFE2                        jmp edx
+   195                                  ;;; end Five-argument trampoline
+   196                                  
+   197                                  
+   198                                  
+   199                                  ;;; old Five-argument trampoline
+   200                                  trampoliner:
+   201 0000017F E800000000                  call next_line2r  ; (5) actual function pointer start
+   202                                  next_line2r:
+   203 00000184 59                          pop ecx     ; put address of current line into ecx
+   204 00000185 81E915000000                sub ecx, 21 ; [header length (16) + offset to line 'pop ecx' (5)]
+   205                                  
+   206 0000018B 81C410000000                add esp, 16     ; stack pointer has to be aligned on a 4-byte boundary
+   207                                  
+   208 00000191 8B542410                    mov edx, [esp+16]  ; move return address up
+   209 00000195 891424                      mov [esp], edx
+   210                                  
+   211 00000198 8B542414                    mov edx, [esp+20]    ; move receiver back over selector
+   212 0000019C 8954240C                    mov [esp+12], edx
+   213                                  
+   214 000001A0 8B11                        mov edx, [ecx]      ; load impl block to first stack argument
+   215 000001A2 89542404                    mov [esp+4], edx
+   216 000001A6 8B5104                      mov edx, [ecx+4]     ; load value: selector to second stack argument
+   217 000001A9 89542408                    mov [esp+8], edx
+   218                                  
+   219 000001AD 8B5108                      mov edx, [ecx+8]     ; load address of objc_msgSend and jump
+   220 000001B0 FFE2                        jmp edx
+   221                                  ;;; end old Five-argument trampoline
+   222                                  
+   223                                  
+   224                                  
+   225                                  
+   226                                  
+   227                                  ;;; Old trampoline
+   228                                  old_trampoline:
+   229 000001B2 E800000000                  call next_line8  ; (5) actual function pointer start
+   230                                  next_line8:
+   231 000001B7 59                          pop ecx     ; put address of current line into ecx
+   232 000001B8 81E915000000                sub ecx, 21 ; [header length (16) + offset to line 'pop ecx' (5)]
+   233                                      
+   234 000001BE 89E8                        mov eax, ebp    ; move base pointer back four
+   235 000001C0 0504000000                  add eax, 4
+   236 000001C5 89C5                        mov ebp, eax
+   237                                      
+   238 000001C7 89EA                        mov edx, ebp
+   239 000001C9 8B4504                      mov eax, [ebp+4]  ; move saved ebp up four
+   240 000001CC 894500                      mov [ebp], eax
+   241 000001CF 8B4508                      mov eax, [ebp+8]  ; move return address up four
+   242 000001D2 81C204000000                add edx, 4          ; edx = ebp + 4
+   243 000001D8 8902                        mov [edx], eax
+   244                                      
+   245 000001DA 8B450C                      mov eax, [ebp+12]    ; move receiver back over selector
+   246 000001DD 81C20C000000                add edx, 12         ; edx = ebp+16
+   247 000001E3 8902                        mov [edx], eax
+   248                                      
+   249 000001E5 8B01                        mov eax, [ecx]      ; load impl block to first stack argument
+   250 000001E7 81EA08000000                sub edx, 8          ; edx = ebp+8
+   251 000001ED 8902                        mov [edx], eax
+   252 000001EF 8B4104                      mov eax, [ecx+4]     ; load value: selector to second stack argument
+   253 000001F2 81C204000000                add edx, 4          ; edx = ebp+12
+   254 000001F8 8902                        mov [edx], eax
+   255                                      
+   256 000001FA 8B4108                      mov eax, [ecx+8]     ; load address of objc_msgSend and jump
+   257 000001FD FFE0                        jmp eax
+   258                                  ;;; end Old trampoline

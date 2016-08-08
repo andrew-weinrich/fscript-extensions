@@ -1,0 +1,17 @@
+Cannot add existing property foo
+Cannot add property Foo
+Cannot add non-string property
+foo: oof
+Cannot access property "Foo"
+Cannot access property "fOo"
+Cannot set property "foo"
+_private: priv
+Cannot add reserved property name __fsclass_class
+Cannot add reserved property name __fsclass_properties
+Cannot add property all well
+Cannot add property 9asd
+Cannot add property test@home
+{'_private', 'bar', 'foo', 'private1'}
+Cannot create class with property all well
+Cannot create class with property 9asd
+Cannot create class with property test@home

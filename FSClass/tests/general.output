@@ -1,0 +1,26 @@
+Created new class!
+Add properties!
+Hello from Class1!
+h
+
+Inst1.thing: h
+Inst1.stuff: 
+Hello from SubClass!
+thingy
+mySubClass
+Here's a string: stringy!
+
+
+Now testing adding methods to superclasses
+Goodbye from Class1!
+Goodbye from Class1!
+
+
+Now we override that method in the subclass
+Goodbye from SubClass!
+
+
+Now testing adding properties to superclasses:
+Hi!
+Bye!
+Here's a string: Retrieved a class!!

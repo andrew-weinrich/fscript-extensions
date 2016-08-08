@@ -1,0 +1,22 @@
+
+MyClass := FSClass newClass:'MyClass'.
+MyClass addProperty:'specialProp' withDefault:42.
+MyClass addProperty:'eliteProp' withDefault:31337.
+
+out println:(MyClass class).
+out println:(MyClass description).
+
+thing := MyClass alloc init.
+
+
+myClassRef := FSClass getClass:'MyClass'.
+
+out println:(myClassRef == MyClass).
+
+obj := myClassRef alloc init.
+
+out println:('Properties: ' ++ (MyClass propertyNames at:(MyClass propertyNames sort)) description).
+
+
+out println:(thing specialProp).
+out println:(obj specialProp).

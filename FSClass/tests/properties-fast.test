@@ -1,0 +1,108 @@
+"Tests slow properties"
+"Class will have the following properties:
+    foo
+    bar
+    baz
+"
+PropClass := FSClass newClass:'PropClass' properties:{ 'foo', 'bar', 'baz' }.
+
+
+"negative tests - try to add properties after class creation"
+[ PropClass addProperty:'three' ] onException:[ :e |
+    out println:'Cannot add property'
+].
+[ PropClass addProperty:'ant' withDefault:'eater' ] onException:[ :e |
+    out println:'Cannot add property with default'
+].
+
+propDict := NSMutableDictionary dictionary.
+propDict setObject:5 forKey:'five'.
+propDict setObject:3 forKey:'three'.
+[ PropClass addPropertiesFromDictionary:propDict ] onException:[ :e |
+    out println:'Cannot add properties from dictionary'
+].
+
+[ PropClass addPropertiesWithDefaults:{ 'six', 6, 'seven', 7 } ] onException:[ :e |
+    out println:'Cannot add properties with defaults from array'
+].
+
+
+
+
+
+"Test default values"
+inst1 := PropClass alloc init.
+
+out printf:'foo: (%@)\n' withValues:{ inst1 foo }.
+out printf:'bar: (%@)\n' withValues:{ inst1 bar }.
+out printf:'baz: (%@)\n' withValues:{ inst1 baz }.
+
+"Test property setting and access"
+inst1 setFoo:'oof'.
+inst1 setBar:'boo'.
+inst1 setBaz:'bye'.
+
+out printf:'foo: (%@)\n' withValues:{ inst1 foo }.
+out printf:'bar: (%@)\n' withValues:{ inst1 bar }.
+out printf:'baz: (%@)\n' withValues:{ inst1 baz }.
+
+inst1 setFoo:'1'.
+inst1 setBar:'2'.
+inst1 setBaz:'3'.
+
+out printf:'foo: (%@)\n' withValues:{ inst1 foo }.
+out printf:'bar: (%@)\n' withValues:{ inst1 bar }.
+out printf:'baz: (%@)\n' withValues:{ inst1 baz }.
+
+
+inst1 setBaz:nil.
+out printf:'baz: (%@)\n' withValues:{ inst1 baz }.
+
+out newln.
+
+
+
+"Test updating default values"
+PropClass setDefaultValue:'oof' forProperty:'foo'.
+PropClass setDefaultValue:'zab' forProperty:'baz'.
+[ PropClass setDefaultValue:'asdfsdaf' forProperty:'qwerqwre' ] onException:[ :e |
+    out println:'Cannot set default value for propery qwerqwre'.
+].
+inst2 := PropClass alloc init.
+out printf:'foo: (%@)\n' withValues:{ inst2 foo }.
+out printf:'baz: (%@)\n' withValues:{ inst2 baz }.
+
+out newln.
+
+
+"Test creating class with fast default properties"
+[ TestPropClass := FSClass newClass:'PropertyClass' propertiesWithDefaults:{'asdf', 'qwer'} ] onException:[ :e |
+    out println:'Cannot create default properties from non-dictionary'.
+].
+PropertyClass := FSClass newClass:'PropertyClass' propertiesWithDefaults:
+    (NSDictionary dictionaryWithObjects:{5, 6, 7} forKeys:{'five', 'six', 'seven'}).
+inst3 := PropertyClass alloc init.
+out printf:'five: (%@)\n' withValues:{ inst3 five }.
+out printf:'six: (%@)\n' withValues:{ inst3 six }.
+out printf:'seven: (%@)\n' withValues:{ inst3 seven }.
+out newln.
+
+
+
+"negative tests"
+"try to add a property with non-string name"
+TestClass := nil.
+[ TestClass := FSClass newClass:'TestClass' properties:{'a', 'b', 3} ] onException:[ :e |
+    out println:'Cannot add property 3'.
+].
+"Make sure class is invalid"
+( TestClass == nil ) ifTrue:[
+    out println:'Class was not created'.
+].
+
+TestClass := nil.
+[ TestClass := FSClass newClass:'TestClass' properties:8. ] onException:[ :e |
+    out println:'Must pass array for properties: ' ++ e description.
+].
+
+

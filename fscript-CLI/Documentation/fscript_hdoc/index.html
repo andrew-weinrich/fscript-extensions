@@ -1,0 +1,693 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>fscript Command-line Tool</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<meta name="xcode-display" content="render">
+<style type="text/css"><!--.char {background: #ffffff; color:#0000ff;}.comment {background:#ffffff; color:#236e25}.function {font-weight:bold}.keyword {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.param {font-style:italic}.preprocessor {background:#ffffff; color:#236e25}.string {background: #ffffff; color:#891315;}.template {background:#ffffff; color:#761550;}.type {background:#ffffff; color:#761550;}.var {background:#ffffff; color:#000000;}body {border: 0px; margin: 0px;}div {font-size: 10pt; text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #000000;}td {font-size: 10pt; text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #000000;}span.hd_tocAccessSpace { display: block; font-size: 1px; height: 3px; min-height: 3px; }span.hd_tocGroupSpace { display: block; font-size: 1px; height: 3px; min-height: 3px; }span.hd_tocGroup { display: block; font-weight: bold; font-size: 10pt; text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #000000; margin-left: 0px; padding-left: 40px; }span.hd_tocGroup + span.hd_tocAccess { padding-top: 5px; }td.toc_contents_text {font-size: 11pt; text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #000000; }li.tocSubEntry {font-size: 11pt; text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #000000;}p {font-size: 10pt; text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #36c;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #36c;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #36c;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #36c;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #36c;}h2.h2tight { margin-top: 0px; padding-top: 0px; }h1 { margin-top: 13px; padding-top: 0px; }h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}h5 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10.1pt; font-weight: bold;}pre {text-decoration: none; font-family: Courier, Consolas, monospace; color: #666; font-size: 10pt;}pre a { font-family: Courier, Consolas, monospace; color: #666;font-size: 10pt;}pre a:link { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}pre a:visited { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}pre a:visited:hover { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}pre a:active { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}pre a:hover { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}code {text-decoration: none; font-family: Courier, Consolas, monospace; color: #666;font-size: 10pt;}code a { font-family: Courier, Consolas, monospace; color: #666;font-size: 10pt;}code a:link { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}code a:visited { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}code a:visited:hover { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}code a:active { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}code a:hover { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}tt {text-decoration: none; font-family: Courier, Consolas, monospace; color: #666;font-size: 10pt;}tt a { font-family: Courier, Consolas, monospace; color: #666;font-size: 10pt;}tt a:link { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}tt a:visited { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}tt a:visited:hover { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}tt a:active { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}tt a:hover { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}body  {text-decoration: none; font-family: Courier, Consolas, monospace; color: #666;font-size: 10pt; padding-left: 0px; padding-top: 0px; margin-left: 0px; margin-top: 0px; border: none; }#hd_outermost_table { margin-left: 0px; border-spacing: 0px; margin-top: 0px; padding-left: 0px; padding-top: 0px; border: none; }#hd_outermost_table > tr { border-spacing: 0px; margin-left: 0px; margin-top: 0px; padding-left: 0px; padding-top: 0px; border: none; }#hd_outermost_table > tr > td { border-spacing: 0px; margin-left: 0px; margin-top: 0px; }#hd_outermost_table > tbody > tr { border-spacing: 0px; margin-left: 0px; margin-top: 0px; padding-left: 0px; padding-top: 0px; border: none; }#hd_outermost_table > tbody > tr > td { border-spacing: 0px; margin-left: 0px; margin-top: 0px; padding-top: 3px; }.afterName { display: none; }.list_indent { margin-left: 40px; }.declaration_indent { margin-left: 40px; margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; min-height: 12px; vertical-align: middle; }.declaration_indent pre { margin-top: 20px; padding-top: 0px; margin-bottom: 20px; padding-bottom: 0px; }.gapBeforeFooter { display: none; }hr { height: 0px; min-height: 0px; border-top: none; border-left: none; border-right: none; border-bottom: 1px solid #909090;}hr.afterHeader { display: none }.param_group_indent { margin-left: 25px; }.param_indent { margin-left: 40px; margin-top: 0px; padding-top: 0px; }.param_indent dl { margin-top: 4px; padding-top: 0px; }dl dd > p:first-child { margin-top: 2px; padding-top: 0px; }.param_indent dl dd > p:first-child { margin-top: 2px; padding-top: 0px; }.group_indent { margin-left: 40px; }.group_desc_indent { margin-left: 20px; }.warning_indent { margin-left: 40px; }.important_indent { margin-left: 40px; }.note_indent { margin-left: 40px; }h3 {       color: #3C4C6C;}.tight {       margin-top: 2px; margin-bottom: 0px;       padding-top: 0px; padding-bottom: 0px;}h3 a {       color: #3C4C6C;	font-size: 16px;	font-style: normal;	font-variant: normal;	font-weight: bold;	height: 0px;	line-height: normal;}.hd_tocAccess { display: block; margin-left: 40px; font-style: italic; font-size: 10px; font-weight: normal; color: #303030; }.tocSubheading { margin-bottom: 4px; }--></style>
+<style><!--
+body {
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+.toc_contents_text {
+    padding-left: 1em;
+    text-indent: -1em;
+}
+
+ul.tocSubEntryList li.tocSubEntry {
+    list-style: none;
+}
+
+#colorbox {
+		display: none;
+}
+.spec_sheet_line {
+		margin-bottom: 1px;
+}
+.collapsible {
+		display: none;
+}
+.toc_leadspace {
+		width: 10; min-width: 10;
+}
+.disclosure_triangle_td {
+		width: 14; min-width: 14;
+		font-size: 10px;
+		vertical-align: middle;
+}
+.specbox td {
+		font-size: 13px;
+}
+.specbox td a {
+		font-size: 13px;
+}
+.specbox td code {
+		font-size: 13px;
+}
+.specbox td tt {
+		font-size: 13px;
+}
+.specbox td pre {
+		font-size: 13px;
+}
+.specbox a {
+		font-size: 12px;
+}
+.disclosure_triangle_td a {
+		text-decoration: none;
+}
+.disclosure_triangle_td a:link {
+		text-decoration: none;
+}
+.disclosure_triangle_td a:active {
+		text-decoration: none;
+}
+.disclosure_triangle_td a:visited:hover {
+		text-decoration: none;
+}
+.disclosure_triangle_td a:hover {
+		text-decoration: none;
+}
+.hd_toc_box {
+		padding-top: 10px;
+		padding-right: 15px;
+}.tocSeparator {
+		margin-top: 15px;
+		padding-bottom: 0px;
+		margin-bottom: 0px;
+}
+.tocSubEntryList {
+		margin-left: 0px;
+		padding-left: 40px;
+		padding-top: 0px;
+		margin-top: 2px;
+		padding-bottom: 0px;
+		margin-bottom: 8px;
+}
+.hd_toc_heading_table {
+		margin-top: 2px;
+		margin-bottom: 2px;
+}
+.hd_toc_entry_table {
+		margin-top: 2px;
+		margin-bottom: 2px;
+}
+.tocSubEntry {
+		margin-left: 0px;
+		padding-left: 0px;
+		margin-top: 0px;
+		margin-bottom: 1px;
+}
+.tocSubEntry a {
+		font-size: 10pt;
+}
+.tocSubheading {
+		padding-left: 14px;
+		margin-left: 0px;
+		margin-top: 5px;
+		padding-top: 0px;
+		font-size: 16px;
+		color: #808080;
+}
+
+#hd_outermost_table { margin-left: 0px; border-spacing: 0px; margin-top: 0px; padding-left: 0px; padding-top: 0px; border: none; }
+#hd_outermost_table > tr { border-spacing: 0px; margin-left: 0px; margin-top: 0px; padding-left: 0px; padding-top: 0px; border: none; }
+#hd_outermost_table > tr > td { border-spacing: 0px; margin-left: 0px; margin-top: 0px; }
+#hd_outermost_table > tbody > tr { border-spacing: 0px; margin-left: 0px; margin-top: 0px; padding-left: 0px; padding-top: 0px; border: none; }
+#hd_outermost_table > tbody > tr > td { border-spacing: 0px; margin-left: 0px; margin-top: 0px; padding-top: 3px; }
+
+#tocMenu {
+		border-right: 1px solid #c0c0c0;
+		background-color: #f4f4ff;
+		top:0px;
+		left:0px;
+		width:230px;
+		height:100%;
+}
+#bodyContents {
+		width: auto;
+		padding-left: 15px;
+}
+--></style>
+<style id="disable_before_iOS_5"><!--
+#tocMenu {
+		position: fixed;
+		height: 100%;
+		overflow: auto;
+}
+#bodyContents {
+		width: auto;
+		left: 235px;
+		right: 0;
+		padding-left: 15px;
+		position: fixed;
+		height: 100%;
+		overflow-y: scroll;
+}
+--></style>
+<script language="JavaScript" type="text/javascript"><!--
+    if (navigator.platform && (navigator.platform.match(/iPad/) || navigator.platform.match(/iPhone/) || navigator.platform.match(/iPod/))) {
+        if (navigator.userAgent.match(/OS 1(_\d)+/) ||
+            navigator.userAgent.match(/OS 2(_\d)+/) ||
+            navigator.userAgent.match(/OS 3(_\d)+/) ||
+            navigator.userAgent.match(/OS 4(_\d)+/)) {
+                /* Earlier iOS versions require different scrolling gestures with position: fixed. */
+                var del_style_elt = document.getElementById("disable_before_iOS_5");
+                if (del_style_elt) del_style_elt.parentNode.removeChild(del_style_elt);
+        }
+    }
+// --></script><script language="JavaScript" type="text/javascript"><!--
+function getNewHTTPObject()
+{
+        var xmlhttp;
+
+        /** Special IE only code ... */
+        /*@cc_on
+          @if (@_jscript_version >= 5)
+              try
+              {
+                  xmlhttp = new ActiveXObject('Msxml2.XMLHTTP');
+              }
+              catch (e)
+              {
+                  try
+                  {
+                      xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
+                  }
+                  catch (E)
+                  {
+                      xmlhttp = false;
+                  }
+             }
+          @else
+             xmlhttp = false;
+        @end @*/
+
+        /** Every other browser on the planet */
+        if (!xmlhttp && typeof XMLHttpRequest != 'undefined')
+        {
+            try
+            {
+                xmlhttp = new XMLHttpRequest();
+            }
+            catch (e)
+            {
+                xmlhttp = false;
+            }
+        }
+
+        return xmlhttp;
+}
+
+function hidetoc() {
+	var toc = document.getElementById('tocMenu');
+	var src = toc.getAttribute('src');
+	var xhr = getNewHTTPObject();
+	xhr.open('GET', src, true);
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState == 4) {
+			var toc = document.getElementById('tocMenu');
+			toc.innerHTML = xhr.responseText;
+		}
+	}
+	xhr.send(null);
+	var origURL = parent.document.URL;
+	var contentURL = origURL.substring(origURL.indexOf('?')+1, origURL.length);
+	if (contentURL.length == origURL.length) {
+		jumpPos = origURL.substring(origURL.indexOf('#')+1, origURL.length);
+	}
+	if (contentURL == "hidetoc") {
+		var body = document.getElementById('bodyContents');
+		if (toc && body) {
+			toc.style.display = 'none';
+			body.style.marginLeft = '0px';
+		}
+	}
+}
+
+function disclosure_triangle(elt) {
+   var linkelt = elt;
+   while (elt && elt.tagName != 'TABLE') { elt = elt.parentNode;}
+   if (!elt) { return; }
+   while (elt && elt.tagName != 'DIV') { elt = elt.nextSibling;}
+   if (!elt) { return; }
+   if (parseInt(linkelt.getAttribute('state'))) {
+      // It's open.  Close it
+      linkelt.innerHTML = '&#x25B7;';
+      linkelt.setAttribute('state', 0);
+      linkelt.setAttribute('class', 'closed_disclosure_triangle');
+      elt.style.display = 'none';
+   } else {
+      // It's closed.  Open it
+      linkelt.innerHTML = '&#x25BC;';
+      linkelt.setAttribute('state', 1);
+      linkelt.setAttribute('class', 'open_disclosure_triangle');
+      elt.style.display = 'block';
+   }
+}
+--></script><style type="text/css"><!--.char {background: #ffffff; color:#0000ff;}.comment {background:#ffffff; color:#236e25}.function {font-weight:bold}.keyword {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.param {font-style:italic}.preprocessor {background:#ffffff; color:#236e25}.string {background: #ffffff; color:#891315;}.template {background:#ffffff; color:#761550;}.type {background:#ffffff; color:#761550;}.var {background:#ffffff; color:#000000;}body {border: 0px; margin: 0px;}div {font-size: 10pt; text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #000000;}td {font-size: 10pt; text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #000000;}span.hd_tocAccessSpace { display: block; font-size: 1px; height: 3px; min-height: 3px; }span.hd_tocGroupSpace { display: block; font-size: 1px; height: 3px; min-height: 3px; }span.hd_tocGroup { display: block; font-weight: bold; font-size: 10pt; text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #000000; margin-left: 0px; padding-left: 40px; }span.hd_tocGroup + span.hd_tocAccess { padding-top: 5px; }td.toc_contents_text {font-size: 11pt; text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #000000; }li.tocSubEntry {font-size: 11pt; text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #000000;}p {font-size: 10pt; text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #000000;}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #36c;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #36c;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #36c;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #36c;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #36c;}h2.h2tight { margin-top: 0px; padding-top: 0px; }h1 { margin-top: 13px; padding-top: 0px; }h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}h5 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10.1pt; font-weight: bold;}pre {text-decoration: none; font-family: Courier, Consolas, monospace; color: #666; font-size: 10pt;}pre a { font-family: Courier, Consolas, monospace; color: #666;font-size: 10pt;}pre a:link { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}pre a:visited { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}pre a:visited:hover { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}pre a:active { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}pre a:hover { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}code {text-decoration: none; font-family: Courier, Consolas, monospace; color: #666;font-size: 10pt;}code a { font-family: Courier, Consolas, monospace; color: #666;font-size: 10pt;}code a:link { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}code a:visited { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}code a:visited:hover { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}code a:active { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}code a:hover { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}tt {text-decoration: none; font-family: Courier, Consolas, monospace; color: #666;font-size: 10pt;}tt a { font-family: Courier, Consolas, monospace; color: #666;font-size: 10pt;}tt a:link { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}tt a:visited { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}tt a:visited:hover { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}tt a:active { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}tt a:hover { font-family: Courier, Consolas, monospace; color: #36c;font-size: 10pt;}body  {text-decoration: none; font-family: Courier, Consolas, monospace; color: #666;font-size: 10pt; padding-left: 0px; padding-top: 0px; margin-left: 0px; margin-top: 0px; border: none; }#hd_outermost_table { margin-left: 0px; border-spacing: 0px; margin-top: 0px; padding-left: 0px; padding-top: 0px; border: none; }#hd_outermost_table > tr { border-spacing: 0px; margin-left: 0px; margin-top: 0px; padding-left: 0px; padding-top: 0px; border: none; }#hd_outermost_table > tr > td { border-spacing: 0px; margin-left: 0px; margin-top: 0px; }#hd_outermost_table > tbody > tr { border-spacing: 0px; margin-left: 0px; margin-top: 0px; padding-left: 0px; padding-top: 0px; border: none; }#hd_outermost_table > tbody > tr > td { border-spacing: 0px; margin-left: 0px; margin-top: 0px; padding-top: 3px; }.afterName { display: none; }.list_indent { margin-left: 40px; }.declaration_indent { margin-left: 40px; margin-top: 0px; margin-bottom: 0px; padding-top: 0px; padding-bottom: 0px; min-height: 12px; vertical-align: middle; }.declaration_indent pre { margin-top: 20px; padding-top: 0px; margin-bottom: 20px; padding-bottom: 0px; }.gapBeforeFooter { display: none; }hr { height: 0px; min-height: 0px; border-top: none; border-left: none; border-right: none; border-bottom: 1px solid #909090;}hr.afterHeader { display: none }.param_group_indent { margin-left: 25px; }.param_indent { margin-left: 40px; margin-top: 0px; padding-top: 0px; }.param_indent dl { margin-top: 4px; padding-top: 0px; }dl dd > p:first-child { margin-top: 2px; padding-top: 0px; }.param_indent dl dd > p:first-child { margin-top: 2px; padding-top: 0px; }.group_indent { margin-left: 40px; }.group_desc_indent { margin-left: 20px; }.warning_indent { margin-left: 40px; }.important_indent { margin-left: 40px; }.note_indent { margin-left: 40px; }h3 {       color: #3C4C6C;}.tight {       margin-top: 2px; margin-bottom: 0px;       padding-top: 0px; padding-bottom: 0px;}h3 a {       color: #3C4C6C;	font-size: 16px;	font-style: normal;	font-variant: normal;	font-weight: bold;	height: 0px;	line-height: normal;}.hd_tocAccess { display: block; margin-left: 40px; font-style: italic; font-size: 10px; font-weight: normal; color: #303030; }.tocSubheading { margin-bottom: 4px; }--></style>
+</head>
+<body bgcolor="#ffffff" onload="hidetoc();">
+<!-- headerDoc=framework;  uid=//apple_ref/doc/framework/fscript;  shortname=fscript; name=fscript Command-line Tool -->
+<table id="hd_outermost_table" height="100%" width="100%"><tr>
+<td valign="top" id="tocMenu" src="toc.html"></td>
+<!-- start of header -->
+<style>
+div.longexample {border-color:black; border-width:1px; border-style:solid; padding-top:3pt; padding-bottom:3pt; padding-left:8pt; background-color:#EEEEEE }
+
+td { vertical-align:top; padding-bottom:10pt; padding-left:10pt} 
+td.spacer {max-width:2pt; background-color:black}
+pre {padding-left:10pt}
+
+dl.list {border: 1pt solid black }
+dt {font-weight:bold; padding-left:8pt; padding-bottom:2pt}
+dd {margin-left:15pt; padding-bottom:5pt}
+
+span.method {font-weight:bold; font-family:Courier}
+span.parameter {font-style:italic; font-family:Courier}
+span.literal {font-family:Courier}
+span.directory {font-style:italic}
+span.program {font-family:Monaco,Lucida}
+
+br {padding-bottom:5pt}
+
+code { border-width:1px; border-color:gray; border-style:solid; background-color:#EEEEEE }
+</style>
+<!-- end of header --><td id="bodyContents" valign="top">
+<a name="top"></a>
+<hr class="afterHeader">
+<h1><a name="fscriptCommand-lineTool">fscript Command-line Tool</a></h1>
+<h2>Introduction</h2>
+<p><!-- headerDoc=abstract;uid=//apple_ref/doc/framework/fscript;name=start --><!-- begin abstract --><!-- headerDoc=frameworkabstract;uid=//apple_ref/doc/framework/fscript;name=start -->
+</p>
+<p>a command-line interface to the F-Script interpreter, including useful enhancements for Perl/Python - like processing of strings and files. Current Version 2.2, released 2008-10-16. <a href="http://pages.cs.wisc.edu/~weinrich/projects/fscript/fscript-bin.dmg" target="_top">Download binary here</a>, <a href="http://pages.cs.wisc.edu/~weinrich/projects/fscript/fscript-source.dmg" target="_top">Download source here</a>.
+</p>
+<p>Sections: <a href="#usage" target="_top">Using <span class="program">fscript</span></a> |
+<a href="#classes" target="_top">Classes and Categories</a> |
+<a href="#enhancements" target="_top">Other Enhancements</a> |
+<a href="#dependencies" target="_top">Dependencies</a> |
+<a href="#other_languages" target="_top">F-Script compared to Other Languages</a> |
+<a href="#downloads" target="_top">Downloads</a> |
+<a href="#files" target="_top">Installer Files</a> |
+<a href="#bugs" target="_top">Known Bugs</a> |
+<a href="#legal" target="_top">Legal</a> |
+<a href="#classes_list" target="_top">List of Additional Classes and Categories</a>
+</p>
+
+<!-- headerDoc=frameworkabstract;uid=//apple_ref/doc/framework/fscript;name=end -->
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/doc/framework/fscript;name=end -->
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<!-- begin discussion --><!-- headerDoc=frameworkdiscussion;uid=//apple_ref/doc/framework/fscript;name=start -->
+<p><span class="program">fscript</span> is a program that allows <a href="http://www.fscript.org" target="_top">F-Script</a> scripts to be run from the command line, and to can also present an interpreter prompt in a shell, rather than requiring a GUI program. <span class="program">fscript</span> also provides some useful classes and methods that make the language more appropriate for general scripting tasks, such as line-oriented input/output, regular expressions, and a library importing system.
+</p>
+<p>In this documentation, <span class="program">fscript</span> is used to refer exclusively to the command-line program, while "F-Script Interpreter" refers to the internal <span class="class">FSInterpreter</span> object that actually does the real work of running the script. 
+</p>
+<h3><a name="usage" target="_top">Using <span class="program">fscript</span></a></h3>
+<p>The <span class="program">fscript</span> program is installed in <span class="directory">/usr/bin</span>, so we may use it directly to run scripts:
+</p>
+<p><code>$ fscript myscript.fs</code>
+</p>
+<p>However, other scripting languages like Perl and Python allow a "shebang" line at the beginning of the script file to tell the shell which interpreter program to use, so that the script can be executed directly. It would be nice to be able to do the same thing with F-Script scripts; however, <code>#!/usr/bin/fscript</code> is not a comment in F-Script, as it is in those other languages, and will cause a syntax error. As a work-around, when <span class="program">fscript</span> loads a file - either as the main script or as a library with <code>sys import:</code> - it looks for a shebang command on the first line of the script file. If the first line is exactly "#!/usr/bin/fscript", the <span class="program">fscript</span> strips this line before handing the script's contents to the F-Script interpreter.
+</p>
+<p>If no filename is provided, <span class="program">fscript</span> will open an interactive interpreter prompt. Type <code>sys exit</code> to quit.
+</p>
+<p>Currently, <span class="program">fscript</span> does not use any command-line switches to change behavior, although it may in the future.
+</p>
+<p><span class="program">fscript</span> currently does only links to the Foundation Kit, so scripts that are run with it cannot use any classes from the Application Kit, and thus cannot put up graphical applications. This is a planned addition for the future.
+</p>
+
+<h3><a name="classes" target="_top">Classes and Categories</a></h3>
+<p>The <span class="program">fscript</span> program has several built-in classes and categories that provide common scripting-language functionality, such as line-oriented file handles, regular expressions, and Perl-like looping constructs. These additions are listed at the <a name="#classes_list" target="_top">end of this document</a>.
+</p>
+<h3><a name="enhancements" target="_top">Other Enhancements</a></h3>
+<p><span class="program">fscript</span> traps all syntax errors and other exceptions that are not handled by the script itself. Unlike the regular F-Script interpreter, <span class="program">fscript</span> reports both the line number and character number of the error's location, rather than just the offset into the script text.
+</p>
+<p><span class="program">fscript</span> adds several important methods to the global <code>sys</code> object::
+</p>
+<dl>
+<dt>in</dt>
+<dd>Returns an FSFile object representing standard input</dd>
+<dt>out</dt>
+<dd>Returns an FSFile object representing standard output</dd>
+<dt>err</dt>
+<dd>Returns an FSFile object representing standard error</dd>
+<dt>args</dt>
+<dd>Returns an array containing the command-line arguments, if any, that were supplied to the script. In the manner of Perl's <code>@ARGV</code> array, the name of the script is not included as the first element.</dd>
+<dt>scriptname</dt>
+<dd>Returns a string containing the name of the main program, which will not be the name of the currently executing script if it was pulled in with <span class="method">import:</span>
+</dd>
+<dt>help</dt>
+<dd>Returns an object that offers help on several features of the interpreter. Currently available help topics: <code>import</code>, <code>version</code>, <code>quit</code>, and <code>frameworks</code>
+</dd>
+</dl>
+<p>In versions prior to 2.2, these were global variables. To reduce namespace pollution, they have been moved into the <code>sys</code> object.</p>
+
+<h3><a name="dependencies" target="_top">Dependencies</a></h3>
+<p><span class="program">fscript</span> requires the <a href="http://www.fscript.org" target="_top">F-Script framework</a> to be installed in <span class="directory">/Library/Frameworks</span>. As of version 2.0, the <span class="program">fscript</span> executable has the <a href="http://www.pcre.org" target="_top">PCRE library</a> compiled in, so the old AGRegex package is no longer necessary. If you are replacing an older version of <span class="program">fscript</span>, you can remove this package.
+</p>
+
+<h3><a name="other_languages" target="_top">F-Script and other languages</a></h3>
+<p>One of F-Script's advantages is that the excellent classes from the Cocoa platform are available. Below is the bash shell script used to generate the HeaderDoc for this project:
+</p>
+<div class="longexample"><pre>
+#!/bin/bash
+
+# This file compiles headerdoc for all the headers in the project, then compiles
+# the top-level headerdoc
+# The script caches file modifications times in the header_mod_times file to 
+# avoid unnecessary reprocessing
+
+MOD_FILE=header_mod_times
+
+# rebuild all files if desired
+if [ "$1" = clean ]; then
+    rm -f "$MOD_FILE"
+fi
+
+# create a file to cache modification times
+if [ ! -f "$MOD_FILE" ]; then
+    touch "$MOD_FILE"
+fi
+
+OUTPUT_DIR=Documentation
+
+# We'll create a symlink to the project-specific HeaderDoc config file
+CONFIG_LOC=~/Library/Preferences/com.apple.headerdoc2HTML.config
+
+if [ -f "$CONFIG_LOG" ]; then
+    mv "$CONFIG_LOC" "$CONFIG_LOC.temp"
+fi
+
+ln -s "$PWD/Documentation/headerdocconfig" "$CONFIG_LOC" 
+
+HEADERS='ArrayUtil FSSystemUtility FSNSNumberMod FSFile StringSprintf StringRegex FSNSMutableDictionary FileTest BlockForeach'
+
+for HEADER in $HEADERS; do
+    FILE_MOD_TIME=`stat -f "%N %m" "$HEADER.h"`
+    FILE_MODIFIED=`grep "$FILE_MOD_TIME" "$MOD_FILE"`
+    
+    if [ -z "$FILE_MODIFIED" ]; then
+        echo headerdoc2html -H -o $OUTPUT_DIR/ "$HEADER.h"
+        headerdoc2html -H -o $OUTPUT_DIR/ "$HEADER.h"
+    fi
+done
+
+stat -f "%N %m" *.h &gt; "$MOD_FILE"
+
+headerdoc2html -H -o $OUTPUT_DIR/ "fscript.hdoc"
+
+gatherheaderdoc "$OUTPUT_DIR"
+
+# get rid of the temp config file and put the old one back if any
+rm -f "$CONFIG_LOC"
+
+if [ -f "$CONFIG_LOG.temp" ]; then
+    mv "$CONFIG_LOC.temp" "$CONFIG_LOC"
+fi
+</pre></div>
+
+<p>Note how it caches modifying times by using <code>stat</code>, <code>grep</code>, I/O redirection, and other hacks.
+</p>
+<p>Here's an equivalent program in F-Script, using some of the additional methods and features from the command-line program:
+</p>
+<div class="longexample"><pre>
+#!/bin/fscript
+"
+This file compiles headerdoc for all the headers in the project, then compiles
+the top-level package headerdoc.
+The script caches file modifications times in the file header_mod_times to 
+avoid unnecessary reprocessing
+"
+modFileName := 'header_mod_times'.
+
+"list of header names - use F-Script array messaging to append .h extension"
+headers := { 'ArrayUtil', 'FSSystemUtility', 'FSNSNumberMod', 'FSFile', 'StringSprintf', 'StringRegex',
+             'FSNSMutableDictionary', 'BlockForeach', 'FileTest' }
+           @ ++ '.h'.
+
+outputDir := 'Documentation'.
+
+configLoc := '~/Library/Preferences/com.apple.headerdoc2HTML.config' stringByExpandingTildeInPath.
+
+
+"if the mod times file exists and we were not told to run clean, use it"
+"otherwise, use a blank file"
+clean := (args count &gt; 0) ifTrue:[ (args at:0) = 'clean'] ifFalse:[ false ].
+
+oldModTimes := ((filem test_f:modFileName) &amp; (clean not)) ifTrue:[
+    NSDictionary dictionaryWithContentsOfFile:modFileName.
+]
+ifFalse:[
+    NSDictionary dictionaryWithObjects:(NSDate distantPast enlist:(headers count)) forKeys:headers.
+].
+newModTimes := NSMutableDictionary dictionary.
+
+
+"move existing config file out of the way and replace with a link to our file"
+tempConfigLoc := configLoc ++ '.temp'.
+(filem fileExistsAtPath:configLoc) ifTrue:[
+    filem movePath:configLoc toPath:tempConfigLoc handler:nil.
+].
+filem createSymbolicLinkAtPath:configLoc pathContent:'Documentation/headerconfig'.
+
+"For each header file, check to see if it has been changed since the last time we ran this
+script; if so, regenerate documentation files"
+updateModTimes := NO.
+[ :header |  |fileModTime|
+    fileModTime := filem test_m:header.
+    ((oldModTimes objectForKey:header) &lt; fileModTime) ifTrue:[
+        "run headerdoc on the modified header file"
+        out println:('headerdoc2html -H -o ' ++ outputDir ++ '/ ' ++ header).
+        sys execNoOutput:'headerdoc2HTML' args:{'-H', '-o', outputDir++'/', header}.
+        updateModTimes := YES.
+    ].
+    newModTimes setObject:fileModTime forKey:header.
+]
+value: @ headers.
+
+"Save new modification times"
+saveModTimes ifTrue:[
+    newModTimes writeToFile:modFileName atomically:YES.
+].
+
+"generate program header"
+runh2h value:'fscript.hdoc'.
+
+"create document structure"
+sys execNoOutput:'gatherheaderdoc' args:{outputDir}.
+
+"move existing config file back"
+(filem test_f:tempConfigLoc) ifTrue:[
+    filem movePath:tempConfigLoc toPath:configLoc handler:nil.
+].
+</pre></div>
+
+<p>Not that much longer, and a lot more readable! It also uses actual data structures like dictionaries and arrays, and stores them in a property list, avoiding potential bugs and security problems from shell expansion and parsing.
+</p>
+
+<h3><a name="downloads" target="_top">Downloads</a></h3>
+<ul>
+<li><p>Download the F-Script package (including framework, GUI interpreter, F-Script Anywhere, and other tools): <a href="http://www.fscript.org/download/download.htm" target="_top">download</a></p></li>
+<li><p><span class="program">fscript</span> command-line program installer: <a href="http://pages.cs.wisc.edu/~weinrich/projects/fscript/fscript-bin.dmg" target="_top">download</a></p></li>
+<li><p>Source code for <span class="program">fscript</span>: <a href="http://pages.cs.wisc.edu/~weinrich/projects/fscript/fscript-source.dmg" target="_top">download</a></p></li>
+<li><p>The <a href="http://pages.cs.wisc.edu/~weinrich/projects/FSClass/index.html" target="_top">FSClass framework</a>, which lets you write classes directly in F-Script (useful with the <code>sys import:</code> method): <a href="http://pages.cs.wisc.edu/~weinrich/projects/FSClass/FSClass.dmg" target="_top">download</a></p></li>
+</ul>
+<h3><a name="files" target="_top">Installed Files</a></h3>
+<p>The <span class="program">fscript</span> installer installs three files: the framework FSRegex7 (source and separate binary <a href="http://www.cs.wisc.edu/~weinrich/projects/FSRegex7.dmg" target="_top">available here</a>) in <span class="directory">/Library/Frameworks</span>, the <span class="program">fscript</span> executable in <span class="directory">/usr/bin</span>, and a manpage in <span class="directory">/usr/share/man/man1</span>.
+</p>
+
+<h3><a name="legal" target="_top">Version History</a></h3>
+<dl>
+<dt>2008-01-10</dt>
+<dd>Version 2.2<ul>
+<li><p>Updated to be compatible with F-Script 2.0 alpha 6</p></li>
+<li><p>PCRE updated to version 7.8</p></li>
+<li><p>The global variables <code>in</code>, <code>out</code>, <code>err</code>, <code>scriptName</code>, and <code>args</code> have been turned into methods on the <code>sys</code> object</p></li>
+<li><p>The global variable <code>filem</code> has been removed</p></li>
+</ul>
+</dd>
+
+<dt>2008-01-10</dt>
+<dd>Version 2.0<ul>
+<li><p>Updated to run on Mac OS X 10.5</p></li>
+<li><p>Now supports running in 64-bit mode</p></li>
+<li><p>Now requires F-Script 2.0</p></li>
+<li><p>The regular expression library has been integrated into the tool itself; the AGRegex framework is no longer required as a separate library. The AGRegex and AGRegexMatch classes have been renamed FSRegex and FSRegexMatch</p></li>
+<li><p>Improved the regular expression matching category on NSString</p></li>
+<li><p>PCRE engine updated to version 7.4</p></li>
+<li><p>"help version" and the -v flag now print the active machine architecture</p></li>
+<li><p>The "help" command now supports an additional option, "help frameworks", which will list the identifier and version of all loaded bundles and frameworks</p></li>
+</ul>
+</dd>
+<dt>2007-08-16</dt>
+<dd>Version 1.6<ul>
+<li><p>Fixed a bug that made command-line arguments inaccessible</p></li>
+</ul>
+</dd>
+<dt>2007-08-16</dt>
+<dd>Version 1.5<ul>
+<li><p>Add a <code>help</code> object with information on importing files, quitting the interpreter, and versions of F-Script, the interpreter, and the PCRE library</p></li>
+<li><p>Clarified messages for 'file not found' errors</p></li>
+<li><p>Added '-v' (version) and '-c' (check syntax) command-line options</p></li>
+<li><p>The interactive interpreter can now be quit by typing 'Control-D' as well as <code>sys exit.</code></p></li>
+<li><p>FSRegex7 framework updated to PCRE 7.2</p></li>
+<li><p>Included several useful scripts in the <span class="directory">Library</span> directory (requires FSClass)</p></li>
+<li><p>Fixed formatting errors in <span class="method">-NSString sprintf:</span> and <span class="method">-FSFile printf:withValues:</span></p></li>
+<li><p>Miscellaneous bug fixes</p></li>
+</ul>
+</dd>
+<dt>2007-02-13</dt>
+<dd>Version 1.2<ul>
+<li><p>Added +dictionaryWithPairs: and +dictionaryWithFlatPairs: to NSDictionary</p></li>
+<li><p>Fixed a bug in 'sys import:'</p></li>
+<li><p>Added bold-faced prompts to compatible ANSI and color-xterm terminals</p></li>
+</ul>
+</dd>
+<dt>2007-02-07</dt>
+<dd>Version 1.1<ul>
+<li><p>Fixed a bug that would cause 'sys execShell:' to crash</p></li>
+<li><p>Added interactive interpreter</p></li>
+</ul>
+</dd>
+<dt>2007-01-21</dt>
+<dd>Version 1.0<ul><li><p>Initial release</p></li></ul>
+</dd>
+
+</dl>
+<h3><a name="bugs" target="_top">Bugs</a></h3>
+<p>None known.
+</p>
+
+<h3><a name="legal" target="_top">Legal</a></h3>
+<p>The <span class="program">fscript</span> command-line program and libraries are made available under the <a href="http://www.gnu.org/copyleft/gpl.html" target="_top">GNU General Public License version 2</a>:
+</p>
+<h4>License for <span class="program">fscript</span>
+</h4>
+<pre>
+fscript - command line interface and enhancements for F-Script
+Copyright (C) 2007 Andrew Weinrich
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License (file COPYING) for more details.
+</pre>
+
+
+<p><span class="program">fscript</span> incorporates some third-party code, the licenses for which are reproduced here:
+</p>
+<h4>Licence for PCRE</h4>
+<p>As of <span class="program">fscript</span> 2.0, the tool directly incorporates version 7.4 or later of the <a href="http://www.pcre.org" target="_top">Perl-Compatible Regular Expression Library</a>. The source code to the library is included with the <a href="fscript-source.dmg" target="_top">source disk image</a>.
+</p>
+<pre>
+           Copyright (c) 1997-2007 University of Cambridge
+
+-----------------------------------------------------------------------------
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice,
+      this list of conditions and the following disclaimer.
+
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+
+    * Neither the name of the University of Cambridge nor the names of its
+      contributors may be used to endorse or promote products derived from
+      this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+-----------------------------------------------------------------------------
+</pre>
+
+<h4>License for AGRegex</h4>
+<p>The Objective-C wrapper around the PCRE library for <code>fscript</code> was derived from the <a href="http://sourceforge.net/projects/agkit" target="_top">AGKit framework</a>, particularly the AGRegex classes.
+</p>
+<pre>
+   Copyright (c) 2002 Aram Greenman. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice,
+this list of conditions and the following disclaimer in the documentation and/or
+other materials provided with the distribution.
+3. The name of the author may not be used to endorse or promote products derived
+from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR "AS IS" AND ANY
+EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</pre>
+
+<h4>License for readln</h4>
+<p>The code for the <span class="class">FSFile</span> <span class="method">readln</span> method was adapted from the class IOSocketLineReader of the <a href="http://halime.imdat.de/" target="_top">Halime newsreader application</a>:
+</p>
+<pre>
+//
+//  ISOSocketLineReader.m
+//  Halime
+//
+//  Created by iso on Mon May 21 2001.
+//  Copyright (c) 2001 Imdat Solak. All rights reserved.
+//
+Halime status 1.0rc2b
+
+This is the source code of Halime 1.0rc2b. The source code is delivered to
+you under the GPL - GNU General Public License (s. COPYING).
+
+You may NOT use it to create any product called "Halime" or which name 
+resembles "Halime" in any way.
+
+Otherwise, you are permitted to do with the code whatever you want.
+
+Imdat Solak
+November 4th, 2003
+-------------------------------------------------------------------------------
+</pre>
+
+
+<!-- headerDoc=frameworkdiscussion;uid=//apple_ref/doc/framework/fscript;name=end -->
+<!-- end discussion -->
+<p class="gapBeforeFooter">&nbsp;</p>
+<!-- start of footer -->
+
+<!-- end of footer -->
+<hr class="afterFooter">
+<div class="hd_copyright_and_timestamp">
+<p class="hd_copyright">&copy; Andrew Weinrich </p>
+<p class="hd_timestamp">Last Updated: Friday, August 05, 2016
+</p>
+</div>
+</td>
+</tr></table>
+</body>
+</html>

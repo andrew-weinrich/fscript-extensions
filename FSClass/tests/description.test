@@ -1,0 +1,16 @@
+#!/Users/sphercow/fscript/build/Debug/fscript
+
+Describer := FSClass newClass:'Describer'.
+
+Describer addProperty:'prop' withDefault:5.
+
+desc := Describer alloc init.
+
+
+Describer onMessage:#description do:[ :self |
+    'Describer (' ++ self prop description ++ ')'
+].
+
+
+out println:desc.
+

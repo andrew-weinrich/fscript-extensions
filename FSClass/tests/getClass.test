@@ -1,0 +1,9 @@
+myClass := FSClass newClass.
+
+myInstance := myClass alloc init.
+
+"Retrieve the class and add another method to it"
+(myInstance class) onMessage:#foo: do:[ :self :fooValue | out println:'Hi! ' ++ (fooValue description) ].
+
+"This line will now run without any problems"
+myInstance foo:5.

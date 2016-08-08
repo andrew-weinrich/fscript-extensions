@@ -1,0 +1,27 @@
+!Bonjour from SuperClass! foo:5
+Hi from SuperClass! foo:5
+Hi from SubClass! bar:10
+Subclass-only method
+
+Sub doStuff: 1, 2, 3, 4
+SuperClass doStuff: 1, 2, 3, 4
+Sub doStuff: 1, 2, 3, 4, 5
+SuperClass doStuff: 1, 2, 3, 4, 5
+Sub doStuff: 1, 2, 3, 4, 5, 6
+SuperClass doStuff: 1, 2, 3, 4, 5, 6
+Sub doStuff: 1, 2, 3, 4, 5, 6, 7
+SuperClass doStuff: 1, 2, 3, 4, 5, 6, 7
+Sub doStuff: 1, 2, 3, 4, 5, 6, 7, 8
+SuperClass doStuff: 1, 2, 3, 4, 5, 6, 7, 8
+
+Super baz: ag
+Hi from SuperClass! foo:5
+Super baz: ag
+
+Called super: with too many arguments
+Called super: with too few arguments
+Called doSuperMethod:currentClass:withArguments: with too many arguments
+
+Superclass of Sub do not support method akwehufliuasfu:
+Superclass of Sub do not support method akwehufliuasfu:asf:as:asdf:asf:asf:asf:sadf:
+Superclass of Sub do not support method subOnly:

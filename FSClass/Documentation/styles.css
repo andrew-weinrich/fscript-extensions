@@ -1,0 +1,35 @@
+function {font-weight:bold}
+.param {font-style:italic}
+a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #0000ff;}
+a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #0000ff;}
+a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #ff6600;}
+a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #ff6600;}
+a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; color: #ff6600;}
+h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-weight: bold;}
+body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}
+
+
+
+div.longexample {margin-left: 15pt; border-color:black; border-width:1px; border-style:solid; padding-top:3pt; padding-bottom:3pt; padding-left:3pt; background-color:#EEEEEE }
+
+td { vertical-align:top; padding-bottom:10pt; padding-left:10pt} 
+td.spacer {max-width:2pt; background-color:black}
+pre {padding-left:10pt}
+
+dl.list {border: 1pt solid black }
+dt {font-weight:bold; padding-left:8pt; padding-bottom:2pt}
+dd {margin-left:15pt; padding-bottom:5pt}
+
+span.method {font-weight:bold; font-family:Courier}
+span.parameter {font-style:italic; font-family:Courier}
+span.literal {font-family:Courier}
+span.directory {font-style:italic}
+span.class {font-weight:bold; color:#330066}
+
+br {padding-bottom:5pt}
+
+code { border-width:1px; border-color:gray; border-style:solid; background-color:#EEEEEE }
+
+h2 { margin-top: 17pt; border-top: 1pt solid black; padding-top: 5pt }
+
+p {margin-left: 10pt }

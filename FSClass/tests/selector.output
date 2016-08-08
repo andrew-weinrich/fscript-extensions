@@ -1,0 +1,11 @@
+doThingA: aaaa
+doThingB
+doThingC: ccccc, CCCCC
+{'doThingA:', 'doThingB', 'doThingC:withThing:', 
+'doThingD:withThing:withThing:'}
+
+Cocoa selector tests:
+doThingB
+doThingA: indirect A
+doThingC: indirect C1, indirect C2
+doThingD: direct1, direct2, direct3

@@ -1,0 +1,130 @@
+"Tests slow properties"
+
+"
+This test is expected to print the following Foundation warnings to stderr:
+
+    2007-12-31 21:30:13.016 fscript[11175:10b] *** -[Number count]: unrecognized selector sent to instance 0x390b20
+    2007-12-31 21:30:13.022 fscript[11175:10b] *** -[True allKeys]: unrecognized selector sent to instance 0x30b450
+
+There warnings should be disregarded
+"
+
+
+"Class will have the following properties:
+    foo
+    ant - default 'eater'
+    bar
+    baz
+    three - default 3
+    five - default 5
+    six - default 6
+    seven - default 7
+"
+
+PropClass := FSClass newClass:'PropClass'.
+
+PropClass addProperty:'foo'.
+PropClass addProperty:'ant' withDefault:'eater'.
+PropClass addProperty: @ { 'bar', 'baz' }.
+
+propDict := NSMutableDictionary dictionary.
+propDict setObject:5 forKey:'five'.
+propDict setObject:3 forKey:'three'.
+PropClass addPropertiesFromDictionary:propDict.
+
+PropClass addPropertiesWithDefaults:{ 'six', 6, 'seven', 7 }.
+
+
+"negative tests"
+"try to add a property with non-string name"
+[ PropClass addProperty:9 ] onException:[ :e |
+    out println:'Couldn\'t add property 9'.
+].
+"try to add a properties with missing default"
+[ PropClass addPropertiesWithDefaults:{'go', 'stop', 'start'} ] onException:[ :e |
+    out println:'Couldn\'t add property with missing default'.
+].
+"try to add a default properties from non-array"
+[ PropClass addPropertiesWithDefaults:6 ] onException:[ :e |
+    out println:'Couldn\'t add properties from non-array'.
+].
+"try to add a default properties from non-dictionary"
+[ PropClass addPropertiesFromDictionary:true ] onException:[ :e |
+    out println:'Couldn\'t add properties from non-dictionary'.
+].
+
+
+
+"Test default values - uses printf to avoid errors from concatenating strings with nil"
+inst1 := PropClass alloc init.
+
+out printf:'ant: (%@)\n' withValues:{ inst1 ant }.
+out printf:'three: (%@)\n' withValues:{ inst1 three }.
+out printf:'five: (%@)\n' withValues:{ inst1 five }.
+out printf:'six: (%@)\n' withValues:{ inst1 six }.
+out printf:'seven: (%@)\n' withValues:{ inst1 seven }.
+out printf:'foo: (%@)\n' withValues:{ inst1 foo }.
+out printf:'bar: (%@)\n' withValues:{ inst1 bar }.
+out printf:'baz: (%@)\n' withValues:{ inst1 baz }.
+
+
+
+inst2 := PropClass alloc init.
+
+"check to make sure that property objects are shared"
+(inst1 three == inst2 three) ifTrue:[
+    out println:'Defaults are shared'.
+]
+ifFalse:[
+    out println:'Defaults are NOT shared'.
+].
+
+(inst1 ant == inst2 ant) ifTrue:[
+    out println:'Defaults are shared'.
+]
+ifFalse:[
+    out println:'Defaults are NOT shared'.
+].
+
+
+
+"Test property setting and access"
+inst1 setAnt:'aardvark'.
+inst1 setThree:13.
+inst1 setFive:15.
+inst1 setBar:'boo'.
+inst1 setBaz:'bye'.
+
+out printf:'ant: (%@)\n' withValues:{ inst1 ant }.
+out printf:'three: (%@)\n' withValues:{ inst1 three }.
+out printf:'five: (%@)\n' withValues:{ inst1 five }.
+out printf:'bar: (%@)\n' withValues:{ inst1 bar }.
+out printf:'baz: (%@)\n' withValues:{ inst1 baz }.
+
+
+
+
+
+
+
+"Test new defaults - needs some workaround for nil properties"
+out printf:'default for foo: (%@)\n' withValues:{ PropClass defaultValueForProperty:'foo' }.
+out printf:'default for ant: (%@)\n' withValues:{ PropClass defaultValueForProperty:'ant' }.
+out printf:'default for three: (%@)\n' withValues:{ PropClass defaultValueForProperty:'three' }.
+
+"Test new defaults"
+PropClass setDefaultValue:'oof' forProperty:'foo'.
+PropClass setDefaultValue:33 forProperty:'three'.
+PropClass setDefaultValue:nil forProperty:'ant'.
+
+inst3 := PropClass alloc init.
+
+out printf:'foo: (%@)\n' withValues:{ inst3 foo }.
+out printf:'ant: (%@)\n' withValues:{ inst3 ant }.
+out printf:'three: (%@)\n' withValues:{ inst3 three }.
+
+
+
+
+
+

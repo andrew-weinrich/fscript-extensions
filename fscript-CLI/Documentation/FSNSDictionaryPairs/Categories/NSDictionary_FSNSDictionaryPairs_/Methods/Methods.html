@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>Methods</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {font-weight:bold}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {font-style:italic}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<!-- start of header --><style>
+div.longexample {border-color:black; border-width:1px; border-style:solid; padding-top:3pt; padding-bottom:3pt; padding-left:8pt; background-color:#EEEEEE }
+
+td { vertical-align:top; padding-bottom:10pt; padding-left:10pt} 
+td.spacer {max-width:2pt; background-color:black}
+pre {padding-left:10pt}
+
+dl.list {border: 1pt solid black }
+dt {font-weight:bold; padding-left:8pt; padding-bottom:2pt}
+dd {margin-left:15pt; padding-bottom:5pt}
+
+span.method {font-weight:bold; font-family:Courier}
+span.parameter {font-style:italic; font-family:Courier}
+span.literal {font-family:Courier}
+span.directory {font-style:italic}
+span.program {font-family:Monaco,Lucida}
+
+br {padding-bottom:5pt}
+
+code { border-width:1px; border-color:gray; border-style:solid; background-color:#EEEEEE }
+</style>
+<!-- end of header --><a name="top"></a><a name="HeaderDoc_methods"></a><dl>
+<dt><tt><a href="Methods.html#//apple_ref/occ/clm/NSDictionary(FSNSDictionaryPairs)/dictionaryWithFlatPairs:" target="doc">+dictionaryWithFlatPairs: </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="Methods.html#//apple_ref/occ/clm/NSDictionary(FSNSDictionaryPairs)/dictionaryWithPairs:" target="doc">+dictionaryWithPairs: </a></tt></dt>
+<dd></dd>
+</dl>
+<hr>
+<!-- headerDoc=clm;  uid=//apple_ref/occ/clm/NSDictionary(FSNSDictionaryPairs)/dictionaryWithFlatPairs:;  name=NSDictionary(FSNSDictionaryPairs)::dictionaryWithFlatPairs: --><a name="//apple_ref/occ/clm/NSDictionary(FSNSDictionaryPairs)/dictionaryWithFlatPairs:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="dictionaryWithFlatPairs:">dictionaryWithFlatPairs: </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>+ (<!-- a logicalPath="//apple_ref/occ/cl/NSDictionary //apple_ref/occ/tdef/NSDictionary //apple_ref/occ/tag/NSDictionary //apple_ref/occ/econst/NSDictionary //apple_ref/occ/struct/NSDictionary //apple_ref/occ/clconst/NSDictionary //apple_ref/occ/intf/NSDictionary" --><span class="type">NSDictionary</span><!-- /a --><span class="type">*</span>) <!-- a logicalPath="//apple_ref/occ/instm/dictionaryWithFlatPairs //apple_ref/occ/clm/dictionaryWithFlatPairs //apple_ref/occ/intfcm/dictionaryWithFlatPairs //apple_ref/occ/intfm/dictionaryWithFlatPairs //apple_ref/occ/func/dictionaryWithFlatPairs //apple_ref/occ/ftmplt/dictionaryWithFlatPairs //apple_ref/occ/defn/dictionaryWithFlatPairs //apple_ref/occ/macro/dictionaryWithFlatPairs" --><span class="function">dictionaryWithFlatPairs</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/NSArray //apple_ref/occ/tdef/NSArray //apple_ref/occ/tag/NSArray //apple_ref/occ/econst/NSArray //apple_ref/occ/struct/NSArray //apple_ref/occ/clconst/NSArray //apple_ref/occ/intf/NSArray" --><span class="type">NSArray</span><!-- /a --><span class="type">*</span>)<span class="var">flatPairs</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Like <span class="method">dictionaryWithPairs:</span>, but assumes that <span class="method">flatPairs</span> is a one-dimensional array that holds alternating keys and values. This makes it easy to initialize a dictionary from an array, in the manner of Perl::
+<br><br></p>
+<div class="longexample"><pre>
+myDictionary := NSDictionary dictionaryFromPairs:{ 'key1', item1, 'key2', 'item2', 'key3', 3 }.
+</pre></div>
+<br><br><p>
+This method is similar to <span class="class">NSDictionary</span> <span class="method">dictionaryWithKeysAndObjects:</span>, except that this method uses an <span class="class">NSArray</span> rather than C variadic argument lists, which are not valid in F-Script.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=clm;  uid=//apple_ref/occ/clm/NSDictionary(FSNSDictionaryPairs)/dictionaryWithPairs:;  name=NSDictionary(FSNSDictionaryPairs)::dictionaryWithPairs: --><a name="//apple_ref/occ/clm/NSDictionary(FSNSDictionaryPairs)/dictionaryWithPairs:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="dictionaryWithPairs:">dictionaryWithPairs: </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>+ (<!-- a logicalPath="//apple_ref/occ/cl/NSDictionary //apple_ref/occ/tdef/NSDictionary //apple_ref/occ/tag/NSDictionary //apple_ref/occ/econst/NSDictionary //apple_ref/occ/struct/NSDictionary //apple_ref/occ/clconst/NSDictionary //apple_ref/occ/intf/NSDictionary" --><span class="type">NSDictionary</span><!-- /a --><span class="type">*</span>) <!-- a logicalPath="//apple_ref/occ/instm/dictionaryWithPairs //apple_ref/occ/clm/dictionaryWithPairs //apple_ref/occ/intfcm/dictionaryWithPairs //apple_ref/occ/intfm/dictionaryWithPairs //apple_ref/occ/func/dictionaryWithPairs //apple_ref/occ/ftmplt/dictionaryWithPairs //apple_ref/occ/defn/dictionaryWithPairs //apple_ref/occ/macro/dictionaryWithPairs" --><span class="function">dictionaryWithPairs</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/NSArray //apple_ref/occ/tdef/NSArray //apple_ref/occ/tag/NSArray //apple_ref/occ/econst/NSArray //apple_ref/occ/struct/NSArray //apple_ref/occ/clconst/NSArray //apple_ref/occ/intf/NSArray" --><span class="type">NSArray</span><!-- /a --><span class="type">*</span>)<span class="var">pairs</span>;</pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Creates a dictionary from <span class="parameter">pairs</span>, which must be an array of arrays, each second-level array containing exactly two elements (the key and value). For example, say that you need to read a configuration file that is in the format <code>keyName = value</code>. The following code will create a dictionary that holds the configuration:
+<br><br></p>
+<div class="longexample"><pre>
+file := FSFile open:'....'.<br>
+lines := [ :line | line split:' += +' ] value: (file readlines).<br>
+config := NSDictionary dictionaryWithPairs:lines.
+</pre></div>
+<!-- end discussion --><p></p>
+<p><!-- start of footer -->
+
+<!-- end of footer -->
+</p>
+<p>&copy; Andrew Weinrich Last Updated: Wednesday, October 15, 2008
+</p>
+</body>
+</html>

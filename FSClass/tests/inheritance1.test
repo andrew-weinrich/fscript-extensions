@@ -1,0 +1,108 @@
+ClassA := FSClass newClass:'ClassA'.
+
+ClassA onMessage:#stuff do:[ :self |
+    'Class A'
+].
+
+
+ClassA onMessage:#override do:[ :self |
+    'A: override'
+].
+ClassA onMessage:#description do:[ :self |
+    '(an instance of ClassA)'
+].
+
+
+
+ClassB := FSClass newClass:'ClassB' parent:ClassA.
+ClassB onMessage:#stuff do:[ :self |
+    'Class B'
+].
+ClassB onMessage:#description do:[ :self |
+    '(an instance of ClassB)'
+].
+
+
+ClassC := FSClass newClass:'ClassC' parent:ClassB.
+ClassC onMessage:#stuff do:[ :self |
+    'Class C'
+].
+ClassC onMessage:#description do:[ :self |
+    '(an instance of ClassC)'
+].
+
+
+ClassBa := FSClass newClass:'ClassBa' parent:ClassA.
+ClassBa onMessage:#stuff do:[ :self |
+    'Class Ba'
+].
+ClassBa onMessage:#override do:[ :self |
+    'Ba: override'
+].
+ClassBa onMessage:#description do:[ :self |
+    '(an instance of ClassBa)'
+].
+
+ClassD := FSClass newClass:'ClassD' parent:ClassC.
+ClassD onMessage:#override do:[ :self |
+    'D: override'
+].
+ClassD onMessage:#description do:[ :self |
+    '(an instance of ClassD)'
+].
+
+
+
+
+instA   := ClassA alloc init.
+instB   := ClassB alloc init.
+instBa  := ClassBa alloc init.
+instC   := ClassC alloc init.
+instD   := ClassD alloc init.
+
+out println:(instA stuff).
+out println:(instB stuff).
+out println:(instBa stuff).
+out println:(instC stuff).
+
+
+
+"[ 5 ] valuuu."
+
+
+out println:('A over: ' ++ instA override).
+out println:('B over: ' ++ instB override).
+out println:('Ba over: ' ++ instBa override).
+out println:('C over: ' ++ instC override).
+
+
+
+ClassB onMessage:#override do:[ :self |
+    'B: override'
+].
+
+
+out println:('B over: ' ++ instB override).
+out println:('Ba over: ' ++ instBa override).
+out println:('C over: ' ++ instC override).
+
+
+ClassB onMessage:#override do:[ :self |
+    'B: override 2'
+].
+
+
+out println:('B over: ' ++ instB override).
+out println:('Ba over: ' ++ instBa override).
+out println:('C over: ' ++ instC override).
+
+
+
+
+out println:('A description: ' ++ instA description).
+out println:('B description: ' ++ instB description).
+out println:('Ba description: ' ++ instBa description).
+out println:('C description: ' ++ instC description).
+
+
+

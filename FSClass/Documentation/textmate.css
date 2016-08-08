@@ -1,0 +1,404 @@
+/* Stylesheet generated from TextMate theme
+ *
+ * Mac Classic
+ * 
+ *
+ */
+
+/* Mostly to improve view within the TextMate HTML viewer */
+body {
+	margin: 0;
+	padding: 0;
+}
+
+pre.textmate-source {
+	margin: 0;
+	padding: 0 0 0 2px;
+	font-family: Monaco, monospace;
+	font-size:small;
+	line-height: 1.3em;
+	word-wrap: break-word;
+	white-space: pre;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -o-pre-wrap;
+}
+
+pre.textmate-source.mac_classic {
+	color: #000000;
+	background-color: #FFFFFF;
+}
+
+pre.textmate-source .linenum {
+	width: 75px;
+	padding: 0.1em 1em 0.2em 0;
+	color: #888;
+	background-color: #eee;
+}
+pre.textmate-source.mac_classic span {
+   padding-top: 0.2em;
+   padding-bottom: 0.1em;
+}
+pre.textmate-source.mac_classic ::selection {
+	background-color: #C3DCFF;
+}
+/* Comment */
+pre.textmate-source.mac_classic .comment {
+	color: #FF0000;
+	font-weight: bold;
+}
+
+/* Keyword */
+pre.textmate-source.mac_classic .keyword, pre.textmate-source.mac_classic .storage_modifier, pre.textmate-source.mac_classic .meta_definition_class_java .storage_type_java {
+	color: #0000FF;
+	font-weight: bold;
+}
+
+/* Operator */
+pre.textmate-source.mac_classic .operator, pre.textmate-source.mac_classic .keyword_operator {
+	color: #0000FF;
+}
+
+/* Access Operator */
+pre.textmate-source.mac_classic .operator_access {
+	color: #8B0000;
+	font-style: italic;
+	font-weight: bold;
+}
+
+/* Storage */
+pre.textmate-source.mac_classic .storage, pre.textmate-source.mac_classic .meta_definition_class_implements_java .storage_type_java {
+	color: #43594F;
+	font-weight: bold;
+}
+
+/* Data Type */
+pre.textmate-source.mac_classic .type {
+	color: #43593E;
+	font-weight: bold;
+}
+
+/* Primitive Storage */
+pre.textmate-source.mac_classic .storage_primitive {
+	color: #43594C;
+}
+
+/* Number */
+pre.textmate-source.mac_classic .constant_numeric {
+	color: #C4006A;
+}
+
+/* String */
+pre.textmate-source.mac_classic .string {
+	color: #424242;
+	background-color: #EEEEEE;
+}
+
+/* User-defined constant */
+pre.textmate-source.mac_classic .constant {
+	color: #B20651;
+	font-weight: bold;
+}
+
+/* Built-in constant */
+pre.textmate-source.mac_classic .constant_language {
+	color: #585CF6;
+	font-style: italic;
+	font-weight: bold;
+}
+
+/* Interpolated Variable */
+pre.textmate-source.mac_classic .variable_language, pre.textmate-source.mac_classic .variable_other, pre.textmate-source.mac_classic .variable_interpolated {
+	color: #318495;
+}
+
+/* Variable definition */
+pre.textmate-source.mac_classic .variable_language_declaration {
+	color: #318495;
+	font-style: italic;
+}
+
+/* Variable Use */
+pre.textmate-source.mac_classic .variable {
+	color: #000000;
+}
+
+/* Character */
+pre.textmate-source.mac_classic .string_quoted_single {
+	color: #777777;
+}
+
+/* String interpolation */
+pre.textmate-source.mac_classic .constant_character_escaped, pre.textmate-source.mac_classic .constant_character_escape, pre.textmate-source.mac_classic .string .source {
+	color: #4F471A;
+}
+
+/* Preprocessor line */
+pre.textmate-source.mac_classic .other_preprocessor {
+	color: #1A921C;
+}
+
+/* Preprocessor directive */
+pre.textmate-source.mac_classic .entity_name_preprocessor, pre.textmate-source.mac_classic .entity_pragma, pre.textmate-source.mac_classic .meta_preprocessor {
+	color: #0C450D;
+	font-weight: bold;
+}
+
+/* Function name */
+pre.textmate-source.mac_classic .entity_name_function, pre.textmate-source.mac_classic .keyword_other_name-of-parameter_objc, pre.textmate-source.mac_classic .entity_label_assembly {
+	color: #1235B0;
+	font-weight: bold;
+}
+
+/* Function Invocation */
+pre.textmate-source.mac_classic .entity_function_invocation {
+	color: #2A35B0;
+	font-style: italic;
+}
+
+/* Table Definition */
+pre.textmate-source.mac_classic .entity_name_table_definition_sql {
+	color: #318495;
+	font-weight: bold;
+}
+
+/* Table Reference */
+pre.textmate-source.mac_classic .entity_name_table_reference_sql {
+	color: #318495;
+}
+
+/* Field Reference */
+pre.textmate-source.mac_classic .entity_name_field_reference_sql {
+	color: #208B95;
+	font-style: italic;
+}
+
+/* Macro */
+pre.textmate-source.mac_classic .macro {
+	color: #FF8300;
+	font-weight: bold;
+}
+
+/* Class name */
+pre.textmate-source.mac_classic .entity_name_class, pre.textmate-source.mac_classic .entity_name_type_class_java {
+	color: #000000;
+	text-decoration: underline;
+}
+
+/* Package Name */
+pre.textmate-source.mac_classic .entity_name_type_import {
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+/* Inherited class name */
+pre.textmate-source.mac_classic .entity_other_inherited-class, pre.textmate-source.mac_classic .meta_definition_class_extends_java .storage_type_java {
+	font-style: italic;
+}
+
+/* Function parameter */
+pre.textmate-source.mac_classic .variable_parameter {
+	font-style: italic;
+	text-decoration: underline;
+}
+
+/* Variable Definition */
+pre.textmate-source.mac_classic .variable_definition, pre.textmate-source.mac_classic .variable_declaration {
+	font-style: italic;
+}
+
+/* Regular Expression */
+pre.textmate-source.mac_classic .source_regex {
+	color: #828282;
+	font-weight: bold;
+}
+
+/* Function argument and result types */
+pre.textmate-source.mac_classic .storage_type_method {
+	color: #70727E;
+}
+
+/* Section */
+pre.textmate-source.mac_classic .meta_section .entity_name_section, pre.textmate-source.mac_classic .declaration_section .entity_name_section {
+	font-style: italic;
+}
+
+/* Library function */
+pre.textmate-source.mac_classic .support_function {
+	color: #0300FF;
+	font-style: italic;
+	font-weight: bold;
+}
+
+/* Library object */
+pre.textmate-source.mac_classic .support_class, pre.textmate-source.mac_classic .support_type {
+	color: #4739B7;
+	font-weight: bold;
+}
+
+/* Library constant */
+pre.textmate-source.mac_classic .support_constant {
+	color: #06960E;
+	font-weight: bold;
+}
+
+/* Library variable */
+pre.textmate-source.mac_classic .support_other_variable {
+	color: #21439C;
+	font-weight: bold;
+}
+
+/* Invalid */
+pre.textmate-source.mac_classic .invalid {
+	color: #FFFFFF;
+	background-color: #990000;
+}
+
+/* Invalid trailing whitespace */
+pre.textmate-source.mac_classic .invalid_trailing-whitespace {
+	background-color: #FFD0D0;
+}
+
+/* Embedded html */
+pre.textmate-source.mac_classic .source .text_html_basic {
+	background-color: rgba(67, 188, 133, 0.23);
+}
+
+/* Embedded CSS / formatting text */
+pre.textmate-source.mac_classic .text_html_basic .source_css, pre.textmate-source.mac_classic .source .source_css {
+	background-color: #FFEAD9;
+}
+
+/* Integrated web script */
+pre.textmate-source.mac_classic .text_html .source, pre.textmate-source.mac_classic .embedded .text_html .source {
+	background-color: rgba(255, 74, 2, 0.15);
+}
+
+/* Embedded source */
+pre.textmate-source.mac_classic .source .source, pre.textmate-source.mac_classic .string_interpolated_backtick {
+	background-color: rgba(66, 144, 245, 0.15);
+}
+
+/* Embedded plain text */
+pre.textmate-source.mac_classic .meta_block_pre_html, pre.textmate-source.mac_classic .string_unquoted_heredoc, pre.textmate-source.mac_classic .markup_raw_verbatim_latex, pre.textmate-source.mac_classic .text_embedded {
+	background-color: #EBEBEB;
+}
+
+/* Embedded documentation */
+pre.textmate-source.mac_classic .comment_documentation {
+	color: #000000;
+	background-color: #E0FFF6;
+}
+
+/* Markup XML declaration */
+pre.textmate-source.mac_classic .meta_tag_preprocessor_xml {
+	color: #68685B;
+}
+
+/* Markup DOCTYPE */
+pre.textmate-source.mac_classic .meta_tag_sgml_doctype, pre.textmate-source.mac_classic .meta_tag_sgml_doctype .entity, pre.textmate-source.mac_classic .meta_tag_sgml_doctype .string, pre.textmate-source.mac_classic .meta_tag_preprocessor_xml, pre.textmate-source.mac_classic .meta_tag_preprocessor_xml .entity, pre.textmate-source.mac_classic .meta_tag_preprocessor_xml .string {
+	color: #888888;
+}
+
+/* Markup DTD */
+pre.textmate-source.mac_classic .string_quoted_docinfo_doctype_DTD {
+	font-style: italic;
+}
+
+/* Markup tag */
+pre.textmate-source.mac_classic .meta_tag, pre.textmate-source.mac_classic .declaration_tag {
+	color: #0071FF;
+}
+
+/* Markup name of tag */
+pre.textmate-source.mac_classic .entity_name_tag {
+	color: #0005FF;
+	font-weight: bold;
+}
+
+/* Markup tag attribute */
+pre.textmate-source.mac_classic .entity_other_attribute-name {
+	color: #F38100;
+}
+
+/* Markup: Heading */
+pre.textmate-source.mac_classic .markup_heading {
+	color: #0C07FF;
+	font-style: italic;
+	font-weight: bold;
+}
+
+/* Markup: Quote */
+pre.textmate-source.mac_classic .markup_quote {
+	color: #000000;
+	font-style: italic;
+}
+
+/* Markup: Bold */
+pre.textmate-source.mac_classic .markup_bold {
+	font-weight: bold;
+}
+
+/* Markup: Italic */
+pre.textmate-source.mac_classic .markup_italic {
+	font-style: italic;
+}
+
+/* Markup: Underline */
+pre.textmate-source.mac_classic .markup_underline {
+	text-decoration: underline;
+}
+
+/* Markup: Link */
+pre.textmate-source.mac_classic .markup_link {
+	color: #0E00EE;
+	text-decoration: underline;
+}
+
+/* Markup: List */
+pre.textmate-source.mac_classic .markup_list {
+	color: #B90690;
+}
+
+/* Shell Command */
+pre.textmate-source.mac_classic .keyword_other_shell {
+	color: #007EFF;
+	font-weight: bold;
+}
+
+/* Shell Builtin */
+pre.textmate-source.mac_classic .keyword_builtin_shell {
+	color: #007EFF;
+	font-weight: bold;
+}
+
+/* Shell Program */
+pre.textmate-source.mac_classic .entity_other_command_shell {
+	color: #009607;
+	font-weight: bold;
+}
+
+/* Shell Alias */
+pre.textmate-source.mac_classic .entity_other_alias_shell {
+	color: #009607;
+	font-style: italic;
+	font-weight: bold;
+}
+
+/* Command-line Switch */
+pre.textmate-source.mac_classic .entity_other_switch_shell {
+	color: #FF5900;
+}
+
+/* punctuation */
+pre.textmate-source.mac_classic .punctuation {
+	color: #8B0000;
+}
+
+/* Brace/Paren Pairings */
+pre.textmate-source.mac_classic .punctuation_pairing {
+	color: #8B0000;
+	font-weight: bold;
+}
+
+

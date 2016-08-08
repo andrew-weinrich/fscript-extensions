@@ -1,0 +1,9 @@
+{'bar', 'baz', 'foo'}
+{'propA', 'propB', 'propC'}
+{'major', 'minor'}
+{'bar', 'baz', 'foo'}
+{'bar', 'baz', 'foo', 'propA', 'propB', 'propC'}
+{'bar', 'baz', 'foo', 'major', 'minor', 'propA', 'propB', 'propC'}
+Property foo already in use by parent
+{'bar', 'baz', 'fast', 'foo', 'slow'}
+Cannot create child with same property as parent

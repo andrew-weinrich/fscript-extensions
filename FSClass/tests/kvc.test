@@ -1,0 +1,80 @@
+KVTestClassA := FSClass newClass:'KVTestClassA'.
+KVTestClassA addProperty:'propA'.
+
+KVTestClassB := FSClass newClass:'KVTestClassB'.
+KVTestClassB addProperty:'propB'.
+
+kvInstance := KVTestClassA alloc init.
+
+"Direct access"
+kvInstance setPropA:5.
+out println:(kvInstance propA).
+
+kvInstance setValue:10 forKey:'propA'.
+out println:(kvInstance valueForKey:'propA').
+
+
+"We can also do key paths:"
+kvInstance setPropA:(KVTestClassB alloc init).
+
+kvInstance propA setPropB:'bar'.
+out println:(kvInstance propA propB).
+
+
+kvInstance setValue:'baz' forKeyPath:'propA.propB'.
+out println:(kvInstance valueForKeyPath:'propA.propB').
+
+"This line will result in a runtime violation because the method is not defined:"
+[ kvInstance setFoo:'a string'] onException:[ :e |
+    out println:'Could not call setFoo:'
+].
+
+"This line will result in a call to valueForUndefinedKey:,
+    which will then throw an NSUnknownKeyException"
+[ kvInstance setValue:'a string' forKey:'foo' ] onException:[ :e |
+    out println:'Could not set property "foo"'
+].
+
+
+
+
+
+out newln.
+
+
+
+"Test with fast-ivars classes"
+KVTestClassC := FSClass newClass:'KVTestClassC' properties:{ 'propA' }.
+KVTestClassD := FSClass newClass:'KVTestClassD' properties:{ 'propB' }.
+
+kvInstance2 := KVTestClassC alloc init.
+
+"Direct access"
+kvInstance2 setPropA:5.
+out println:(kvInstance2 propA).
+
+kvInstance2 setValue:10 forKey:'propA'.
+out println:(kvInstance2 valueForKey:'propA').
+
+
+"We can also do key paths:"
+kvInstance2 setPropA:(KVTestClassB alloc init).
+
+kvInstance2 propA setPropB:'bar'.
+out println:(kvInstance2 propA propB).
+
+
+kvInstance2 setValue:'baz' forKeyPath:'propA.propB'.
+out println:(kvInstance2 valueForKeyPath:'propA.propB').
+
+"This line will result in a runtime violation because the method is not defined:"
+[ kvInstance2 setFoo:'a string'] onException:[ :e |
+    out println:'Could not call setFoo:'
+].
+
+"This line will result in a call to valueForUndefinedKey:,
+    which will then throw an NSUnknownKeyException"
+[ kvInstance2 setValue:'a string' forKey:'foo' ] onException:[ :e |
+    out println:'Could not set property "foo"'
+].
+

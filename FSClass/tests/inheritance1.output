@@ -1,0 +1,18 @@
+Class A
+Class B
+Class Ba
+Class C
+A over: A: override
+B over: A: override
+Ba over: Ba: override
+C over: A: override
+B over: B: override
+Ba over: Ba: override
+C over: B: override
+B over: B: override 2
+Ba over: Ba: override
+C over: B: override 2
+A description: (an instance of ClassA)
+B description: (an instance of ClassB)
+Ba description: (an instance of ClassBa)
+C description: (an instance of ClassC)

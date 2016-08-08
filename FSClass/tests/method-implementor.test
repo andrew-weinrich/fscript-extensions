@@ -1,0 +1,30 @@
+ClassA := FSClass newClass:'ClassA'.
+ClassB := FSClass newClass:'ClassB' parent:ClassA.
+ClassC := FSClass newClass:'ClassC' parent:ClassB.
+
+
+ClassA onMessage:#doAstuff: do:[ :self :arg |  1 ].
+ClassA onMessage:#doOtherAstuff: do:[ :self :arg |  2 ].
+ClassB onMessage:#doAstuff: do:[ :self :arg |  3 ].
+ClassB onMessage:#doBstuff: do:[ :self :arg |  4 ].
+ClassC onMessage:#doCstuff: do:[ :self :arg |  5 ].
+
+
+out println:'Class C tests:'.
+out println:(ClassC methodImplementor:#doAstuff:).
+out println:(ClassC methodImplementor:#doOtherAstuff:).
+out println:(ClassC methodImplementor:#doCstuff:).
+out newln.
+
+out println:'Class B tests:'.
+out println:(ClassB methodImplementor:#doAstuff:).
+out println:(ClassB methodImplementor:#doOtherAstuff:).
+out println:(ClassB methodImplementor:#doCstuff:).
+out newln.
+
+out println:'Class A tests:'.
+out println:(ClassA methodImplementor:#doAstuff:).
+out println:(ClassA methodImplementor:#doOtherAstuff:).
+out println:(ClassA methodImplementor:#doCstuff:).
+
+

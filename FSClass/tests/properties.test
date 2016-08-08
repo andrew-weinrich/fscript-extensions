@@ -1,0 +1,22 @@
+PropertiesTester := FSClass newClass:'PropertiesTester' parent:NSObject properties:{'a', 'thing', 'stuff', 'foo'}.
+
+
+
+propTester := PropertiesTester alloc init.
+
+out println:'test'.
+
+
+propTester setA:5.
+out println:(propTester a).
+
+propTester setThing:'asdf'.
+out println:(propTester thing).
+
+out println:(PropertiesTester propertyNames at:(PropertiesTester propertyNames sort)).
+
+
+PropMaven := FSClass newClass:'PropMaven'.
+PropMaven addProperty:@{'asdf', 'fghj', 'bar', 'baz'}.
+out println:(PropMaven propertyNames at:(PropMaven propertyNames sort)).
+

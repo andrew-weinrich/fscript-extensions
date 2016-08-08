@@ -1,0 +1,60 @@
+ClassA := FSClass newClass:'ClassA' properties:{'foo'}.
+
+ClassA onMessage:#testZero do:[ :self |
+    'Zero arguments'
+].
+ClassA onMessage:#testOne: do:[ :self :arg1 |
+    'One argument: ' ++ ({ arg1 } description)
+].
+ClassA onMessage:#testTwo:arg: do:[ :self :arg1 :arg2 |
+    'Two arguments: ' ++ ({ arg1, arg2 } description)
+].
+ClassA onMessage:#testThree:arg:arg: do:[ :self :arg1 :arg2 :arg3 |
+    'Three arguments: ' ++ ({ arg1, arg2, arg3 } description)
+].
+ClassA onMessage:#testFour:arg:arg:arg: do:[ :self :arg1 :arg2 :arg3 :arg4 |
+    'Four arguments: ' ++ ({ arg1, arg2, arg3, arg4 } description)
+].
+ClassA onMessage:#testFive:arg:arg:arg:arg: do:[ :self :arg1 :arg2 :arg3 :arg4 :arg5 |
+    'Five arguments: ' ++ ({ arg1, arg2, arg3, arg4, arg5 } description)
+].
+
+"Methods below will not use trampolines for dispatch"
+ClassA onMessage:#testSix:arg:arg:arg:arg:arg: do:[ :self :arg1 :arg2 :arg3 :arg4 :arg5 :arg6 |
+    'Six arguments: ' ++ ({ arg1, arg2, arg3, arg4, arg5, arg6 } description)
+].
+ClassA onMessage:#testSeven:arg:arg:arg:arg:arg:arg: do:[ :self :arg1 :arg2 :arg3 :arg4 :arg5 :arg6 :arg7 |
+    'Seven arguments: ' ++ ({ arg1, arg2, arg3, arg4, arg5, arg6, arg7 } description)
+].
+ClassA onMessage:#testEight:arg:arg:arg:arg:arg:arg:arg: do:[ :self :arg1 :arg2 :arg3 :arg4 :arg5 :arg6 :arg7 :arg8 |
+    'Eight arguments: ' ++ ({ arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8 } description)
+].
+
+
+
+
+test := ClassA alloc init.
+
+
+out println:(test testZero).
+out println:(test testOne:1).
+out println:(test testTwo:1 arg:2).
+out println:(test testThree:1 arg:2 arg:3).
+out println:(test testFour:1 arg:2 arg:3 arg:4).
+out println:(test testFive:1 arg:2 arg:3 arg:4 arg:5).
+out println:(test testSix:1 arg:2 arg:3 arg:4 arg:5 arg:6).
+out println:(test testSeven:1 arg:2 arg:3 arg:4 arg:5 arg:6 arg:7).
+out println:(test testEight:1 arg:2 arg:3 arg:4 arg:5 arg:6 arg:7 arg:8).
+
+
+"Test in reverse argument order"
+out println:(test testTwo:2 arg:1).
+out println:(test testThree:3 arg:2 arg:1).
+out println:(test testFour:4 arg:3 arg:2 arg:1).
+out println:(test testFive:5 arg:4 arg:3 arg:2 arg:1).
+out println:(test testSix:6 arg:5 arg:4 arg:3 arg:2 arg:1).
+out println:(test testSeven:7 arg:6 arg:5 arg:4 arg:3 arg:2 arg:1).
+out println:(test testEight:8 arg:7 arg:6 arg:5 arg:4 arg:3 arg:2 arg:1).
+
+
+

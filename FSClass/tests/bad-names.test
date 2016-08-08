@@ -1,0 +1,24 @@
+BadClass := nil.
+[ BadClass := FSClass newClass:12 ] onException:[ :e |
+    out println:'Cannot create class named 12'.
+].
+
+"Test non-ASCII characters"
+[ BadClass := FSClass newClass:(12398 unicharToString) ] onException:[ :e |
+    out println:'Cannot create class with non-ASCII characters'.
+].
+
+
+
+
+"Test selector names"
+[ :selName |
+    [ out println:(FSClass stringToSelector:selName) ] onException:[ :e |
+        out println:('Cannot create selector from string "' ++ selName ++ '"').
+    ]
+] value: @
+{ 'doStuff@', 12398 unicharToString, 'doStuff:withThing', 'doStuff::', ' doStuff' }
+
+
+
+

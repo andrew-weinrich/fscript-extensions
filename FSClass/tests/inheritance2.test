@@ -1,0 +1,152 @@
+"This file tests inheritance between fast and regular ivar classes"
+
+ClassA := FSClass newClass:'ClassA'.
+
+ClassA addProperty: @ { 'foo', 'bar', 'baz' }.
+
+ClassB := FSClass newClass:'ClassB' parent:ClassA.
+ClassB addProperty: @{ 'mice', 'fica' }.
+
+ClassC := FSClass newClass:'ClassC' parent:ClassA properties:{ 'propA', 'propB' }.
+
+ClassD := FSClass newClass:'ClassD' parent:ClassC.
+ClassD addProperty: @{ 'film', 'movie' }.
+
+ClassE := FSClass newClass:'ClassE' parent:ClassD properties:{ 'oops', 'whoops' }.
+
+
+"Make sure property names are inherited properly"
+out println:'ClassA: ' ++ (ClassA allPropertyNames at:(ClassA allPropertyNames sort)) description.
+out println:'ClassB: ' ++ (ClassB allPropertyNames at:(ClassB allPropertyNames sort)) description.
+out println:'ClassC: ' ++ (ClassC allPropertyNames at:(ClassC allPropertyNames sort)) description.
+out println:'ClassD: ' ++ (ClassD allPropertyNames at:(ClassD allPropertyNames sort)) description.
+out println:'ClassE: ' ++ (ClassE allPropertyNames at:(ClassE allPropertyNames sort)) description.
+out newln.
+
+"Make sure mutators/accessors are inherited properly"
+instA := ClassA alloc init.
+instB := ClassB alloc init.
+instC := ClassC alloc init.
+instD := ClassD alloc init.
+instE := ClassE alloc init.
+
+instA setFoo:'fooo'; setBar:'baar'; setBaz:'baaz'.
+out println:'instA:'.
+out println:' foo: ' ++ instA foo.
+out println:' bar: ' ++ instA bar.
+out println:' baz: ' ++ instA baz.
+out newln.
+
+instB setFoo:'fooo'; setBar:'baar'; setBaz:'baaz'; setMice:'miice'; setFica:'fiica'.
+out println:'instB:'.
+out println:' foo: ' ++ instB foo.
+out println:' bar: ' ++ instB bar.
+out println:' baz: ' ++ instB baz.
+out println:' mice: ' ++ instB mice.
+out println:' fica: ' ++ instB fica.
+out newln.
+
+instC setFoo:'fooo'; setBar:'baar'; setBaz:'baaz'; setPropA:'propAA'; setPropB:'propBB'.
+out println:'instC:'.
+out println:' foo: ' ++ instC foo.
+out println:' bar: ' ++ instC bar.
+out println:' baz: ' ++ instC baz.
+out println:' propA: ' ++ instC propA.
+out println:' propB: ' ++ instC propB.
+out newln.
+
+instD setFoo:'fooo'; setBar:'baar'; setBaz:'baaz'; setPropA:'propAA'; setPropB:'propBB'.
+instD setFilm:'fiilm'; setMovie:'moovie'.
+out println:'instD:'.
+out println:' foo: ' ++ instD foo.
+out println:' bar: ' ++ instD bar.
+out println:' baz: ' ++ instD baz.
+out println:' propA: ' ++ instD propA.
+out println:' propB: ' ++ instD propB.
+out println:' film: ' ++ instD film.
+out println:' movie: ' ++ instD movie.
+out newln.
+
+instE setFoo:'fooo'; setBar:'baar'; setBaz:'baaz'; setPropA:'propAA'; setPropB:'propBB'.
+instE setFilm:'fiilm'; setMovie:'moovie'.
+instE setOops:'ooops'; setWhoops:'whooops'.
+out println:'instE:'.
+out println:' foo: ' ++ instE foo.
+out println:' bar: ' ++ instE bar.
+out println:' baz: ' ++ instE baz.
+out println:' propA: ' ++ instE propA.
+out println:' propB: ' ++ instE propB.
+out println:' film: ' ++ instE film.
+out println:' movie: ' ++ instE movie.
+out println:' oops: ' ++ instE oops.
+out println:' whoops: ' ++ instE whoops.
+out newln.
+
+
+
+
+
+
+
+"Test inheriting from a proxy - should be the same as inheriting from the class"
+"TestBaseClass is a simple class included in the FSClass bundle"
+ClassM := FSClass newClass:'ClassM' parent:TestBaseClass.
+ClassM addProperty:'blort'.
+ClassM onMessage:#init do:[ :self | |newSelf|
+    self doSuperMethod:#init currentClass:ClassM; setStr:'Hello world!'; setInteger:8; setBlort:'blort!'.
+    self.
+].
+ClassM onMessage:#borkedString do:[ :self |
+    (self str replace:'o' with:'oo') replace:'w' with:'v'.
+].
+
+
+ClassN := FSClass newClass:'ClassN' parent:TestBaseClass.
+ClassN addProperty:'blort'.
+ClassN onMessage:#init do:[ :self | |newSelf|
+    self doSuperMethod:#initWithStr:integer: currentClass:ClassN with:'Hello, hello world!' with:9.
+    self setBlort:'blurt!'.
+    self.
+].
+ClassN onMessage:#borkedString do:[ :self |
+    (self str replace:'o' with:'oo') replace:'w' with:'v'.
+].
+
+ClassO := FSClass newClass:'ClassO' parent:TestBaseClass properties:{ 'blort' }.
+ClassO onMessage:#init do:[ :self | |newSelf|
+    self doSuperMethod:#init currentClass:ClassO; setStr:'Hello good world!'; setInteger:11; setBlort:'blart!'.
+    self.
+].
+ClassO onMessage:#borkedString do:[ :self |
+    (self str replace:'o' with:'oo') replace:'w' with:'v'.
+].
+
+
+
+
+instM := ClassM alloc init.
+out println:'instM:'.
+out println:' blort: ' ++ instM blort.
+out println:' str: ' ++ instM str.
+out println:' borkedString: ' ++ instM borkedString.
+out println:' integer: ' ++ instM integer description.
+out println:' intPlus:10: ' ++ (instM intPlus:10) description.
+out newln.
+
+instN := ClassN alloc init.
+out println:'instN:'.
+out println:' blort: ' ++ instN blort.
+out println:' str: ' ++ instN str.
+out println:' borkedString: ' ++ instN borkedString.
+out println:' integer: ' ++ instN integer description.
+out println:' intPlus:10: ' ++ (instN intPlus:10) description.
+out newln.
+
+instO := ClassO alloc init.
+out println:'instO:'.
+out println:' blort: ' ++ instO blort.
+out println:' str: ' ++ instO str.
+out println:' borkedString: ' ++ instO borkedString.
+out println:' integer: ' ++ instO integer description.
+out println:' intPlus:10: ' ++ (instO intPlus:10) description.
+out newln.

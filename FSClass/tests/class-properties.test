@@ -1,0 +1,27 @@
+
+Dispatcher := FSClass newClass:'Dispatcher'.
+
+
+Dispatcher onClassMessage:#doClassThing: do:[ :class :thing |
+    'Class message: ' ++ (thing description) ++ ', ' ++ (class description)
+].
+
+
+Dispatcher addClassProperty:'classPropOne'.
+Dispatcher addClassProperty:'classPropTwo' withValue:18.
+
+
+
+dtest := Dispatcher alloc init.
+
+
+out println:(Dispatcher doClassThing:'classthing').
+
+
+out printf:'Dispatcher classPropOne: %@\n' withValues:{ Dispatcher classPropOne }.
+out println:('Dispatcher classPropTwo: ' ++ (Dispatcher classPropTwo description)).
+
+Dispatcher setClassPropTwo:98.
+out println:('Dispatcher classPropTwo: ' ++ (Dispatcher classPropTwo description)).
+
+

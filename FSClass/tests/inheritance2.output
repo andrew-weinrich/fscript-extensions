@@ -1,0 +1,66 @@
+ClassA: {'bar', 'baz', 'foo'}
+ClassB: {'bar', 'baz', 'fica', 'foo', 'mice'}
+ClassC: {'bar', 'baz', 'foo', 'propA', 'propB'}
+ClassD: {'bar', 'baz', 'film', 'foo', 'movie', 'propA', 'propB'}
+ClassE: {'bar', 'baz', 'film', 'foo', 'movie', 'oops', 'propA', 'propB', 'whoops'}
+
+instA:
+ foo: fooo
+ bar: baar
+ baz: baaz
+
+instB:
+ foo: fooo
+ bar: baar
+ baz: baaz
+ mice: miice
+ fica: fiica
+
+instC:
+ foo: fooo
+ bar: baar
+ baz: baaz
+ propA: propAA
+ propB: propBB
+
+instD:
+ foo: fooo
+ bar: baar
+ baz: baaz
+ propA: propAA
+ propB: propBB
+ film: fiilm
+ movie: moovie
+
+instE:
+ foo: fooo
+ bar: baar
+ baz: baaz
+ propA: propAA
+ propB: propBB
+ film: fiilm
+ movie: moovie
+ oops: ooops
+ whoops: whooops
+
+instM:
+ blort: blort!
+ str: Hello world!
+ borkedString: Helloo voorld!
+ integer: 8
+ intPlus:10: 18
+
+instN:
+ blort: blurt!
+ str: Hello, hello world!
+ borkedString: Helloo, helloo voorld!
+ integer: 9
+ intPlus:10: 19
+
+instO:
+ blort: blart!
+ str: Hello good world!
+ borkedString: Helloo gooood voorld!
+ integer: 11
+ intPlus:10: 21
+

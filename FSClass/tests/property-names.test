@@ -1,0 +1,85 @@
+"Test simple properties"
+PropClass := FSClass newClass:'PropClass'.
+
+PropClass addProperty:'foo'.
+PropClass addProperty:'bar'.
+PropClass addProperty:'private1'.
+"Cannot add existing property"
+[ PropClass addProperty:'foo' ] onException:[ :e |
+    out println:'Cannot add existing property foo'.
+].
+
+
+"should not allow case-distinguished properties"
+[ PropClass addProperty:'Foo' ] onException:[ :e |
+    out println:'Cannot add property Foo'.
+].
+
+
+
+
+"must use a string as the name"
+[ PropClass addProperty:8 ] onException:[ :e |
+    out println:'Cannot add non-string property'.
+].
+
+
+
+"Test names of accessors/mutators"
+inst := PropClass alloc init.
+inst setFoo:'oof'.
+out println:('foo: ' ++ inst foo).
+[ out println:('foo: ' ++ inst Foo) ] onException:[ :e |
+    out println:'Cannot access property "Foo"'.
+].
+[ out println:('foo: ' ++ inst fOo) ] onException:[ :e |
+    out println:'Cannot access property "fOo"'.
+].
+
+[ inst setfoo:7 ] onException:[ :e |
+    out println:'Cannot set property "foo"'.
+].
+
+
+
+
+"Test adding names with non-alpha first character"
+PropClass addProperty:'_private'.
+inst set_private:'priv'.
+out println:('_private: ' ++ inst _private).
+
+
+"Attempt to add reserved property names"
+[ :propName |
+    [ PropClass addProperty:propName ] onException:[ :e |
+        out println:('Cannot add reserved property name ' ++ propName).
+    ].
+]
+value: @{ '__fsclass_class', '__fsclass_properties' }.
+
+
+"'Bad' property names"
+[ :propName |
+    [ PropClass addProperty:propName ] onException:[ :e |
+        out println:('Cannot add property ' ++ propName).
+    ].
+]
+value: @{ 'all well', '9asd', 'test@home' }.
+
+
+"Check property names returned by class"
+out println:(PropClass propertyNames at:(PropClass propertyNames sort)).
+
+
+"Make sure that the fast-ivars subclass also checks names"
+FastClass := nil.
+[ :propName |
+    [ FastClass := FSClass newClass:'FastClass' properties:{ propName } ] onException:[ :e |
+        out println:('Cannot create class with property ' ++ propName).
+    ].
+]
+value: @{ 'all well', '9asd', 'test@home' }.
+
+
+
+

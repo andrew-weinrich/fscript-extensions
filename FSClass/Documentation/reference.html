@@ -1,0 +1,362 @@
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>FSClass 2.1</title>
+  <link rel="stylesheet" href="styles.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="textmate.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  <style type="text/css" media="screen">
+    div.method { padding-bottom:10px; padding-top:3px; margin-left:2em}
+    div.name { font-family: Courier; font-weight:bold; }
+    body { padding:4px }
+    
+    h2 { font-size:14pt; font-weight:bold; border-top:none; border-bottom: solid gray 1px; margin-top:15px}
+    h3 { font-size:12pt; font-weight:bold; border:none; margin-top:8px}
+  </style>
+</head>
+
+
+
+
+
+
+<body>
+
+<h1>FSClass Reference</h1>
+<p>This page lists all the methods implemented by the FSClass bundle.</p>
+
+<h2>FSClass Reference</h2>
+<p>FSClass is a special object that supports the creation of new classes. All methods in this section apply to the singleton <code>FSClass</code> object.</p>
+
+<p>Classes are created by calling one of the following methods on the object <code>FSClass</code>:</p>
+
+<div class="method">
+  <div class="name">+ (Class) newClass</div>
+  <div class="description">
+    <p>Creates a new "anonymous" class. The name of this class, as retrieved by the Foundation method <span class="method">+className</span>, will be automatically generated.</p>
+  </div>
+</div>
+<div class="method">
+  <div class="name">+ (Class) newClass:(NSString*)className</div>
+  <div class="description">
+    <p>Creates a new class with a specific name. This method will throw an error if the supplied name is already in use.</p>
+  </div>
+</div>
+<div class="method">
+  <div class="name">+ (Class) newClassWithParent:(Class)parent</div>
+  <div class="description">
+    <p>Creates an anonymous subclass of the supplied parent class, which may be either an FSClass or a compiled Objective-C class.</p>
+  </div>
+</div>
+<div class="method">
+  <div class="name">+ (Class) newClass:(NSString*)className parent:(Class)parent</div>
+  <div class="description">
+    <p>Creates a new class with a supplied class as parent. This method will throw an error if the supplied name is already in use.</p>
+  </div>
+</div>
+<div class="method">
+  <div class="name">+ (Class) newClass:(NSString*)className properties:(NSArray*)propertyNames</div>
+  <div class="description">
+    <p>Creates a new class that inherits from NSObject and uses optimized property accessor methods. These 'fast-ivar' classes store properties directly inside the object, just like regular Objective-C classes; if one of the above class creation methods is used, an NSDictionary object as intermediary. As a result, the overhead for property access is dramatically lower. If you know exactly what properties a class needs, use this method to create the class.</p>
+    <p>"Properties" in FSClass-derived classes are not exactly like Objective-C 2.0 properties; there is no special syntax in F-Script for accessing properties, so all instance data must be accessed using the normal Key-Value compliant </p>
+    
+    <p>All elements of the iVars array must be strings; if they are not, this method will throw an exception.</p>
+    <p><strong>Note:</strong> As of FSClass 2.0, fast-ivar classes are <strong>not</strong> compatible with the GUI F-Script interpreter. If you are using the GUI interpreter, use regular classes instead with <span class="method">newClass:parent:</span>.</p>
+  </div>
+</div>
+
+
+<p>FSClass also has several methods that expose part of the Objective-C runtime functionality:</p>
+
+
+<div class="method">
+  <div class="name">+ (SEL) selectorFromString:(SEL)selector do:(id)block</div>
+  <div class="description">
+    <p>Given a method name, returns a selector in compact block form. Works like the Foundation function <span class="method">NSSelectorFromString</span>. This method will throw an exception if the string is not a valid F-Script selector.</p>
+  </div>
+</div>
+<div class="method">
+  <div class="name">+ (NSString*) stringFromSelector:(SEL)selector</div>
+  <div class="description">
+    <p>Converts a selector (in compact block form) into a string. Works like the Foundation function <span class="method">NSStringFromSelector</span>. <code>sys log:(FSClass stringFromSelector:#doFoo:).</code> will print <span class="literal">foo:</p>
+  </div>
+</div>
+<div class="method">
+  <div class="name">+ (Class) getClass:(NSString*)className</div>
+  <div class="description">
+    <p>Returns the class that has the given name. Works like the Foundation function <span class="method">NSClassFromString</span>. Returns <code>nil</code> if there is no class with that name.</p>
+  </div>
+</div>
+
+
+
+
+
+<h2>Class Introspection and Modification</h2>
+<p>All classes created through FSClass have methods that support adding properties and methods, and retrieving information about them.</p>
+
+<h3>Subclassing</h3>
+<p>The following two methods can be used to create new F-Script based classes:</p>
+
+<div class="method">
+  <div class="name">+ (Class) subclass</div>
+  <div class="description">
+    <p>Creates a new, anonymous subclass of the receiver.</p>
+  </div>
+</div>
+<div class="method">
+  <div class="name">+ (Class) subclass:(NSString*)name</div>
+  <div class="description">
+    <p>Creates a new subclass of the receiver with the provided name.</p>
+  </div>
+</div>
+
+
+
+
+
+
+<h3>Adding Methods</h3>
+<p>These commands are used to add new instance methods, or to replace the implementations of existing instance methods. Methods cannot be removed from classes.</p>
+<div class="method">
+  <div class="name">+ (void) onMessage:(SEL)selector do:(id)block</div>
+  <div class="description">
+    <p>Adds a method to a class. When specified message is sent to an instance of the class, the supplied F-Script block will be run. The <span class="parameter">block</span> should take <span class="parameter">self</span> as its first argument, and must have one additional argument for each parameter in the selector.</p>
+  </div>
+</div>
+<div class="method">
+  <div class="name">+ (void) onMessageName:(NSString*)messageName do:(id)block</div>
+  <div class="description">
+    <p>Like <span class="method">onMessage:do:</span>, but takes a string that contains the name of a selector, rather than the selector itself. <code>MyClass onMessage:#doStuff: do:...</code> is equivalent to <code>MyClass onMessageName:'doStuff:' do:...</code>. If <span class="parameter">messageName</span> is not a valid selector name, this method will throw an error. If you are implementing methods for operators (like <span class="literal">+</span> or <span class="literal">=</span>), you must use the appropriate mapped names (e.g. <span class="method">operator_plus:</span> and <span class="method">operator_equals:</span>).</p>
+  </div>
+</div>
+
+<h3>Adding Properties</h3>
+<p>Methods in this section are used to add instance properties to classes.</p>
+<div class="method">
+  <div class="name">+ (void) addProperty:(NSString*)propertyName</div>
+  <div class="description">
+    <p>Add a property to a class. The property can be accessed by the KVC-compliant methods <span class="method">propertyName</span> and <span class="method">setPropertyName:</span>. To maintain Key-Value Coding compliance, the supplied property names should follow the KVC guidelines; see <a href="http://developer.apple.com/documentation/Cocoa/Conceptual/KeyValueCoding/index.html">the Key-Value Coding Programming Guide</a> for more details.</p>
+
+    <p>Properties cannot be removed from a class, but they can be added dynamically after the class is created. All existing instances of the class created before a property is added will subsequently be able to access that property. The default value of the property is <code>nil</code>.</p>
+
+    <p>If you created the class with <span class="method">FSClass newClass:properties:</span>, you will not be able to use <span class="property">addProperty:</span> or other related methods; they will throw exceptions if you call them.</p>
+  </div>
+</div>
+<div class="method">
+  <div class="name">+ (void) addProperty:(NSString*)propertyName withDefault:(id)defaultValue</div>
+  <div class="description">
+    <p>Add a property to a class, with a default value. This default value will be assigned to the property when a new instance is created with <span class="method">new</span>. If all your class' <span class="method">init</span> method does is set simple default property values, you can assign them when declaring the properties and omit a custom <span class="method">init</span> method.</p>
+
+    <p>It is <strong>extremely important</strong> that if you use default property values, <em>they must be immutable</em>. Valid classes for default values include <span class="class">NSString</span>, <span class="class">NSNumber</span>, <span class="class">NSArray</span>, <span class="class">NSDictionary</span>, <span class="class">NSDate</span>, and <span class="class">NSValue</span>. The reason for this restriction is that the single object supplied as a default is actually shared between instances, not copied, and if mutable objects are used, a change to one will affect all instances. As such, the use of immutable values will be <em>unpredictable</em>.</p>
+  </div>
+</div>
+<div class="method">
+  <div class="name">+ (void) addPropertiesWithDefaults:(NSArray*)propertiesWithDefaults</div>
+  <div class="description">
+    <p>A shortcut for adding multiple properties with defaults at once. The array should have the following format:</p>
+    <p><code>{ 'propertyOneName', propertyOneDefault, 'propertyTwoName', propertyTwoDefault, ... }</code></p>
+    <p>The method will throw an exception if the array contains an odd number of elements.</p>
+  </div>
+</div>
+<div class="method">
+  <div class="name">+ (void) addPropertiesFromDictionary:(NSDictionary*)propertyDictionary</div>
+  <div class="description">
+    <p>Adds all of the key/value pairs from the dictionary to the class as property names and default values. The keys for the dictionary must all be strings. The following code creates an anonymous class that can access dictionary keys from a configuration plist file:</p>
+
+<!--
+  tempClass := FSClass newClass.
+
+  tempClass addPropertiesFromDictionary:(NSDictionary dictionaryWithContentsOfFile:'config.plist').
+
+  config := tempClass new.
+
+  (config debug) ifTrue:[
+      ....
+  ].
+-->
+<div class="longexample"><pre class="textmate-source mac_classic"><span class="source source_fscript"><span class="variable variable_declaration variable_declaration_fscript">tempClass</span> <span class="keyword keyword_operator keyword_operator_assignment keyword_operator_assignment_fscript">:=</span> <span class="storage storage_class storage_class_fscript">FSClass</span> newClass<span class="punctuation punctuation_fscript">.</span>
+
+tempClass <span class="entity entity_function entity_function_invocation entity_function_invocation_fscript">addPropertiesFromDictionary:</span><span class="punctuation punctuation_pairing punctuation_pairing_fscript">(</span><span class="support support_class support_class_cocoa">NSDictionary</span> <span class="entity entity_function entity_function_invocation entity_function_invocation_fscript">dictionaryWithContentsOfFile:</span><span class="string string_quoted string_quoted_double string_quoted_double_fscript"><span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_begin punctuation_definition_string_begin_fscript">'</span>config.plist<span class="punctuation punctuation_definition punctuation_definition_string punctuation_definition_string_end punctuation_definition_string_end_fscript">'</span></span><span class="punctuation punctuation_pairing punctuation_pairing_fscript">)</span><span class="punctuation punctuation_fscript">.</span>
+
+<span class="variable variable_declaration variable_declaration_fscript">config</span> <span class="keyword keyword_operator keyword_operator_assignment keyword_operator_assignment_fscript">:=</span> tempClass new<span class="punctuation punctuation_fscript">.</span>
+
+<span class="punctuation punctuation_pairing punctuation_pairing_fscript">(</span>config debug<span class="punctuation punctuation_pairing punctuation_pairing_fscript">)</span> <span class="entity entity_function entity_function_invocation entity_function_invocation_fscript">ifTrue:</span><span class="meta meta_block meta_block_fscript"><span class="punctuation punctuation_section punctuation_section_block punctuation_section_block_fscript">[</span><span class="meta meta_block meta_block_header meta_block_header_fscript">
+</span><span class="meta meta_block meta_block_header meta_block_header_fscript">    </span><span class="meta meta_block meta_block_content meta_block_content_fscript"><span class="punctuation punctuation_fscript">....</span>
+</span><span class="punctuation punctuation_section punctuation_section_block punctuation_section_block_fscript">]</span></span><span class="punctuation punctuation_fscript">.</span>
+</span></pre></div>
+  </div>
+</div>
+<div class="method">
+  <div class="name">+ (id) defaultValueForProperty:(NSString*)propertyName</div>
+  <div class="description">
+    <p>Returns the default value for a property, including those of parent classes. The default value will be <code>nil</code> if none has been set. If the property does not exist in the class or parent classes, this method will throw an exception.</p>
+  </div>
+</div>
+<div class="method">
+  <div class="name">+ (void) setDefaultValue:(id)defaultValue forProperty:(NSString*)propertyName</div>
+  <div class="description">
+    <p>Sets the default value for an instance property. All new instances will have this property as the default; existing instances will not be changed. This class will throw an exception if the class does not have the property; unlike <span class="method">-defaultValueForProperty:</span>, this method will not search through superclasses to find the property.</p>
+  </div>
+</div>
+
+
+
+
+<h3>Class Properties and Methods</h3>
+<p>Properties created with FSClass also can have class properties and methods.</p>
+<div class="method">
+  <div class="name">+ (void) onClassMessage:(SEL)selector do:(id)block</div>
+  <div class="description">
+    <p>Adds a method to the class itself. <span class="method">onClassMessage:do:</span> should be used to create class factory methods, which will be responsible for creating actual objects with <span class="method">alloc init</span>.</p>
+  </div>
+</div>
+<div class="method">
+  <div class="name">+ (void) addClassProperty:(NSString*)propName withValue:(id)value</div>
+  <div class="description">
+    <p>Adds a property to the class itself, with an initial value. The property can be accessed by the methods <span class="method">propName</span> and <span class="method">setPropName:</span>, just like instance properties.</p>
+  </div>
+</div>
+<div class="method">
+  <div class="name">+ (void) addClassProperty:(NSString*)propName</div>
+  <div class="description">
+    <p>Equivalent to <code>class addProperty:'propName' withValue:nil</code>.</p>
+  </div>
+</div>
+
+
+<h3>Introspection</h3>
+<p>Classes created with FSClass also have a full suite of introspection commands that can be used to retrieve information about methods and properties</p>
+<div class="method">
+  <div class="name">+ (NSArray*) methods</div>
+  <div class="description">
+    <p>Returns an array of selectors (in the form of compact blocks) that the class implements, including those inherited from superclasses. Does not include the methods that implement property access, or any methods inherited from Objective-C superclasses, including NSObject.</p>
+  </div>
+</div>
+<div class="method">
+  <div class="name">+ (NSArray*) allMethods</div>
+  <div class="description">
+    <p>Returns all the methods implemented by this class and any F-Script-based superclasses.</p>
+  </div>
+</div>
+<div class="method">
+  <div class="name">+ (NSArray*) methodNames</div>
+  <div class="description">
+    <p>Like <span class="method">methods</span>, but returns an array that contains methods names as strings, rather than selectors. Does not include the methods that implement property access, or any methods inherited from Objective-C superclasses, including NSObject.</p>
+  </div>
+</div>
+<div class="method">
+  <div class="name">+ (NSArray*) allMethodNames</div>
+  <div class="description">
+    <p>Returns the names of all the methods implemented by this class and any F-Script-based superclasses.</p>
+  </div>
+</div>
+<div class="method">
+  <div class="name">+ (NSArray*) propertyNames</div>
+  <div class="description">
+    <p>Returns the names of the class's instance properties. This method does not include properties inherited from parent classes; if you want all property names for the class, use the method <span class="method">-allPropertyNames</span> instead.</p>
+    <p>Note that this method will only return the names of properties created in F-Script; Objective-C 2.0 properties will not be included.</p>
+  </div>
+</div>
+<div class="method">
+  <div class="name">+ (NSArray*) allPropertyNames</div>
+  <div class="description">
+    <p>Returns the names of the class's instance properties, including properties inherited from superclasses. Objective-C 2.0 properties will not be included.</p>
+  </div>
+</div>
+<div class="method">
+  <div class="name">+ (Class) methodImplementor:(SEL)selector</div>
+  <div class="description">
+    <p>Given a (non-property-related) selector that the class supports, returns the first class in the inheritance hierarchy that implements that method. If the method is not recognized by the class, returns <span class="literal">nil</span>. For example, say that we have the following classes, and that they implement the given methods:</p>
+
+    <table style="border-collapse:collapse">
+      <tr style="font-weight:bold"><td>Class</td><td colspan="2">Implemented Methods</td></tr>
+      <tr><td class="class">ClassA</td><td class="method">doAstuff:</td><td class="method">doOtherAstuff:</td></tr>
+      <tr><td class="class">ClassB</td><td class="method">doAstuff:</td><td class="method">doBstuff:</td></tr>
+      <tr><td class="class">ClassC</td><td class="method">doCstuff:</td><td></td></tr>
+    </table>
+
+    <p><span class="method">methodImplementor:</span> would return the following results:</p>
+
+    <table style="border-collapse:collapse">
+      <tr style="font-weight:bold"><td>Code</td><td>Result</td></tr>
+      <tr><td><code>ClassC methodImplementor:#doAstuff:</code></td><td class="class">ClassB</td></tr>
+      <tr><td><code>ClassC methodImplementor:#doOtherAstuff:</code></td><td class="class">ClassA</td></tr>
+      <tr><td><code>ClassC methodImplementor:#doCstuff:</code></td><td class="class">ClassC</td></tr>
+      <tr><td><code>ClassB methodImplementor:#doAstuff:</code></td><td class="class">ClassB</td></tr>
+      <tr><td><code>ClassB methodImplementor:#doOtherAStuff:</code></td><td class="class">ClassA</td></tr>
+      <tr><td><code>ClassB methodImplementor:#doCstuff:</code></td><td class="literal">nil</td></tr>
+    </table>
+  </div>
+</div>
+<div class="method">
+  <div class="name">+ (id) blockForSelector:(SEL)selector</div>
+  <div class="description">
+    <p>Given a (non-property-related) selector that the class supports, returns the <span class="class">Block</span> that implements the method (possibly from a superclass). If the method is not supported, or is implemented by an Objective-C superclass, returns <span class="span">nil</span>.</p>
+  </div>
+</div>
+
+
+
+<h3>Class Introspection</h3>
+<p>The following methods provide introspection capabilities for class methods and properties. They return similar values as the instance introspection methods above.</p>
+
+<div class="method">
+  <div class="name">+ (NSArray*) classMethods</div>
+</div>
+<div class="method">
+  <div class="name">+ (NSArray*) allClassMethods</div>
+</div>
+<div class="method">
+  <div class="name">+ (NSArray*) classMethodNames</div>
+</div>
+<div class="method">
+  <div class="name">+ (NSArray*) allClassMethodNames</div>
+</div>
+<div class="method">
+  <div class="name">+ (NSArray*) classPropertyNames</div>
+</div>
+<div class="method">
+  <div class="name">+ (NSArray*) allClassPropertyNames</div>
+</div>
+<div class="method">
+  <div class="name">+ (Class) classMethodImplementor:(SEL)selector</div>
+</div>
+<div class="method">
+  <div class="name">+ (id) blockForClassSelector:(SEL)selector</div>
+</div>
+
+
+
+<h3>Manipulating Objective-C Classes</h3>
+<p>All of the methods described above can also be used with Objective-C classes. Unlike with FSClass 2.0, creating a proxy is not necessary; the methods can be applied directly to the class object itself:</p>
+
+<div class="longexample">
+<pre>
+NSString onMessage:#bork do:[ :self |
+    "Return a borked version of self"
+    self ++ '! bork bork bork!'
+].
+</pre>
+</div>  
+
+<p>The introspection capabilities of Objective-C classes apply only to methods created in F-Script. For example, if you have not added any additional methods to <span class="class">NSObject</span>, the code <code>NSObject methodNames</code> will return an empty array.
+
+<p>Objective-C classes cannot use the introspection methods that deal with instance properties. The following reflection methods cannot be used with classes written in Objective-C:</p>
+  
+<ul>
+  <li><span class="method">addProperty:</span></li>
+  <li><span class="method">addProperty:withDefault:</span></li>
+  <li><span class="method">addPropertiesWithDefault:</span></li>
+  <li><span class="method">addPropertiesfromDictionary:</span></li>
+  <li><span class="method">defaultValueForProperty:</span></li>
+  <li><span class="method">propertyNames</span></li>
+  <li><span class="method">allPropertyNames</span></li>
+</ul>
+
+<p>The class property versions of these methods, however, can be used with Objective-C classes.</p>
+
+<hr>
+<p>Copyright 2007-2208 Andrew Weinrich</p>
+
+</body>
+</html>

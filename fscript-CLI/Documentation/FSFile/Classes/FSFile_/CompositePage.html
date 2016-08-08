@@ -1,0 +1,296 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>FSFile </title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {font-weight:bold}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {font-style:italic}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<!-- start of header --><style>
+div.longexample {border-color:black; border-width:1px; border-style:solid; padding-top:3pt; padding-bottom:3pt; padding-left:8pt; background-color:#EEEEEE }
+
+td { vertical-align:top; padding-bottom:10pt; padding-left:10pt} 
+td.spacer {max-width:2pt; background-color:black}
+pre {padding-left:10pt}
+
+dl.list {border: 1pt solid black }
+dt {font-weight:bold; padding-left:8pt; padding-bottom:2pt}
+dd {margin-left:15pt; padding-bottom:5pt}
+
+span.method {font-weight:bold; font-family:Courier}
+span.parameter {font-style:italic; font-family:Courier}
+span.literal {font-family:Courier}
+span.directory {font-style:italic}
+span.program {font-family:Monaco,Lucida}
+
+br {padding-bottom:5pt}
+
+code { border-width:1px; border-color:gray; border-style:solid; background-color:#EEEEEE }
+</style>
+<!-- end of header --><a name="top"></a><a name="//apple_ref/doc/class/FSFile" title="FSFile "></a><hr>
+<table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h1><a name="FSFile">FSFile </a></h1>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract --> Extension of NSFileHandle with methods convenient for text-file handling
+<!-- end abstract --></p>
+<p><b>Superclass:</b> <!-- a logicalPath="//apple_ref/occ/cl/NSFileHandle" -->NSFileHandle<!-- /a --><br><b>Declared In:</b> <a href="../../index.html" target="_top">FSFile.h</a><br></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion --> FSFile is a subclass of NSFileHandle that provides text-file handling methods similar to other scripting languages. To open a file, use FSFile's <span class="method">open:</span> method, which uses the same mode specifiers as Perl's <code>open</code> function. You can then use <span class="method">readln</span>, <span class="method">print:</span>, <span class="method">println:</span>, and <span class="method">printf:withValues:</span> to perform input and output.
+<br><br><style>code { border-width:1px; background-color:lightgrey }</style><br><br>
+FSFile is a subclass of NSFileHandle, so the more fine-grained methods of that class for non-text files are also available, such as seeking through the file and calculating offsets. It is important to note that FSFile keeps its own buffer for <span class="method">readln</span> and related methods, so mixing calls to <span class="method">readln</span> and other NSFileHandle methods like <span class="method">seekToFileOffset:</span> or <span class="method">readDataOfLength:</span> will produce unpredictable results and will probably result in data being skipped. If you wish to switch between line- and offset-oriented modes, use the FSFile method <span class="method">reset</span>. This method will clear all buffers and set the file pointer back to 0.
+<br><br><!-- end discussion --></p>
+<p></p>
+<hr>
+<br><h2>Methods</h2>
+<a name="HeaderDoc_methods"></a><dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/occ/clm/FSFile/fromNSFileHandle:" target="_top">+fromNSFileHandle: </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/occ/instm/FSFile/newln" target="_top">-newln </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/occ/clm/FSFile/open:" target="_top">+open: </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/occ/clm/FSFile/open:mode:" target="_top">+open:mode: </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/occ/instm/FSFile/print:" target="_top">-print: </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/occ/instm/FSFile/printf:withValues:" target="_top">-printf:withValues: </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/occ/instm/FSFile/println" target="_top">-println </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/occ/instm/FSFile/println:" target="_top">-println: </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/occ/instm/FSFile/readlines" target="_top">-readlines </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/occ/instm/FSFile/readlinesWithSeparator:" target="_top">-readlinesWithSeparator: </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/occ/instm/FSFile/readln" target="_top">-readln </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/occ/instm/FSFile/readlnWithSeparator:" target="_top">-readlnWithSeparator: </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/occ/instm/FSFile/reset" target="_top">-reset </a></tt></dt>
+<dd></dd>
+</dl>
+<hr>
+<!-- headerDoc=clm;  uid=//apple_ref/doc/compositePage/occ/clm/FSFile/fromNSFileHandle:;  name=FSFile::fromNSFileHandle: --><a name="//apple_ref/doc/compositePage/occ/clm/FSFile/fromNSFileHandle:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="fromNSFileHandle:">fromNSFileHandle: </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>+ (<a logicalpath="//apple_ref/occ/cl/FSFile" target="_top" href="index.html#//apple_ref/occ/cl/FSFile"><span class="type">FSFile</span></a><span class="type">*</span>) <!-- a logicalPath="//apple_ref/occ/instm/fromNSFileHandle //apple_ref/occ/clm/fromNSFileHandle //apple_ref/occ/intfcm/fromNSFileHandle //apple_ref/occ/intfm/fromNSFileHandle //apple_ref/occ/func/fromNSFileHandle //apple_ref/occ/ftmplt/fromNSFileHandle //apple_ref/occ/defn/fromNSFileHandle //apple_ref/occ/macro/fromNSFileHandle" --><span class="function">fromNSFileHandle</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/NSFileHandle //apple_ref/occ/tdef/NSFileHandle //apple_ref/occ/tag/NSFileHandle //apple_ref/occ/econst/NSFileHandle //apple_ref/occ/struct/NSFileHandle //apple_ref/occ/clconst/NSFileHandle //apple_ref/occ/intf/NSFileHandle" --><span class="type">NSFileHandle</span><!-- /a --><span class="type">*</span>)<span class="var">handle</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Creates an FSFile object that wraps an existing NSFileHandle. Use this method if you have created a non-file NSFileHandle - such as one end of a pipe - you can use this method to create an FSFile that supports <span class="method">print</span> and <span class="method">readln</span>.<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/occ/instm/FSFile/newln;  name=FSFile::newln --><a name="//apple_ref/doc/compositePage/occ/instm/FSFile/newln"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="newln">newln </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/void //apple_ref/occ/tdef/void //apple_ref/occ/tag/void //apple_ref/occ/econst/void //apple_ref/occ/struct/void //apple_ref/occ/clconst/void //apple_ref/occ/intf/void" --><span class="type">void</span><!-- /a -->) <span class="var">newln</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Prints a single newline (ASCII 13) character to the file.<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=clm;  uid=//apple_ref/doc/compositePage/occ/clm/FSFile/open:;  name=FSFile::open: --><a name="//apple_ref/doc/compositePage/occ/clm/FSFile/open:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="open:">open: </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>+ (<a logicalpath="//apple_ref/occ/cl/FSFile" target="_top" href="index.html#//apple_ref/occ/cl/FSFile"><span class="type">FSFile</span></a><span class="type">*</span>) <!-- a logicalPath="//apple_ref/occ/instm/open //apple_ref/occ/clm/open //apple_ref/occ/intfcm/open //apple_ref/occ/intfm/open //apple_ref/occ/func/open //apple_ref/occ/ftmplt/open //apple_ref/occ/defn/open //apple_ref/occ/macro/open" --><span class="function">open</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/econst/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/clconst/NSString //apple_ref/occ/intf/NSString" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<span class="var">path</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Equivalent to <code>open:path mode:@""</code>
+Creates an FSFile object that wraps an existing NSFileHandle. Use this method if you have created a non-file NSFileHandle - such as one end of a pipe - you can use this method to create an FSFile that supports <span class="method">print</span> and <span class="method">readln</span>.<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=clm;  uid=//apple_ref/doc/compositePage/occ/clm/FSFile/open:mode:;  name=FSFile::open:mode: --><a name="//apple_ref/doc/compositePage/occ/clm/FSFile/open:mode:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="open:mode:">open:mode: </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>+ (<a logicalpath="//apple_ref/occ/cl/FSFile" target="_top" href="index.html#//apple_ref/occ/cl/FSFile"><span class="type">FSFile</span></a><span class="type">*</span>) <!-- a logicalPath="//apple_ref/occ/instm/open //apple_ref/occ/clm/open //apple_ref/occ/intfcm/open //apple_ref/occ/intfm/open //apple_ref/occ/func/open //apple_ref/occ/ftmplt/open //apple_ref/occ/defn/open //apple_ref/occ/macro/open" --><span class="function">open</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/econst/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/clconst/NSString //apple_ref/occ/intf/NSString" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<span class="param">path</span> <!-- a logicalPath="//apple_ref/occ/instm/mode //apple_ref/occ/clm/mode //apple_ref/occ/intfcm/mode //apple_ref/occ/intfm/mode //apple_ref/occ/func/mode //apple_ref/occ/ftmplt/mode //apple_ref/occ/defn/mode //apple_ref/occ/macro/mode" --><span class="function">mode</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/econst/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/clconst/NSString //apple_ref/occ/intf/NSString" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<span class="var">mode</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Opens a file for use. <span class="parameter">mode</span> should be one of the following Perl-style mode strings:
+<br><br></p>
+<table>
+<th>
+</th>
+<tr>
+<td>Mode</td>
+<td>Read</td>
+<td>Write</td>
+<td>Append to existing data</td>
+<td>Create file if not existing</td>
+<td>Throw error if file does not exist</td>
+</tr>
+<tbody>
+<tr>
+<td class="mode">&lt;</td> <td>Yes</td> <td>No</td> <td></td> <td>No</td> <td>Yes</td> </tr>
+<tr>
+<td class="mode">&gt;</td> <td>No</td> <td>Yes</td> <td>No</td> <td>Yes</td> <td>No</td> </tr>
+<tr>
+<td class="mode">&gt;&gt;</td> <td>No</td> <td>Yes</td> <td>Yes</td> <td>Yes</td> <td>No</td> </tr>
+<tr>
+<td class="mode">&lt;+</td> <td>Yes</td> <td>Yes</td> <td></td> <td>No</td> <td>Yes</td> </tr>
+<tr>
+<td class="mode">&gt;+</td> <td>Yes</td> <td>Yes</td> <td>No</td> <td>Yes</td> <td>No</td> </tr>
+<tr>
+<td class="mode">&lt;&lt;+</td> <td>Yes</td> <td>Yes</td> <td>Yes</td> <td>Yes</td> <td>No</td> </tr>
+</tbody>
+</table>
+<br><br><p>
+If <code>mode</code> is not one of the above strings, the method will throw an exception.
+<br><br><!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/occ/instm/FSFile/print:;  name=FSFile::print: --><a name="//apple_ref/doc/compositePage/occ/instm/FSFile/print:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="print:">print: </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/void //apple_ref/occ/tdef/void //apple_ref/occ/tag/void //apple_ref/occ/econst/void //apple_ref/occ/struct/void //apple_ref/occ/clconst/void //apple_ref/occ/intf/void" --><span class="type">void</span><!-- /a -->) <!-- a logicalPath="//apple_ref/occ/instm/print //apple_ref/occ/clm/print //apple_ref/occ/intfcm/print //apple_ref/occ/intfm/print //apple_ref/occ/func/print //apple_ref/occ/ftmplt/print //apple_ref/occ/defn/print //apple_ref/occ/macro/print" --><span class="function">print</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/NSObject //apple_ref/occ/tdef/NSObject //apple_ref/occ/tag/NSObject //apple_ref/occ/econst/NSObject //apple_ref/occ/struct/NSObject //apple_ref/occ/clconst/NSObject //apple_ref/occ/intf/NSObject" --><span class="type">NSObject</span><!-- /a --><span class="type">*</span>)<span class="var">string</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Prints an object (typically a string) to a file. If the object is not an NSString, the <span class="method">description</span> will be used to obtain a string representation. Using this method on a read-only file (such as standard input) will throw an error.<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/occ/instm/FSFile/printf:withValues:;  name=FSFile::printf:withValues: --><a name="//apple_ref/doc/compositePage/occ/instm/FSFile/printf:withValues:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="printf:withValues:">printf:withValues: </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/void //apple_ref/occ/tdef/void //apple_ref/occ/tag/void //apple_ref/occ/econst/void //apple_ref/occ/struct/void //apple_ref/occ/clconst/void //apple_ref/occ/intf/void" --><span class="type">void</span><!-- /a -->) <!-- a logicalPath="//apple_ref/occ/instm/printf //apple_ref/occ/clm/printf //apple_ref/occ/intfcm/printf //apple_ref/occ/intfm/printf //apple_ref/occ/func/printf //apple_ref/occ/ftmplt/printf //apple_ref/occ/defn/printf //apple_ref/occ/macro/printf" --><span class="function">printf</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/econst/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/clconst/NSString //apple_ref/occ/intf/NSString" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<span class="param">format</span> <!-- a logicalPath="//apple_ref/occ/instm/withValues //apple_ref/occ/clm/withValues //apple_ref/occ/intfcm/withValues //apple_ref/occ/intfm/withValues //apple_ref/occ/func/withValues //apple_ref/occ/ftmplt/withValues //apple_ref/occ/defn/withValues //apple_ref/occ/macro/withValues" --><span class="function">withValues</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/NSArray //apple_ref/occ/tdef/NSArray //apple_ref/occ/tag/NSArray //apple_ref/occ/econst/NSArray //apple_ref/occ/struct/NSArray //apple_ref/occ/clconst/NSArray //apple_ref/occ/intf/NSArray" --><span class="type">NSArray</span><!-- /a --><span class="type">*</span>)<span class="var">values</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Equivalent to <code>print:(format sprintf:values)</code>.<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/occ/instm/FSFile/println;  name=FSFile::println --><a name="//apple_ref/doc/compositePage/occ/instm/FSFile/println"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="println">println </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/void //apple_ref/occ/tdef/void //apple_ref/occ/tag/void //apple_ref/occ/econst/void //apple_ref/occ/struct/void //apple_ref/occ/clconst/void //apple_ref/occ/intf/void" --><span class="type">void</span><!-- /a -->) <span class="var">println</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Prints a blank line.
+ <!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/occ/instm/FSFile/println:;  name=FSFile::println: --><a name="//apple_ref/doc/compositePage/occ/instm/FSFile/println:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="println:">println: </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/void //apple_ref/occ/tdef/void //apple_ref/occ/tag/void //apple_ref/occ/econst/void //apple_ref/occ/struct/void //apple_ref/occ/clconst/void //apple_ref/occ/intf/void" --><span class="type">void</span><!-- /a -->) <!-- a logicalPath="//apple_ref/occ/instm/println //apple_ref/occ/clm/println //apple_ref/occ/intfcm/println //apple_ref/occ/intfm/println //apple_ref/occ/func/println //apple_ref/occ/ftmplt/println //apple_ref/occ/defn/println //apple_ref/occ/macro/println" --><span class="function">println</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/NSObject //apple_ref/occ/tdef/NSObject //apple_ref/occ/tag/NSObject //apple_ref/occ/econst/NSObject //apple_ref/occ/struct/NSObject //apple_ref/occ/clconst/NSObject //apple_ref/occ/intf/NSObject" --><span class="type">NSObject</span><!-- /a --><span class="type">*</span>)<span class="var">string</span>; </pre>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<dl>
+<dt><code>string </code></dt>
+<dd>The object to print. If the object is not an NSString, it will be sent a -description message to produce a printable string.</dd>
+</dl>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Equivalent to <span class="method">print:</span>, but also prints a newline character after printing the string (similar to Java's <span class="method">PrintStream.println</span> method).
+ <!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/occ/instm/FSFile/readlines;  name=FSFile::readlines --><a name="//apple_ref/doc/compositePage/occ/instm/FSFile/readlines"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="readlines">readlines </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/NSArray //apple_ref/occ/tdef/NSArray //apple_ref/occ/tag/NSArray //apple_ref/occ/econst/NSArray //apple_ref/occ/struct/NSArray //apple_ref/occ/clconst/NSArray //apple_ref/occ/intf/NSArray" --><span class="type">NSArray</span><!-- /a --><span class="type">*</span>) <span class="var">readlines</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Equivalent to <code>readlinesWithSeparator:'\n'</code>.<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/occ/instm/FSFile/readlinesWithSeparator:;  name=FSFile::readlinesWithSeparator: --><a name="//apple_ref/doc/compositePage/occ/instm/FSFile/readlinesWithSeparator:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="readlinesWithSeparator:">readlinesWithSeparator: </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/NSArray //apple_ref/occ/tdef/NSArray //apple_ref/occ/tag/NSArray //apple_ref/occ/econst/NSArray //apple_ref/occ/struct/NSArray //apple_ref/occ/clconst/NSArray //apple_ref/occ/intf/NSArray" --><span class="type">NSArray</span><!-- /a --><span class="type">*</span>) <!-- a logicalPath="//apple_ref/occ/instm/readlinesWithSeparator //apple_ref/occ/clm/readlinesWithSeparator //apple_ref/occ/intfcm/readlinesWithSeparator //apple_ref/occ/intfm/readlinesWithSeparator //apple_ref/occ/func/readlinesWithSeparator //apple_ref/occ/ftmplt/readlinesWithSeparator //apple_ref/occ/defn/readlinesWithSeparator //apple_ref/occ/macro/readlinesWithSeparator" --><span class="function">readlinesWithSeparator</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/econst/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/clconst/NSString //apple_ref/occ/intf/NSString" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<span class="var">separator</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Reads in all the lines of the file and returns them in an array. The returned array may be quite large, depending on the size of the file, so use this method with caution.
+<br><br>
+The F-Script code <code>lines := file readLines.</code> is equivalent to the Perl code <code>@lines = split "\n", &lt;FILE&gt;;</code>.<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/occ/instm/FSFile/readln;  name=FSFile::readln --><a name="//apple_ref/doc/compositePage/occ/instm/FSFile/readln"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="readln">readln </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/econst/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/clconst/NSString //apple_ref/occ/intf/NSString" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>) <span class="var">readln</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Equivalent to <code>readlnWithSeparator:'\n'</code>.<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/occ/instm/FSFile/readlnWithSeparator:;  name=FSFile::readlnWithSeparator: --><a name="//apple_ref/doc/compositePage/occ/instm/FSFile/readlnWithSeparator:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="readlnWithSeparator:">readlnWithSeparator: </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/econst/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/clconst/NSString //apple_ref/occ/intf/NSString" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>) <!-- a logicalPath="//apple_ref/occ/instm/readlnWithSeparator //apple_ref/occ/clm/readlnWithSeparator //apple_ref/occ/intfcm/readlnWithSeparator //apple_ref/occ/intfm/readlnWithSeparator //apple_ref/occ/func/readlnWithSeparator //apple_ref/occ/ftmplt/readlnWithSeparator //apple_ref/occ/defn/readlnWithSeparator //apple_ref/occ/macro/readlnWithSeparator" --><span class="function">readlnWithSeparator</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/econst/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/clconst/NSString //apple_ref/occ/intf/NSString" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>) <span class="var">separator</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Reads in data until either the specified separator (which can be a single character or a string) is encountered, chops off the separator, and returns the read data as a string. Plain <span class="method">readln</span> uses a newline character as a separator; if you need to specify a custom line break (such as when reading DOS/Windows-formatted text files) use <span class="method">readlnWithSeparator</span>.
+<br><br><span class="method">readlnWithSeparator:</span> will return <code>nil</code> if there is no more data left in the file, so you can use it in loops like these:
+<br><br></p>
+<div class="longexample"><pre>
+file := NSFile open:'.....'.
+line := nil.
+[ line := file readln. line == nil ] whileTrue:[
+ obj doSomethingWith:line.
+]<br>
+ 
+file2 := FSFile open:'....'.
+sys foreach:[ file readln ] do:[ :line |
+ out println:line.
+].
+</pre></div>
+<!-- end discussion --><p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/occ/instm/FSFile/reset;  name=FSFile::reset --><a name="//apple_ref/doc/compositePage/occ/instm/FSFile/reset"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="reset">reset </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/void //apple_ref/occ/tdef/void //apple_ref/occ/tag/void //apple_ref/occ/econst/void //apple_ref/occ/struct/void //apple_ref/occ/clconst/void //apple_ref/occ/intf/void" --><span class="type">void</span><!-- /a -->) <span class="var">reset</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Clears all line-oriented buffers and resets the file pointer back to zero. If, for some reason, you want to stop using the line-oriented methods of FSFile like <span class="method">readln</span>, use this method before starting to use the NSFileHandle byte-oriented methods.
+<br><br>
+This method will throw an exception if the filehandle does not support seeking.<!-- end discussion --></p>
+<p></p>
+<p><!-- start of footer -->
+
+<!-- end of footer -->
+</p>
+<p>&copy; Andrew Weinrich Last Updated: Wednesday, October 15, 2008
+</p>
+</body>
+</html>

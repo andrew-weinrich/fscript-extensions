@@ -1,0 +1,29 @@
+MyClass := FSClass newClass:'MyClass'.
+MyClass addProperty:'foo' withDefault:'foo'.
+
+MyClass onMessage:#doStuff do:[ :self |
+    'stuff'
+].
+
+MyClass onMessage:#doThing: do:[ :self :thing |
+    thing ++ ': ' ++ self foo
+].
+
+
+
+inst := MyClass alloc init.
+
+out println:inst doStuff.
+out println:(inst doThing:'thing').
+
+
+MyClass onMessage:#doStuff do:[ :self |
+    'ffuts'
+].
+
+MyClass onMessage:#doThing: do:[ :self :thing |
+    thing ++ '- ' ++ self foo
+].
+
+out println:inst doStuff.
+out println:(inst doThing:'gniht').

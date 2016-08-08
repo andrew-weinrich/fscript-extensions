@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>FSRegexMatch </title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {font-weight:bold}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {font-style:italic}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<!-- start of header --><style>
+div.longexample {border-color:black; border-width:1px; border-style:solid; padding-top:3pt; padding-bottom:3pt; padding-left:8pt; background-color:#EEEEEE }
+
+td { vertical-align:top; padding-bottom:10pt; padding-left:10pt} 
+td.spacer {max-width:2pt; background-color:black}
+pre {padding-left:10pt}
+
+dl.list {border: 1pt solid black }
+dt {font-weight:bold; padding-left:8pt; padding-bottom:2pt}
+dd {margin-left:15pt; padding-bottom:5pt}
+
+span.method {font-weight:bold; font-family:Courier}
+span.parameter {font-style:italic; font-family:Courier}
+span.literal {font-family:Courier}
+span.directory {font-style:italic}
+span.program {font-family:Monaco,Lucida}
+
+br {padding-bottom:5pt}
+
+code { border-width:1px; border-color:gray; border-style:solid; background-color:#EEEEEE }
+</style>
+<!-- end of header --><a name="top"></a><a name="//apple_ref/doc/class/FSRegexMatch" title="FSRegexMatch "></a><hr>
+<table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h1><a name="FSRegexMatch">FSRegexMatch </a></h1>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract --> A single occurence of a regular expression.
+<!-- end abstract --></p>
+<p><b>Superclass:</b> <!-- a logicalPath="//apple_ref/occ/cl/NSObject" -->NSObject<!-- /a --><br><b>Declared In:</b> <a href="../../index.html" target="_top">FSRegex.h</a><br></p>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion --> An FSRegexMatch represents a single occurence of a regular expression within the target string. The range of each subpattern within the target string is returned by -range, -rangeAtIndex:, or -rangeNamed:. The part of the target string that matched each subpattern is returned by -group, -groupAtIndex:, or -groupNamed:.
+<!-- end discussion --></p>
+<p></p>
+<hr>
+<br><h2>Methods</h2>
+<a name="HeaderDoc_methods"></a><dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/occ/instm/FSRegexMatch/count" target="_top">-count </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/occ/instm/FSRegexMatch/group" target="_top">-group </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/occ/instm/FSRegexMatch/groupAtIndex:" target="_top">-groupAtIndex: </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/occ/instm/FSRegexMatch/groupNamed:" target="_top">-groupNamed: </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/occ/instm/FSRegexMatch/range" target="_top">-range </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/occ/instm/FSRegexMatch/rangeAtIndex:" target="_top">-rangeAtIndex: </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/occ/instm/FSRegexMatch/rangeNamed:" target="_top">-rangeNamed: </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/occ/instm/FSRegexMatch/string" target="_top">-string </a></tt></dt>
+<dd></dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/occ/instm/FSRegexMatch/count;  name=FSRegexMatch::count --><a name="//apple_ref/doc/compositePage/occ/instm/FSRegexMatch/count"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="count">count </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/int //apple_ref/occ/tdef/int //apple_ref/occ/tag/int //apple_ref/occ/econst/int //apple_ref/occ/struct/int //apple_ref/occ/clconst/int //apple_ref/occ/intf/int" --><span class="type">int</span><!-- /a -->)<span class="var">count</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion --> The number of capturing subpatterns, including the pattern itself.<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/occ/instm/FSRegexMatch/group;  name=FSRegexMatch::group --><a name="//apple_ref/doc/compositePage/occ/instm/FSRegexMatch/group"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="group">group </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/econst/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/clconst/NSString //apple_ref/occ/intf/NSString" --><span class="type">NSString</span><!-- /a --> <span class="type">*</span>)<span class="var">group</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion --> Returns the part of the target string that matched the pattern.<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/occ/instm/FSRegexMatch/groupAtIndex:;  name=FSRegexMatch::groupAtIndex: --><a name="//apple_ref/doc/compositePage/occ/instm/FSRegexMatch/groupAtIndex:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="groupAtIndex:">groupAtIndex: </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/econst/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/clconst/NSString //apple_ref/occ/intf/NSString" --><span class="type">NSString</span><!-- /a --> <span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/instm/groupAtIndex //apple_ref/occ/clm/groupAtIndex //apple_ref/occ/intfcm/groupAtIndex //apple_ref/occ/intfm/groupAtIndex //apple_ref/occ/func/groupAtIndex //apple_ref/occ/ftmplt/groupAtIndex //apple_ref/occ/defn/groupAtIndex //apple_ref/occ/macro/groupAtIndex" --><span class="function">groupAtIndex</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/int //apple_ref/occ/tdef/int //apple_ref/occ/tag/int //apple_ref/occ/econst/int //apple_ref/occ/struct/int //apple_ref/occ/clconst/int //apple_ref/occ/intf/int" --><span class="type">int</span><!-- /a -->)<span class="var">idx</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion --> Returns the part of the target string that matched the subpattern at the given index or nil if it wasn't matched. The subpatterns are indexed in order of their opening parentheses, 0 is the entire pattern, 1 is the first capturing subpattern, and so on.<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/occ/instm/FSRegexMatch/groupNamed:;  name=FSRegexMatch::groupNamed: --><a name="//apple_ref/doc/compositePage/occ/instm/FSRegexMatch/groupNamed:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="groupNamed:">groupNamed: </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/econst/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/clconst/NSString //apple_ref/occ/intf/NSString" --><span class="type">NSString</span><!-- /a --> <span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/instm/groupNamed //apple_ref/occ/clm/groupNamed //apple_ref/occ/intfcm/groupNamed //apple_ref/occ/intfm/groupNamed //apple_ref/occ/func/groupNamed //apple_ref/occ/ftmplt/groupNamed //apple_ref/occ/defn/groupNamed //apple_ref/occ/macro/groupNamed" --><span class="function">groupNamed</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/econst/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/clconst/NSString //apple_ref/occ/intf/NSString" --><span class="type">NSString</span><!-- /a --> <span class="type">*</span>)<span class="var">name</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion --> Returns the part of the target string that matched the subpattern of the given name or nil if it wasn't matched.<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/occ/instm/FSRegexMatch/range;  name=FSRegexMatch::range --><a name="//apple_ref/doc/compositePage/occ/instm/FSRegexMatch/range"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="range">range </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/NSRange //apple_ref/occ/tdef/NSRange //apple_ref/occ/tag/NSRange //apple_ref/occ/econst/NSRange //apple_ref/occ/struct/NSRange //apple_ref/occ/clconst/NSRange //apple_ref/occ/intf/NSRange" --><span class="type">NSRange</span><!-- /a -->)<span class="var">range</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion --> Returns the range of the target string that matched the pattern.<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/occ/instm/FSRegexMatch/rangeAtIndex:;  name=FSRegexMatch::rangeAtIndex: --><a name="//apple_ref/doc/compositePage/occ/instm/FSRegexMatch/rangeAtIndex:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="rangeAtIndex:">rangeAtIndex: </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/NSRange //apple_ref/occ/tdef/NSRange //apple_ref/occ/tag/NSRange //apple_ref/occ/econst/NSRange //apple_ref/occ/struct/NSRange //apple_ref/occ/clconst/NSRange //apple_ref/occ/intf/NSRange" --><span class="type">NSRange</span><!-- /a -->)<!-- a logicalPath="//apple_ref/occ/instm/rangeAtIndex //apple_ref/occ/clm/rangeAtIndex //apple_ref/occ/intfcm/rangeAtIndex //apple_ref/occ/intfm/rangeAtIndex //apple_ref/occ/func/rangeAtIndex //apple_ref/occ/ftmplt/rangeAtIndex //apple_ref/occ/defn/rangeAtIndex //apple_ref/occ/macro/rangeAtIndex" --><span class="function">rangeAtIndex</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/int //apple_ref/occ/tdef/int //apple_ref/occ/tag/int //apple_ref/occ/econst/int //apple_ref/occ/struct/int //apple_ref/occ/clconst/int //apple_ref/occ/intf/int" --><span class="type">int</span><!-- /a -->)<span class="var">idx</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion --> Returns the range of the target string that matched the subpattern at the given index or {NSNotFound, 0} if it wasn't matched. The subpatterns are indexed in order of their opening parentheses, 0 is the entire pattern, 1 is the first capturing subpattern, and so on.<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/occ/instm/FSRegexMatch/rangeNamed:;  name=FSRegexMatch::rangeNamed: --><a name="//apple_ref/doc/compositePage/occ/instm/FSRegexMatch/rangeNamed:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="rangeNamed:">rangeNamed: </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/NSRange //apple_ref/occ/tdef/NSRange //apple_ref/occ/tag/NSRange //apple_ref/occ/econst/NSRange //apple_ref/occ/struct/NSRange //apple_ref/occ/clconst/NSRange //apple_ref/occ/intf/NSRange" --><span class="type">NSRange</span><!-- /a -->)<!-- a logicalPath="//apple_ref/occ/instm/rangeNamed //apple_ref/occ/clm/rangeNamed //apple_ref/occ/intfcm/rangeNamed //apple_ref/occ/intfm/rangeNamed //apple_ref/occ/func/rangeNamed //apple_ref/occ/ftmplt/rangeNamed //apple_ref/occ/defn/rangeNamed //apple_ref/occ/macro/rangeNamed" --><span class="function">rangeNamed</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/econst/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/clconst/NSString //apple_ref/occ/intf/NSString" --><span class="type">NSString</span><!-- /a --> <span class="type">*</span>)<span class="var">name</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion --> Returns the range of the target string that matched the subpattern of the given name or {NSNotFound, 0} if it wasn't matched.<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/occ/instm/FSRegexMatch/string;  name=FSRegexMatch::string --><a name="//apple_ref/doc/compositePage/occ/instm/FSRegexMatch/string"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="string">string </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/econst/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/clconst/NSString //apple_ref/occ/intf/NSString" --><span class="type">NSString</span><!-- /a --> <span class="type">*</span>)<span class="var">string</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion --> Returns the target string.<!-- end discussion --></p>
+<p></p>
+<p><!-- start of footer -->
+
+<!-- end of footer -->
+</p>
+<p>&copy; Andrew Weinrich Last Updated: Wednesday, October 15, 2008
+</p>
+</body>
+</html>

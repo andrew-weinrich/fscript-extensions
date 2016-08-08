@@ -1,0 +1,339 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 44;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		890753E70D23187B008FDD6F /* FSClassCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 890753E60D23187B008FDD6F /* FSClassCreation.m */; };
+		8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
+		CB0A7A340C6024A3002CDBC2 /* TestBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CB0A7A330C6024A3002CDBC2 /* TestBaseClass.m */; };
+		CB41650D0B194E77005D3559 /* FSClassStringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CB41650C0B194E77005D3559 /* FSClassStringUtil.m */; };
+		CB5AE1650B07BA3600BA9A19 /* FSClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CB5AE1640B07BA3600BA9A19 /* FSClass.m */; };
+		CB7DFBF00C2F14EE0074603B /* Functions.m in Sources */ = {isa = PBXBuildFile; fileRef = CB7DFBEF0C2F14EE0074603B /* Functions.m */; };
+		CB8E750E0B558A76009CE7EA /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = CB8E750D0B558A76009CE7EA /* COPYING */; };
+		CB8E764D0B559929009CE7EA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8E764C0B559929009CE7EA /* Cocoa.framework */; };
+		CB9B48A50B09A2D900114C82 /* Callbacks.m in Sources */ = {isa = PBXBuildFile; fileRef = CB9B48A40B09A2D900114C82 /* Callbacks.m */; };
+		CBA84D650D273E6B0028054D /* MethodImplementations.m in Sources */ = {isa = PBXBuildFile; fileRef = CBA84D640D273E6B0028054D /* MethodImplementations.m */; };
+		CBC6919D0BB5F67E00994A6C /* Trampoline.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC6919C0BB5F67E00994A6C /* Trampoline.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		089C1672FE841209C02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		32DBCF630370AF2F00C91783 /* FSClass_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSClass_Prefix.pch; sourceTree = "<group>"; };
+		890753E50D23187B008FDD6F /* FSClassCreation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSClassCreation.h; sourceTree = "<group>"; };
+		890753E60D23187B008FDD6F /* FSClassCreation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSClassCreation.m; sourceTree = "<group>"; };
+		8D5B49B6048680CD000E48DA /* FSClass.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FSClass.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB0A7A320C6024A3002CDBC2 /* TestBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestBaseClass.h; sourceTree = "<group>"; };
+		CB0A7A330C6024A3002CDBC2 /* TestBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestBaseClass.m; sourceTree = "<group>"; };
+		CB41650B0B194E77005D3559 /* FSClassStringUtil.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; path = FSClassStringUtil.h; sourceTree = "<group>"; };
+		CB41650C0B194E77005D3559 /* FSClassStringUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSClassStringUtil.m; sourceTree = "<group>"; };
+		CB5AE1630B07BA3600BA9A19 /* FSClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSClass.h; sourceTree = "<group>"; };
+		CB5AE1640B07BA3600BA9A19 /* FSClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSClass.m; sourceTree = "<group>"; };
+		CB7DFBEE0C2F14EE0074603B /* Functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Functions.h; sourceTree = "<group>"; };
+		CB7DFBEF0C2F14EE0074603B /* Functions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Functions.m; sourceTree = "<group>"; };
+		CB8E750D0B558A76009CE7EA /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		CB8E764C0B559929009CE7EA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		CB9B48A30B09A2D900114C82 /* Callbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Callbacks.h; sourceTree = "<group>"; };
+		CB9B48A40B09A2D900114C82 /* Callbacks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Callbacks.m; sourceTree = "<group>"; };
+		CBA84D630D273E6B0028054D /* MethodImplementations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MethodImplementations.h; sourceTree = "<group>"; };
+		CBA84D640D273E6B0028054D /* MethodImplementations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MethodImplementations.m; sourceTree = "<group>"; };
+		CBC6919B0BB5F67E00994A6C /* Trampoline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trampoline.h; sourceTree = "<group>"; };
+		CBC6919C0BB5F67E00994A6C /* Trampoline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trampoline.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D5B49B3048680CD000E48DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB8E764D0B559929009CE7EA /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* FSClass */ = {
+			isa = PBXGroup;
+			children = (
+				CB41650A0B194E69005D3559 /* Categories */,
+				08FB77AFFE84173DC02AAC07 /* Classes */,
+				32C88E010371C26100C91783 /* Functions */,
+				089C167CFE841241C02AAC07 /* Resources */,
+				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
+				19C28FB8FE9D52D311CA2CBB /* Products */,
+				32DBCF630370AF2F00C91783 /* FSClass_Prefix.pch */,
+			);
+			name = FSClass;
+			sourceTree = "<group>";
+		};
+		089C1671FE841209C02AAC07 /* Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				CB8E764C0B559929009CE7EA /* Cocoa.framework */,
+				089C1672FE841209C02AAC07 /* Foundation.framework */,
+			);
+			name = "Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		089C167CFE841241C02AAC07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8D5B49B7048680CD000E48DA /* Info.plist */,
+				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
+				CB8E750D0B558A76009CE7EA /* COPYING */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		08FB77AFFE84173DC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CB5AE1630B07BA3600BA9A19 /* FSClass.h */,
+				CB5AE1640B07BA3600BA9A19 /* FSClass.m */,
+				890753E50D23187B008FDD6F /* FSClassCreation.h */,
+				890753E60D23187B008FDD6F /* FSClassCreation.m */,
+				CB0A7A320C6024A3002CDBC2 /* TestBaseClass.h */,
+				CB0A7A330C6024A3002CDBC2 /* TestBaseClass.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FB8FE9D52D311CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D5B49B6048680CD000E48DA /* FSClass.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		32C88E010371C26100C91783 /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				CB9B48A30B09A2D900114C82 /* Callbacks.h */,
+				CB9B48A40B09A2D900114C82 /* Callbacks.m */,
+				CBC6919B0BB5F67E00994A6C /* Trampoline.h */,
+				CBC6919C0BB5F67E00994A6C /* Trampoline.m */,
+				CB7DFBEE0C2F14EE0074603B /* Functions.h */,
+				CB7DFBEF0C2F14EE0074603B /* Functions.m */,
+				CBA84D630D273E6B0028054D /* MethodImplementations.h */,
+				CBA84D640D273E6B0028054D /* MethodImplementations.m */,
+			);
+			name = Functions;
+			sourceTree = "<group>";
+		};
+		CB41650A0B194E69005D3559 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CB41650B0B194E77005D3559 /* FSClassStringUtil.h */,
+				CB41650C0B194E77005D3559 /* FSClassStringUtil.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D5B49AC048680CD000E48DA /* FSClass */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB913A08733D840010E9CD /* Build configuration list for PBXNativeTarget "FSClass" */;
+			buildPhases = (
+				8D5B49AF048680CD000E48DA /* Resources */,
+				8D5B49B1048680CD000E48DA /* Sources */,
+				8D5B49B3048680CD000E48DA /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FSClass;
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = FSClass;
+			productReference = 8D5B49B6048680CD000E48DA /* FSClass.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+			};
+			buildConfigurationList = 1DEB913E08733D840010E9CD /* Build configuration list for PBXProject "FSClass" */;
+			compatibilityVersion = "Xcode 3.0";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 089C166AFE841209C02AAC07 /* FSClass */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D5B49AC048680CD000E48DA /* FSClass */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D5B49AF048680CD000E48DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */,
+				CB8E750E0B558A76009CE7EA /* COPYING in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D5B49B1048680CD000E48DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB5AE1650B07BA3600BA9A19 /* FSClass.m in Sources */,
+				CB9B48A50B09A2D900114C82 /* Callbacks.m in Sources */,
+				CB41650D0B194E77005D3559 /* FSClassStringUtil.m in Sources */,
+				CBC6919D0BB5F67E00994A6C /* Trampoline.m in Sources */,
+				CB7DFBF00C2F14EE0074603B /* Functions.m in Sources */,
+				CB0A7A340C6024A3002CDBC2 /* TestBaseClass.m in Sources */,
+				890753E70D23187B008FDD6F /* FSClassCreation.m in Sources */,
+				CBA84D650D273E6B0028054D /* MethodImplementations.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C167DFE841241C02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C167EFE841241C02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB913B08733D840010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					$NATIVE_ARCH,
+					$NATIVE_ARCH_64_BIT,
+				);
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = FSClass_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Application Support/F-Script/classes";
+				PRODUCT_NAME = FSClass;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		1DEB913C08733D840010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					i386,
+					ppc,
+					ppc64,
+					x86_64,
+				);
+				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = FSClass_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				PRODUCT_NAME = FSClass;
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		1DEB913F08733D840010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					"$(NATIVE_ARCH_32_BIT)",
+					"$(NATIVE_ARCH_64_BIT)",
+				);
+				COPY_PHASE_STRIP = NO;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = /;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_OBJC_GC = supported;
+				GCC_MODEL_TUNING = G4;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INSTALL_PATH = "$(HOME)/Library/Application Support/F-Script/classes";
+				PREBINDING = NO;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+				STRIP_INSTALLED_PRODUCT = NO;
+			};
+			name = Debug;
+		};
+		1DEB914008733D840010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					i386,
+					ppc,
+					ppc64,
+					x86_64,
+				);
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB913A08733D840010E9CD /* Build configuration list for PBXNativeTarget "FSClass" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB913B08733D840010E9CD /* Debug */,
+				1DEB913C08733D840010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB913E08733D840010E9CD /* Build configuration list for PBXProject "FSClass" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB913F08733D840010E9CD /* Debug */,
+				1DEB914008733D840010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+}

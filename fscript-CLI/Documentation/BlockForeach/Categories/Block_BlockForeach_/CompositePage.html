@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>Block(BlockForeach)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {font-weight:bold}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {font-style:italic}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<!-- start of header --><style>
+div.longexample {border-color:black; border-width:1px; border-style:solid; padding-top:3pt; padding-bottom:3pt; padding-left:8pt; background-color:#EEEEEE }
+
+td { vertical-align:top; padding-bottom:10pt; padding-left:10pt} 
+td.spacer {max-width:2pt; background-color:black}
+pre {padding-left:10pt}
+
+dl.list {border: 1pt solid black }
+dt {font-weight:bold; padding-left:8pt; padding-bottom:2pt}
+dd {margin-left:15pt; padding-bottom:5pt}
+
+span.method {font-weight:bold; font-family:Courier}
+span.parameter {font-style:italic; font-family:Courier}
+span.literal {font-family:Courier}
+span.directory {font-style:italic}
+span.program {font-family:Monaco,Lucida}
+
+br {padding-bottom:5pt}
+
+code { border-width:1px; border-color:gray; border-style:solid; background-color:#EEEEEE }
+</style>
+<!-- end of header --><a name="top"></a><a name="//apple_ref/doc/class/Block(BlockForeach)" title="Block(BlockForeach)"></a><hr>
+<table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h1><a name="Block(BlockForeach)">Block(BlockForeach)</a></h1>
+</td></tr></table>
+<hr>
+<p><!-- begin abstract --> The BlockForeach category adds an iterative method to Blocks that repeatedly runs the block as long as it produces non-<code>nil</code> output, then runs another block with that output.
+ <!-- end abstract --></p>
+<p><b>Extends&nbsp;Class:</b> <!-- a logicalPath="//apple_ref/occ/cl/Block" -->Block<!-- /a --><br><b>Declared In:</b> <a href="../../index.html" target="_top">BlockForeach.h</a><br></p>
+<p></p>
+<hr>
+<br><h2>Methods</h2>
+<a name="HeaderDoc_methods"></a><dl>
+<dt><tt><a href="CompositePage.html#//apple_ref/doc/compositePage/occ/instm/Block(BlockForeach)/foreach:" target="_top">-foreach: </a></tt></dt>
+<dd></dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/doc/compositePage/occ/instm/Block(BlockForeach)/foreach:;  name=Block(BlockForeach)::foreach: --><a name="//apple_ref/doc/compositePage/occ/instm/Block(BlockForeach)/foreach:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="foreach:">foreach: </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/void //apple_ref/occ/tdef/void //apple_ref/occ/tag/void //apple_ref/occ/econst/void //apple_ref/occ/struct/void //apple_ref/occ/clconst/void //apple_ref/occ/intf/void" --><span class="type">void</span><!-- /a -->) <!-- a logicalPath="//apple_ref/occ/instm/foreach //apple_ref/occ/clm/foreach //apple_ref/occ/intfcm/foreach //apple_ref/occ/intfm/foreach //apple_ref/occ/func/foreach //apple_ref/occ/ftmplt/foreach //apple_ref/occ/defn/foreach //apple_ref/occ/macro/foreach" --><span class="function">foreach</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/Block //apple_ref/occ/tdef/Block //apple_ref/occ/tag/Block //apple_ref/occ/econst/Block //apple_ref/occ/struct/Block //apple_ref/occ/clconst/Block //apple_ref/occ/intf/Block" --><span class="type">Block</span><!-- /a --><span class="type">*</span>)<span class="var">iterator</span>;</pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Repeatedly runs the receiver block (using the <span class="method">value</span> method), each time executing the <span class="parameter">iterator</span> block with the receiver's output. The output of <span class="parameter">iterator</span> is discarded. The receiver block will be executed until it returns <span class="literal">nil</span>, at which point <span class="method">foreach:</span> will finish, without executing <span class="parameter">iterator</span> a final time.
+<br><br>
+This method can be used to produce loops that repeatedly call a function that produces data, such as the <span class="class">FSFile</span> <span class="method">readln</span> method, and returns <span class="literal">nil</span> when it is done. The following block of Perl code is a common idiom for iterating over all the lines in a file; it takes advantage of the fact that Perl's angle-bracket operator returns <span class="literal">undef</span> when there is no data left in a file:
+<br><br></p>
+<div class="longexample"><pre>
+open FILE, '&lt;', "......";
+while (&lt;FILE&gt;) {
+ chomp;
+ doSomething($_);
+}
+</pre></div>
+<br><br><p>
+In F-Script, the <span class="method">readln</span> method of <span class="class">FSFile</span> returns <span class="literal">nil</span> when the file has been completely read, so we can create a very similar loop:
+<br><br></p>
+<div class="longexample"><pre>
+file2 := FSFile open:'....'.
+[ file readln ] foreach:[ :line |
+ "No 'chomp' necessary - readln cuts off the newline for us"
+ obj doSomething:line.
+].
+</pre></div>
+<br><br><p>
+A more F-Script-like alternative approach would be to use the <span class="method">readlines</span> method, then run the block over the entire array:
+<br><br></p>
+<div class="longexample"><pre>
+file2 := FSFile open:'....'.<br>
+[ :line | obj doSomething:line. ] value: @ (file2 readlines).
+</pre></div>
+<br><br><p>
+However, with this code, <span class="method">readlines</span> will read in the entire file at once, which may be very inefficient if the file is large. The iterative method using <span class="method">foreach</span>, on the other hand, only reads and stores a single line at a time.
+ <!-- end discussion --></p>
+<p></p>
+<p><!-- start of footer -->
+
+<!-- end of footer -->
+</p>
+<p>&copy; Andrew Weinrich Last Updated: Wednesday, October 15, 2008
+</p>
+</body>
+</html>

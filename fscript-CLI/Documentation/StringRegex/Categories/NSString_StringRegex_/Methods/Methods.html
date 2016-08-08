@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>Methods</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {font-weight:bold}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {font-style:italic}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<!-- start of header --><style>
+div.longexample {border-color:black; border-width:1px; border-style:solid; padding-top:3pt; padding-bottom:3pt; padding-left:8pt; background-color:#EEEEEE }
+
+td { vertical-align:top; padding-bottom:10pt; padding-left:10pt} 
+td.spacer {max-width:2pt; background-color:black}
+pre {padding-left:10pt}
+
+dl.list {border: 1pt solid black }
+dt {font-weight:bold; padding-left:8pt; padding-bottom:2pt}
+dd {margin-left:15pt; padding-bottom:5pt}
+
+span.method {font-weight:bold; font-family:Courier}
+span.parameter {font-style:italic; font-family:Courier}
+span.literal {font-family:Courier}
+span.directory {font-style:italic}
+span.program {font-family:Monaco,Lucida}
+
+br {padding-bottom:5pt}
+
+code { border-width:1px; border-color:gray; border-style:solid; background-color:#EEEEEE }
+</style>
+<!-- end of header --><a name="top"></a><a name="HeaderDoc_methods"></a><dl>
+<dt><tt><a href="Methods.html#//apple_ref/occ/instm/NSString(StringRegex)/allCaptures:" target="doc">-allCaptures: </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="Methods.html#//apple_ref/occ/instm/NSString(StringRegex)/captures:" target="doc">-captures: </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="Methods.html#//apple_ref/occ/instm/NSString(StringRegex)/matches:" target="doc">-matches: </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="Methods.html#//apple_ref/occ/instm/NSString(StringRegex)/replace:with:" target="doc">-replace:with: </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="Methods.html#//apple_ref/occ/instm/NSString(StringRegex)/replace:withBlock:" target="doc">-replace:withBlock: </a></tt></dt>
+<dd></dd>
+<dt><tt><a href="Methods.html#//apple_ref/occ/instm/NSString(StringRegex)/split:" target="doc">-split: </a></tt></dt>
+<dd></dd>
+</dl>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/NSString(StringRegex)/allCaptures:;  name=NSString(StringRegex)::allCaptures: --><a name="//apple_ref/occ/instm/NSString(StringRegex)/allCaptures:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="allCaptures:">allCaptures: </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/NSArray //apple_ref/occ/tdef/NSArray //apple_ref/occ/tag/NSArray //apple_ref/occ/econst/NSArray //apple_ref/occ/struct/NSArray //apple_ref/occ/clconst/NSArray //apple_ref/occ/intf/NSArray" --><span class="type">NSArray</span><!-- /a --><span class="type">*</span>) <!-- a logicalPath="//apple_ref/occ/instm/allCaptures //apple_ref/occ/clm/allCaptures //apple_ref/occ/intfcm/allCaptures //apple_ref/occ/intfm/allCaptures //apple_ref/occ/func/allCaptures //apple_ref/occ/ftmplt/allCaptures //apple_ref/occ/defn/allCaptures //apple_ref/occ/macro/allCaptures" --><span class="function">allCaptures</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/econst/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/clconst/NSString //apple_ref/occ/intf/NSString" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<span class="var">pattern</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Returns all the captures of the specified pattern in the string. Each element of the array is an FSRegexMatch object; these objects can be queried for specific captured subpatterns. If you know that the pattern will only match once, and you are not using named subpatterns, the method <span class="method">captures:</span> will be more convenient<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/NSString(StringRegex)/captures:;  name=NSString(StringRegex)::captures: --><a name="//apple_ref/occ/instm/NSString(StringRegex)/captures:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="captures:">captures: </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/NSArray //apple_ref/occ/tdef/NSArray //apple_ref/occ/tag/NSArray //apple_ref/occ/econst/NSArray //apple_ref/occ/struct/NSArray //apple_ref/occ/clconst/NSArray //apple_ref/occ/intf/NSArray" --><span class="type">NSArray</span><!-- /a --><span class="type">*</span>) <!-- a logicalPath="//apple_ref/occ/instm/captures //apple_ref/occ/clm/captures //apple_ref/occ/intfcm/captures //apple_ref/occ/intfm/captures //apple_ref/occ/func/captures //apple_ref/occ/ftmplt/captures //apple_ref/occ/defn/captures //apple_ref/occ/macro/captures" --><span class="function">captures</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/econst/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/clconst/NSString //apple_ref/occ/intf/NSString" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<span class="var">pattern</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Returns an array of subpattern matches from the first match of the pattern in the string. The entire matched portion will be the first element in the array. Using this method, the following Perl code:
+<br><br></p>
+<div class="longexample"><pre>
+$string =~ /(\d+) +(\w+)/);
+my $word = $1;
+my $number = $2;
+</pre></div>
+<br><br><p>
+can be reproduced in F-Script as the following:
+<br><br></p>
+<div class="longexample"><pre>
+subpatterns := string captures:'(\\d+) +(\\w+)'.
+word := subpatterns at:1.
+number := subpatterns at:2.
+</pre></div>
+<br><br><p>
+Any subpatterns that were not captured (such as groupings made optional with the <code>?</code> modifier) will be returned as empty strings in the array. If the string did not match the pattern at all, this method will return <span class="literal">nil</span>.
+<br><br>
+If you want to find all the matches of the pattern in the string, or need to access named subpatterns, use the <span class="method">allMatches:</span> method instead.<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/NSString(StringRegex)/matches:;  name=NSString(StringRegex)::matches: --><a name="//apple_ref/occ/instm/NSString(StringRegex)/matches:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="matches:">matches: </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/FSBoolean //apple_ref/occ/tdef/FSBoolean //apple_ref/occ/tag/FSBoolean //apple_ref/occ/econst/FSBoolean //apple_ref/occ/struct/FSBoolean //apple_ref/occ/clconst/FSBoolean //apple_ref/occ/intf/FSBoolean" --><span class="type">FSBoolean</span><!-- /a --><span class="type">*</span>) <!-- a logicalPath="//apple_ref/occ/instm/matches //apple_ref/occ/clm/matches //apple_ref/occ/intfcm/matches //apple_ref/occ/intfm/matches //apple_ref/occ/func/matches //apple_ref/occ/ftmplt/matches //apple_ref/occ/defn/matches //apple_ref/occ/macro/matches" --><span class="function">matches</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/econst/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/clconst/NSString //apple_ref/occ/intf/NSString" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<span class="var">pattern</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Returns true if the receiver matches the supplied regular expression. The Perl code
+<br><br></p>
+<div class="longexample"><pre>
+$string = ".....";
+if ($string =~ /pattern/) {
+ ....
+}
+</pre></div>
+<br><br><p>
+can be expressed in F-Script as:
+<br><br></p>
+<div class="longexample"><pre>
+string := '.....'.
+(string matches:'pattern') ifTrue:[
+ ....
+].
+</pre></div>
+<!-- end discussion --><p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/NSString(StringRegex)/replace:with:;  name=NSString(StringRegex)::replace:with: --><a name="//apple_ref/occ/instm/NSString(StringRegex)/replace:with:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="replace:with:">replace:with: </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/econst/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/clconst/NSString //apple_ref/occ/intf/NSString" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>) <!-- a logicalPath="//apple_ref/occ/instm/replace //apple_ref/occ/clm/replace //apple_ref/occ/intfcm/replace //apple_ref/occ/intfm/replace //apple_ref/occ/func/replace //apple_ref/occ/ftmplt/replace //apple_ref/occ/defn/replace //apple_ref/occ/macro/replace" --><span class="function">replace</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/econst/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/clconst/NSString //apple_ref/occ/intf/NSString" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<span class="param">pattern</span> <!-- a logicalPath="//apple_ref/occ/instm/with //apple_ref/occ/clm/with //apple_ref/occ/intfcm/with //apple_ref/occ/intfm/with //apple_ref/occ/func/with //apple_ref/occ/ftmplt/with //apple_ref/occ/defn/with //apple_ref/occ/macro/with" --><span class="function">with</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/econst/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/clconst/NSString //apple_ref/occ/intf/NSString" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<span class="var">replacementString</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Replaces all occurrences of <span class="parameter">pattern</span> in the receiver with <span class="parameter">replacementString</span>. Subpatterns captured with parentheses are available using the notation <code>$1</code>, <code>$2</code>, etc. (<span class="literal">$0</span> refers to the entire match). Python-style named captures are also available. For more information, see the <a href="http://www.pcre.org" target="_top">PCRE documentation</a>.
+<br><br>
+The Perl code <code>string =~ s/pa(tt)ern/replacement$1/g;</code> can be expressed in F-Script as: <code>string := string replace:'pa(tt)ern' with:'replacement$1'.</code>. The assignment is necessary because the original string is not directly modified, as it is in Perl.<!-- end discussion --></p>
+<p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/NSString(StringRegex)/replace:withBlock:;  name=NSString(StringRegex)::replace:withBlock: --><a name="//apple_ref/occ/instm/NSString(StringRegex)/replace:withBlock:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="replace:withBlock:">replace:withBlock: </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/econst/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/clconst/NSString //apple_ref/occ/intf/NSString" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>) <!-- a logicalPath="//apple_ref/occ/instm/replace //apple_ref/occ/clm/replace //apple_ref/occ/intfcm/replace //apple_ref/occ/intfm/replace //apple_ref/occ/func/replace //apple_ref/occ/ftmplt/replace //apple_ref/occ/defn/replace //apple_ref/occ/macro/replace" --><span class="function">replace</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/econst/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/clconst/NSString //apple_ref/occ/intf/NSString" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<span class="param">pattern</span> <!-- a logicalPath="//apple_ref/occ/instm/withBlock //apple_ref/occ/clm/withBlock //apple_ref/occ/intfcm/withBlock //apple_ref/occ/intfm/withBlock //apple_ref/occ/func/withBlock //apple_ref/occ/ftmplt/withBlock //apple_ref/occ/defn/withBlock //apple_ref/occ/macro/withBlock" --><span class="function">withBlock</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/Block //apple_ref/occ/tdef/Block //apple_ref/occ/tag/Block //apple_ref/occ/econst/Block //apple_ref/occ/struct/Block //apple_ref/occ/clconst/Block //apple_ref/occ/intf/Block" --><span class="type">Block</span><!-- /a --><span class="type">*</span>)<span class="var">block</span>; </pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Similar to the <code>s///x</code> replacement operator in Perl, this method executes an F-Script block for every match of the pattern in the receiver, supplying the match and subpatterns to the block as arguments. The first argument is the entire match, and subpatterns are passed as the subsequent arguments. If the block does not accept the same number of arguments as there are subpatterns in the regular expression, the F-Script intepreter will throw an exception.
+<br><br>
+The entire match is the original string is then replaced with the return value of the block. The return value does not have to be an <span class="class">NSString</span>; if another object (such as an <span class="class">NSNumber</span>) is returned, the <span class="method">description</span> method will be used to obtain a string value to use as a replacement.
+<br><br>
+The following code will replace all pairs of integers separated with a plus sign in a string with their sums:
+<br><br></p>
+<div class="longexample"><pre>
+string := '12+13, 45+2, 10 + 200'.<br>
+string := string replace:'(\\d+)\\s*\\+\\s*(\\d+)' withBlock:[ :group :pat1 :pat2 |
+ pat1 intValue + pat2 intValue
+].<br>
+"string is now '25, 47, 210'"
+</pre></div>
+<!-- end discussion --><p></p>
+<hr>
+<!-- headerDoc=instm;  uid=//apple_ref/occ/instm/NSString(StringRegex)/split:;  name=NSString(StringRegex)::split: --><a name="//apple_ref/occ/instm/NSString(StringRegex)/split:"></a><table border="0" cellpadding="2" cellspacing="2" width="300"><tr><td valign="top" height="12" colspan="5">
+<h3><a name="split:">split: </a></h3>
+</td></tr></table>
+<hr>
+<p></p>
+<pre>- (<!-- a logicalPath="//apple_ref/occ/cl/NSArray //apple_ref/occ/tdef/NSArray //apple_ref/occ/tag/NSArray //apple_ref/occ/econst/NSArray //apple_ref/occ/struct/NSArray //apple_ref/occ/clconst/NSArray //apple_ref/occ/intf/NSArray" --><span class="type">NSArray</span><!-- /a --><span class="type">*</span>) <!-- a logicalPath="//apple_ref/occ/instm/split //apple_ref/occ/clm/split //apple_ref/occ/intfcm/split //apple_ref/occ/intfm/split //apple_ref/occ/func/split //apple_ref/occ/ftmplt/split //apple_ref/occ/defn/split //apple_ref/occ/macro/split" --><span class="function">split</span><!-- /a -->:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/econst/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/clconst/NSString //apple_ref/occ/intf/NSString" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<span class="var">pattern</span>;</pre>
+<h5 class="tight">
+<font face="Lucida Grande,Helvetica,Arial">Discussion</font>
+</h5>
+<p><!-- begin discussion -->Like the <code>split</code> function in Perl, this method separates a string into components, using a regular expression to identify the separators (instead of a plain string, as the <span class="class">NSString</span> method <span class="method">componentsSeparatedByString:</span> does). Returns an array containing the components.<!-- end discussion --></p>
+<p></p>
+<p><!-- start of footer -->
+
+<!-- end of footer -->
+</p>
+<p>&copy; Andrew Weinrich Last Updated: Wednesday, October 15, 2008
+</p>
+</body>
+</html>

@@ -1,0 +1,80 @@
+
+
+Class1 := FSClass newClass.
+out println:'Created new class!'.
+
+Class1 addProperty: @ {'prop1', 'thing', 'stuff'}.
+out println:'Add properties!'.
+
+Class1 onMessage:#sayHello do:[ :self | out println:'Hello from Class1!'. ].
+inst1 := Class1 alloc init.
+"Very strange error:
+
+If autorelease is added to the line above, these commands will fail with a bus error:
+
+/bin/sh -c fscript general.test
+/bin/bash -c fscript general.test
+
+but these three will not:
+
+fscript general.test
+/bin/csh -c fscript general.test
+/bin/tcsh -c fscript general.test
+"
+
+
+inst1 setProp1:5.
+inst1 setThing:'h'.
+inst1 sayHello.
+out println:inst1 thing.
+
+out newln.
+
+out println:'Inst1.thing: '++(inst1 thing).
+
+out printf:'Inst1.stuff: %@\n'withValues:{inst1 stuff}.
+
+SubClass := FSClass newClass:'mySubClass' parent:Class1.
+SubClass onMessage:#sayHello do:[ :self | out println:'Hello from SubClass!'. ].
+SubClass onMessage:#sayString: do:[ :self :str | out println:'Here''s a string: '++str++'!'. ].
+SubClass addProperty:'foo'.
+
+inst2 := SubClass alloc init autorelease.
+
+inst2 setThing:'thingy'.
+
+inst2 sayHello.
+
+inst2 setFoo:4.
+
+
+out println:(inst2 thing).
+
+out println:(inst2 className).
+
+inst2 sayString:'stringy'.
+
+
+out println:'\n\nNow testing adding methods to superclasses'.
+Class1 onMessage:#sayGoodbye do:[ :self | out println:'Goodbye from Class1!'. ].
+
+inst1 sayGoodbye.
+inst2 sayGoodbye.
+
+out println:'\n\nNow we override that method in the subclass'.
+SubClass onMessage:#sayGoodbye do:[ :self | out println:'Goodbye from SubClass!'. ].
+inst2 sayGoodbye.
+
+
+
+out println:'\n\nNow testing adding properties to superclasses:'.
+Class1 addProperty:'newProp'.
+inst1 setNewProp:'Hi!'.
+out println:(inst1 newProp).
+inst2 setNewProp:'Bye!'.
+out println:(inst2 newProp).
+
+
+((FSClass getClass:'mySubClass') alloc init) sayString:'Retrieved a class!'.
+
+

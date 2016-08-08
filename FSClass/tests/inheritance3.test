@@ -1,0 +1,218 @@
+ "This file tests inheritance of class methods"
+
+SuperClass := FSClass newClass:'SSuperClass'.
+SuperClass addClassProperty:'foo' withValue:'foo'.
+SuperClass addClassProperty:'bar' withValue:'bar'.
+SuperClass addClassProperty:'baz' withValue:'baz'.
+
+SuperClass onClassMessage:#doSuperStuff do:[ :self |
+    out println:'[SuperClass doSuperStuff]'.
+    out newln.
+].
+
+SuperClass onClassMessage:#doInheritedStuff do:[ :self |
+    out println:'[SuperClass doInheritedStuff]'.
+    out newln.
+].
+
+SuperClass onClassMessage:#doOtherStuff: do:[ :self :arg |
+    out println:'[SuperClass doOtherStuff:'++arg++']'.
+    out newln.
+].
+
+SuperClass onMessage:#doInstanceStuff do:[ :self |
+    out println:('[SuperClass doInstanceStuff]').
+].
+
+
+
+
+SubClass := FSClass newClass:'SSubClass' parent:SuperClass.
+SubClass onClassMessage:#doSubStuff do:[ :self |
+    out println:'[SubClass doSubStuff]'.
+].
+
+SubClass onClassMessage:#doInheritedStuff do:[ :self | |sel|
+    out println:'[SubClass doInheritedStuff]'.
+    self doSuperMethod:#doInheritedStuff currentClass:SubClass.
+].
+
+"Test inheritance of class properties"
+[ SuperClass addClassProperty:'foo' withValue:'subfoo' ] onException:[
+    out println:('Couldn\'t add property foo').
+    out newln.
+    out println:('-----------------------').
+    out newln.
+].
+
+SubClass onMessage:#doInstanceStuff do:[ :self |
+    out println:('[SubClass doInstanceStuff]').
+    self doSuperMethod:#doInstanceStuff currentClass:SubClass.
+].
+
+
+
+
+SubSubClass := FSClass newClass:'SSubSubClass' parent:SubClass.
+SuperClass addClassProperty:'subsubfoo' withValue:'subsubfoo'.
+SuperClass addClassProperty:'subsubbaz' withValue:'subsubbaz'.
+
+SubSubClass onClassMessage:#doSubSubStuff do:[ :self |
+    out println:'[SubSubClass doSubSubStuff]'.
+].
+
+SubSubClass onClassMessage:#doInheritedStuff do:[ :self |
+    out println:'[SubSubClass doInheritedStuff]'.
+    self doSuperMethod:#doInheritedStuff currentClass:SubSubClass.
+].
+
+SubSubClass onClassMessage:#doOtherStuff: do:[ :self :arg |
+    out println:'[SubSubClass doOtherStuff:'++arg++']'.
+    self doSuperMethod:#doOtherStuff: currentClass:SubSubClass with:'fubar'.
+].
+
+SubSubClass onClassMessage:#foo do:[ :self |
+    self subsubfoo.
+].
+SubSubClass onClassMessage:#setFoo: do:[ :self :newFoo |
+    self setSubsubfoo:newFoo.
+].
+
+SubSubClass onClassMessage:#doPropertyStuff: do:[ :self :newFoo |
+    self doSuperMethod:#setFoo: currentClass:SubSubClass with:newFoo.
+    "out println:(self super:#foo)."
+    nil.
+].
+
+SubSubClass onMessage:#doInstanceStuff do:[ :self |
+    out println:('[SubSubClass doInstanceStuff]').
+    self doSuperMethod:#doInstanceStuff currentClass:SubSubClass.
+].
+
+
+
+
+
+"
+inst := SubSubClass alloc init.
+inst doInstanceStuff.
+"
+
+
+
+"Test respondsToClassSelector:"
+"
+out println:('SuperClass:').
+out println:('doSuperStuff - ' ++ (SuperClass respondsToClassSelector:#doSuperStuff)).
+out println:('doSubStuff - ' ++ (SuperClass respondsToClassSelector:#doSubStuff)).
+out println:('doSubSubStuff - ' ++ (SuperClass respondsToClassSelector:#doSubSubStuff)).
+out println:('doInheritedStuff - ' ++ (SuperClass respondsToClassSelector:#doInheritedStuff)).
+out println:('doOtherStuff - ' ++ (SuperClass respondsToClassSelector:#doInheritedStuff)).
+"
+
+"out println"
+
+
+
+
+
+
+SuperClass doSuperStuff.
+SuperClass doInheritedStuff.
+SuperClass doOtherStuff:'foo'.
+
+out println:'-----------------------'.
+out newln.
+
+SubClass doSubStuff.
+SubClass doSuperStuff.
+SubClass doInheritedStuff.
+SubClass doOtherStuff:'bar'.
+
+out println:'-----------------------'.
+out newln.
+
+SubSubClass doSubSubStuff.
+SubSubClass doSubStuff.
+SubSubClass doSuperStuff.
+SubSubClass doInheritedStuff.
+SubSubClass doOtherStuff:'baz'.
+
+out println:'-----------------------'.
+out newln.
+
+out println:('[SuperClass foo]: ' ++ SuperClass foo).
+out println:('[SuperClass bar]: ' ++ SuperClass bar).
+out println:('[SuperClass baz]: ' ++ SuperClass baz).
+out newln.
+out println:('[SubClass foo]: ' ++ SubClass foo).
+out println:('[SubClass bar]: ' ++ SubClass bar).
+out println:('[SubClass baz]: ' ++ SubClass baz).
+out newln.
+out println:('[SubSubClass foo]: ' ++ SubSubClass foo).
+out println:('[SubSubClass bar]: ' ++ SubSubClass bar).
+out println:('[SubSubClass baz]: ' ++ SubSubClass baz).
+
+
+out newln.
+out println:'-----------------------'.
+out newln.
+
+SuperClass setFoo:'foo2'.
+SuperClass setBar:'bar2'.
+SuperClass setBaz:'baz2'.
+
+out println:('[SuperClass foo]: ' ++ SuperClass foo).
+out println:('[SuperClass bar]: ' ++ SuperClass bar).
+out println:('[SuperClass baz]: ' ++ SuperClass baz).
+out newln.
+out println:('[SubClass foo]: ' ++ SubClass foo).
+out println:('[SubClass bar]: ' ++ SubClass bar).
+out println:('[SubClass baz]: ' ++ SubClass baz).
+out newln.
+out println:('[SubSubClass foo]: ' ++ SubSubClass foo).
+out println:('[SubSubClass bar]: ' ++ SubSubClass bar).
+out println:('[SubSubClass baz]: ' ++ SubSubClass baz).
+
+
+out newln.
+out println:'-----------------------'.
+out newln.
+
+SubClass setFoo:'foo3'.
+SubClass setBar:'bar3'.
+SubClass setBaz:'baz3'.
+
+out println:('[SuperClass foo]: ' ++ SuperClass foo).
+out println:('[SuperClass bar]: ' ++ SuperClass bar).
+out println:('[SuperClass baz]: ' ++ SuperClass baz).
+out newln.
+out println:('[SubClass foo]: ' ++ SubClass foo).
+out println:('[SubClass bar]: ' ++ SubClass bar).
+out println:('[SubClass baz]: ' ++ SubClass baz).
+out newln.
+out println:('[SubSubClass foo]: ' ++ SubSubClass foo).
+out println:('[SubSubClass bar]: ' ++ SubSubClass bar).
+out println:('[SubSubClass baz]: ' ++ SubSubClass baz).
+
+
+out newln.
+out println:'-----------------------'.
+out newln.
+
+SubSubClass setFoo:'foo4'.
+SubSubClass setBar:'bar4'.
+SubSubClass setBaz:'baz4'.
+
+out println:('[SuperClass foo]: ' ++ SuperClass foo).
+out println:('[SuperClass bar]: ' ++ SuperClass bar).
+out println:('[SuperClass baz]: ' ++ SuperClass baz).
+out newln.
+out println:('[SubClass foo]: ' ++ SubClass foo).
+out println:('[SubClass bar]: ' ++ SubClass bar).
+out println:('[SubClass baz]: ' ++ SubClass baz).
+out newln.
+out println:('[SubSubClass foo]: ' ++ SubSubClass foo).
+out println:('[SubSubClass bar]: ' ++ SubSubClass bar).
+out println:('[SubSubClass baz]: ' ++ SubSubClass baz).
+

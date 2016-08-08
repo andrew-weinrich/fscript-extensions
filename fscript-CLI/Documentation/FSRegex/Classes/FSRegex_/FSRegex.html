@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+<head>
+<title>API Documentation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="HeaderDoc">
+<style type="text/css"><!--.keyword {background:#ffffff; color:#761550;}.template {background:#ffffff; color:#761550;}.number {background: #ffffff; color:#0000ff;}.function {font-weight:bold}.string {background: #ffffff; color:#891315;}.preprocessor {background:#ffffff; color:#236e25}.comment {background:#ffffff; color:#236e25}.char {background: #ffffff; color:#0000ff;}.var {background:#ffffff; color:#000000;}.type {background:#ffffff; color:#761550;}.param {font-style:italic}a:link {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #0000ff;}a:visited:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:active {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}a:hover {text-decoration: underline; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: small; color: #ff6600;}h4 {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: tiny; font-weight: bold;}body {text-decoration: none; font-family: lucida grande, geneva, helvetica, arial, sans-serif; font-size: 10pt;}--></style>
+</head>
+<body bgcolor="#ffffff">
+<!-- start of header --><style>
+div.longexample {border-color:black; border-width:1px; border-style:solid; padding-top:3pt; padding-bottom:3pt; padding-left:8pt; background-color:#EEEEEE }
+
+td { vertical-align:top; padding-bottom:10pt; padding-left:10pt} 
+td.spacer {max-width:2pt; background-color:black}
+pre {padding-left:10pt}
+
+dl.list {border: 1pt solid black }
+dt {font-weight:bold; padding-left:8pt; padding-bottom:2pt}
+dd {margin-left:15pt; padding-bottom:5pt}
+
+span.method {font-weight:bold; font-family:Courier}
+span.parameter {font-style:italic; font-family:Courier}
+span.literal {font-family:Courier}
+span.directory {font-style:italic}
+span.program {font-family:Monaco,Lucida}
+
+br {padding-bottom:5pt}
+
+code { border-width:1px; border-color:gray; border-style:solid; background-color:#EEEEEE }
+</style>
+<!-- end of header --><a name="top"></a><h1>FSRegex </h1>
+<hr>
+<p>
+ A Perl-compatible regular expression class.
+
+<br></p>
+<p><b>Superclass:</b> <!-- a logicalPath="//apple_ref/occ/cl/NSObject" -->NSObject<!-- /a --><br><b>Declared In:</b> <a href="../../index.html" target="_top">FSRegex.h</a><br></p>
+<dl></dl>
+<p></p>
+<hr>
+<br><p>
+ A FSRegex is created with -initWithPattern: or -initWithPattern:options: or the corresponding class methods +regexWithPattern: or +regexWithPattern:options:. These take a regular expression pattern string and the bitwise OR of zero or more option flags. For example:
+<br><br><code>&nbsp;&nbsp;&nbsp;&nbsp;FSRegex *regex = [[FSRegex alloc] initWithPattern:@"(paran|andr)oid" options:FSRegexCaseInsensitive];</code>
+<br><br>
+Matching is done with -findInString: or -findInString:range: which look for the first occurrence of the pattern in the target string and return an FSRegexMatch or nil if the pattern was not found.
+<br><br><code>&nbsp;&nbsp;&nbsp;&nbsp;FSRegexMatch *match = [regex findInString:@"paranoid android"];</code>
+<br><br>
+A match object returns a captured subpattern by -group, -groupAtIndex:, or -groupNamed:, or the range of a captured subpattern by -range, -rangeAtIndex:, or -rangeNamed:. The subpatterns are indexed in order of their opening parentheses, 0 is the entire pattern, 1 is the first capturing subpattern, and so on. -count returns the total number of subpatterns, including the pattern itself. The following prints the result of our last match case:
+<br><br><code>&nbsp;&nbsp;&nbsp;&nbsp;for (i = 0; i &lt; [match count]; i++)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NSLog(@"%d %@ %@", i, NSStringFromRange([match rangeAtIndex:i]), [match groupAtIndex:i]);</code>
+<br><br><code>&nbsp;&nbsp;&nbsp;&nbsp;0 {0, 8} paranoid<br>
+&nbsp;&nbsp;&nbsp;&nbsp;1 {0, 5} paran</code>
+<br><br>
+If any of the subpatterns didn't match, -groupAtIndex: will  return nil, and -rangeAtIndex: will return {NSNotFound, 0}. For example, if we change our original pattern to "(?:(paran)|(andr))oid" we will get the following output:
+<br><br><code>&nbsp;&nbsp;&nbsp;&nbsp;0 {0, 8} paranoid<br>
+&nbsp;&nbsp;&nbsp;&nbsp;1 {0, 5} paran<br>
+&nbsp;&nbsp;&nbsp;&nbsp;2 {2147483647, 0} (null)</code>
+<br><br>
+-findAllInString: and -findAllInString:range: return an NSArray of all non-overlapping occurrences of the pattern in the target string. -findEnumeratorInString: and -findEnumeratorInString:range: return an NSEnumerator for all non-overlapping occurrences of the pattern in the target string. For example,
+<br><br><code>&nbsp;&nbsp;&nbsp;&nbsp;NSArray *all = [regex findAllInString:@"paranoid android"];</code>
+<br><br>
+The first object in the returned array is the match case for "paranoid" and the second object is the match case for "android".
+<br><br>
+FSRegex provides the methods -replaceWithString:inString: and -replaceWithString:inString:limit: to perform substitution on strings.
+<br><br><code>&nbsp;&nbsp;&nbsp;&nbsp;FSRegex *regex = [FSRegex regexWithPattern:@"remote"];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NSString *result = [regex replaceWithString:@"complete" inString:@"remote control"]; // result is "complete control"</code>
+<br><br>
+Captured subpatterns can be interpolated into the replacement string using the syntax $x or ${x} where x is the index or name of the subpattern. $0 and $&amp; both refer to the entire pattern. Additionally, the case modifier sequences \U...\E, \L...\E, \u, and \l are allowed in the replacement string. All other escape sequences are handled literally.
+<br><br><code>&nbsp;&nbsp;&nbsp;&nbsp;FSRegex *regex = [FSRegex regexWithPattern:@"[usr]"];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NSString *result = [regex replaceWithString:@"\\u$&amp;." inString:@"Back in the ussr"]; // result is "Back in the U.S.S.R."</code>
+<br><br>
+Note that you have to escape a backslash to get it into an NSString literal. 
+<br><br>
+Named subpatterns may also be used in the pattern and replacement strings, like in Python. 
+<br><br><code>&nbsp;&nbsp;&nbsp;&nbsp;FSRegex *regex = [FSRegex regexWithPattern:@"(?P&lt;who&gt;\\w+) is a (?P&lt;what&gt;\\w+)"];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NSString *result = [regex replaceWithString:@"Jackie is a $what, $who is a runt" inString:@"Judy is a punk"]); // result is "Jackie is a punk, Judy is a runt"</code>
+<br><br>
+Finally, FSRegex provides -splitString: and -splitString:limit: which return an NSArray created by splitting the target string at each occurrence of the pattern. For example:
+<br><br><code>&nbsp;&nbsp;&nbsp;&nbsp;FSRegex *regex = [FSRegex regexWithPattern:@"ea?"];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NSArray *result = [regex splitString:@"Repeater"]; // result is "R", "p", "t", "r"</code>
+<br><br>
+If there are captured subpatterns, they are returned in the array. 
+<br><br><code>&nbsp;&nbsp;&nbsp;&nbsp;FSRegex *regex = [FSRegex regexWithPattern:@"e(a)?"];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NSArray *result = [regex splitString:@"Repeater"]; // result is "R", "p", "a", "t", "r"</code>
+<br><br>
+In Perl, this would return "R", undef, "p", "a", "t", undef, "r". Unfortunately, there is no convenient way to represent this in an NSArray. (NSNull could be used in place of undef, but then all members of the array couldn't be expected to be NSStrings.)
+    
+<br><br></p>
+<p></p>
+<hr>
+<br><center>
+<!-- start of footer -->
+
+<!-- end of footer -->
+&copy; Andrew Weinrich Last Updated: Wednesday, October 15, 2008
+<br><font size="-1">HTML documentation generated by <a href="http://www.opensource.apple.com/projects" target="_blank">HeaderDoc</a></font>
+</center>
+</body>
+</html>

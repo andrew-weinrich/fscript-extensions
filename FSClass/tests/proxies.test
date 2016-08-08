@@ -1,0 +1,43 @@
+"Tests adding methods to compiled classes via F-Script categories"
+
+NSString onMessage:#bork do:[ :self |
+    ((self replace:'W' with:'V') replace:'w' with:'v') replace:'o' with:'oo'
+].
+
+
+NSString onClassMessage:#borkedString do:[ :self |
+    'Bork bork bork!'.
+].
+
+out println:('Hello world!' bork).
+out println:(NSString borkedString).
+out newln.
+
+
+"Simple test with basic NSObject"
+NSObject onMessage:#blort do:[ :self | out println:(self description ++ ': blort!'). ].
+6 blort.
+out newln.
+
+
+"Test adding a pairing operator to NSObject"
+Pair := FSClass newClass:'PairClass' properties:{'first', 'second'}.
+Pair onClassMessage:#pair:with: do:[ :self :first :second | |newPair|
+    newPair := self alloc init.
+    newPair setFirst:first; setSecond:second.
+    newPair
+].
+Pair onMessage:#description do:[ :self |
+    '(' ++ self first description ++ ', ' ++ self second description ++ ')'
+].
+NSObject onMessage:#operator_equal_greater: do:[ :self :rhs |
+    Pair pair:self with:rhs.
+].
+
+
+out println:('asdf' => 'jkl;').
+out println:(7 => 'jkl;').
+out println:(9 => 8).
+out println:({'a', 'b'} => 't').
+
+

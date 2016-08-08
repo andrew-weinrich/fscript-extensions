@@ -1,0 +1,7 @@
+Cannot create class named 12
+Cannot create class with non-ASCII characters
+Cannot create selector from string "doStuff@"
+Cannot create selector from string "の"
+Cannot create selector from string "doStuff:withThing"
+Cannot create selector from string "doStuff::"
+Cannot create selector from string " doStuff"

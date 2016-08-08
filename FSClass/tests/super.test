@@ -1,0 +1,174 @@
+"
+    Test dispatching of superclass methods
+    
+    This test will print to standard error; it can be ignored
+"
+
+
+SuperClass := FSClass newClass:'SuperClass'.
+
+SuperClass addProperty:'foo'.
+
+SuperClass onMessage:#doThing do:[ :self |
+    out println:'Hi from SuperClass! foo:' ++ (self foo description).
+].
+
+SuperClass onMessage:#doStuff do:[ :self |
+    out println:'!Bonjour from SuperClass! foo:' ++ (self foo description).
+].
+
+SuperClass onMessage:#init: do:[ :self :fooValue |
+    self setFoo:fooValue.
+    self
+].
+
+SuperClass onMessage:#printBaz: do:[ :self :arg |
+    out println:'Super baz: ' ++ arg.
+].
+
+
+SuperClass onMessage:#doStuff:val2:val3:val4: do:
+[ :self :val1 :val2 :val3 :val4 |
+    out println:'SuperClass doStuff: ' ++({val1, val2, val3, val4} join:', ').
+].
+SuperClass onMessage:#doStuff:val2:val3:val4:val5: do:
+[ :self :val1 :val2 :val3 :val4 :val5 |
+    out println:'SuperClass doStuff: ' ++({val1, val2, val3, val4, val5} join:', ').
+].
+SuperClass onMessage:#doStuff:val2:val3:val4:val5:val6: do:
+[ :self :val1 :val2 :val3 :val4 :val5 :val6 |
+    out println:'SuperClass doStuff: ' ++({val1, val2, val3, val4, val5, val6} join:', ').
+].
+SuperClass onMessage:#doStuff:val2:val3:val4:val5:val6:val7: do:
+[ :self :val1 :val2 :val3 :val4 :val5 :val6 :val7 |
+    out println:'SuperClass doStuff: ' ++({val1, val2, val3, val4, val5, val6, val7} join:', ').
+].
+SuperClass onMessage:#doStuff:val2:val3:val4:val5:val6:val7:val8: do:
+[ :self :val1 :val2 :val3 :val4 :val5 :val6 :val7 :val8 |
+    out println:'SuperClass doStuff: ' ++({val1, val2, val3, val4, val5, val6, val7, val8} join:', ').
+].
+
+
+
+"Create a subclass"
+SubClass := FSClass newClass:'SubClass' parent:SuperClass.
+"This line would be equivalent:"
+"SubClass := FSClass newClass:'SubClass' withParentName:'SuperClass'."
+
+SubClass addProperty:'bar'.
+
+"This initializer calls the superclass's init: method"
+SubClass onMessage:#init: do:[ :self :barValue |
+    self := self doSuperMethod:#init: currentClass:SubClass withArguments:{5}.
+    self setBar:barValue.
+    self
+].
+
+SubClass onMessage:#printBaz: do:[ :self :arg |
+    out println:'Sub baz: ' ++ arg.
+].
+
+"Execute superclass's doThing first"
+SubClass onMessage:#doThing do:[ :self |
+    self doSuperMethod:#doThing currentClass:SubClass.
+    out println:'Hi from SubClass! bar:' ++ (self bar description)
+].
+
+SubClass onMessage:#doStuff:val2:val3:val4: do:
+[ :self :val1 :val2 :val3 :val4 |
+    out println:'Sub doStuff: ' ++({val1, val2, val3, val4} join:', ').
+].
+SubClass onMessage:#doStuff:val2:val3:val4:val5: do:
+[ :self :val1 :val2 :val3 :val4 :val5 |
+    out println:'Sub doStuff: ' ++({val1, val2, val3, val4, val5} join:', ').
+].
+SubClass onMessage:#doStuff:val2:val3:val4:val5:val6: do:
+[ :self :val1 :val2 :val3 :val4 :val5 :val6 |
+    out println:'Sub doStuff: ' ++({val1, val2, val3, val4, val5, val6} join:', ').
+].
+SubClass onMessage:#doStuff:val2:val3:val4:val5:val6:val7: do:
+[ :self :val1 :val2 :val3 :val4 :val5 :val6 :val7 |
+    out println:'Sub doStuff: ' ++({val1, val2, val3, val4, val5, val6, val7} join:', ').
+].
+SubClass onMessage:#doStuff:val2:val3:val4:val5:val6:val7:val8: do:
+[ :self :val1 :val2 :val3 :val4 :val5 :val6 :val7 :val8 |
+    out println:'Sub doStuff: ' ++({val1, val2, val3, val4, val5, val6, val7, val8} join:', ').
+].
+
+SubClass onMessage:#subOnly do:[ :self |
+    out println:'Subclass-only method'.
+].
+
+sub := SubClass alloc init:10.
+
+" Prints 'Bonjour from SuperClass! foo:5"
+sub doStuff.
+
+
+"Prints 'Hi from SuperClass! foo:5' 'Hi from SubClass! bar:10'"
+sub doThing.
+
+sub subOnly.
+
+out newln.
+
+
+sub doStuff:1 val2:2 val3:3 val4:4.
+sub doSuperMethod:#doStuff:val2:val3:val4: currentClass:(sub class)
+    withArguments:{1,2,3,4}.
+
+sub doStuff:1 val2:2 val3:3 val4:4 val5:5.
+sub doSuperMethod:#doStuff:val2:val3:val4:val5: currentClass:(sub class)
+    withArguments:{1,2,3,4,5}.
+
+sub doStuff:1 val2:2 val3:3 val4:4 val5:5 val6:6.
+sub doSuperMethod:#doStuff:val2:val3:val4:val5:val6: currentClass:(sub class)
+    withArguments:{1,2,3,4,5,6}.
+
+sub doStuff:1 val2:2 val3:3 val4:4 val5:5 val6:6 val7:7.
+sub doSuperMethod:#doStuff:val2:val3:val4:val5:val6:val7: currentClass:(sub class)
+    withArguments:{1,2,3,4,5,6,7}.
+
+sub doStuff:1 val2:2 val3:3 val4:4 val5:5 val6:6 val7:7 val8:8.
+sub doSuperMethod:#doStuff:val2:val3:val4:val5:val6:val7:val8: currentClass:(sub class)
+    withArguments:{1,2,3,4,5,6,7,8}.
+
+out newln.
+
+
+
+
+
+sub doSuperMethod:#printBaz: currentClass:(sub class) with:'ag'.
+sub doSuperMethod:#doThing currentClass:(sub class) withArguments:{}.
+sub doSuperMethod:#printBaz: currentClass:(sub class) withArguments:{'ag'}.
+
+out newln.
+
+"Negative tests"
+[ sub doSuperMethod:#printBaz: currentClass:(sub class) with:'ag' with:'asdf' ] onException:[ :e |
+    out println:'Called super: with too many arguments'.
+].
+
+[ sub doSuperMethod:#printBaz: currentClass:(sub class) ] onException:[ :e |
+    out println:'Called super: with too few arguments'.
+].
+
+[ sub doSuperMethod:#printBaz: currentClass:(sub class) withArguments:{'ag', 'asdf'}] onException:[ :e |
+    out println:'Called doSuperMethod:currentClass:withArguments: with too many arguments'.
+].
+out newln.
+
+
+""
+[ sub doSuperMethod:#akwehufliuasfu: currentClass:(sub class) with:'ag' ] onException:[ :e |
+    out println:'Superclass of Sub do not support method akwehufliuasfu:'.
+].
+[ sub doSuperMethod:#akwehufliuasfu:asf:as:asdf:asf:asf:asf:sadf: currentClass:(sub class) withArguments:{'ag',2,3,4,5,6,7} ] onException:[ :e |
+    out println:'Superclass of Sub do not support method akwehufliuasfu:asf:as:asdf:asf:asf:asf:sadf:'.
+].
+[ sub doSuperMethod:#subOnly currentClass:(sub class) ] onException:[ :e |
+    out println:'Superclass of Sub do not support method subOnly:'.
+].
+
+

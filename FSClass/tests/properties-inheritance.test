@@ -1,0 +1,46 @@
+"Tests slow properties"
+"Parent will have the following properties:
+    foo
+    bar - default 'oof'
+    baz - default 3
+Child will have properties:
+    propA
+    propB
+    propC
+"
+
+Parent := FSClass newClass:'Parent'.
+Parent addProperty: @{'foo', 'bar', 'baz'}.
+
+
+
+Child := FSClass newClass:'Child' parent:Parent.
+Child addProperty: @{'propA', 'propB', 'propC'}.
+
+
+GrandChild := FSClass newClass:'GrandChild' parent:Child.
+GrandChild addProperty: @{'major', 'minor'}.
+
+out println:(Parent propertyNames at:(Parent propertyNames sort)).
+out println:(Child propertyNames at:(Child propertyNames sort)).
+out println:(GrandChild propertyNames at:(GrandChild propertyNames sort)).
+out println:(Parent allPropertyNames at:(Parent allPropertyNames sort)).
+out println:(Child allPropertyNames at:(Child allPropertyNames sort)).
+out println:(GrandChild allPropertyNames at:(GrandChild allPropertyNames sort)).
+
+
+[ Child addProperty:'foo' ] onException:[ :e |
+    out println:('Property foo already in use by parent').
+].
+
+
+"Check mixing inheritance"
+FastChild := FSClass newClass:'FastChild' parent:Parent properties:{'fast','slow'}.
+out println:(FastChild allPropertyNames at:(FastChild allPropertyNames sort)).
+
+
+"Check for conflicts in creating fast children"
+FasterChild := nil.
+[ FasterChild := FSClass newClass:'FasterChild' parent:Parent properties:{'fast','faster', 'foo'} ] onException:[ :e |
+    out println:'Cannot create child with same property as parent'
+].

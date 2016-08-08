@@ -1,0 +1,14 @@
+Class C tests:
+ClassB
+ClassA
+ClassC
+
+Class B tests:
+ClassB
+ClassA
+
+
+Class A tests:
+ClassA
+ClassA
+
