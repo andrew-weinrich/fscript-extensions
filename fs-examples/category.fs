@@ -1,10 +1,7 @@
+"proxyForClass returns a modifiable version of an Objective-C class"
 NSStringProxy := FSClass proxyForClass:NSString.
 
-borkPairs := NSDictionary dictionaryWithFlatPairs:{
-    'w', 'v',
-    'o', 'u'
-}.
-
+"Add a new method to the (compiled, Objective-C) class"
 NSStringProxy onMessage:#bork do:[ :self | |copy|
     copy := self replace:'W' with:'V'.
     copy := copy replace:'w' with:'v'.
@@ -12,4 +9,5 @@ NSStringProxy onMessage:#bork do:[ :self | |copy|
     copy
 ].
 
+"Prints 'Helloo voorld!'"
 out println:('Hello world!' bork).

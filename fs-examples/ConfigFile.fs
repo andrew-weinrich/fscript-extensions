@@ -1,4 +1,4 @@
-"Reads a simple 'Key = Value' file and returns the contents as a dictionary"
+"Reads a simple 'Key = Value' file and returns the contents as an object"
 ConfigFile := [ :filename | |file data newClass|
     file := FSFile open:filename mode:'<'.
 	
